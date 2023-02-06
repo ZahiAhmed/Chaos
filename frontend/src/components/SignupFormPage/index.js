@@ -34,11 +34,8 @@ const SignupFormPage = () => {
     <div className="form">
     <h1>Create an account</h1>
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
       <label>
-        EMAIL
+        EMAIL <span>{errors.map(error => <span key={error}>{error}</span>)}</span>
         <br/>
         <br/>
         <input

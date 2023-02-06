@@ -35,11 +35,8 @@ const LoginFormPage = () => {
     <h1>Welcome back!</h1>
     <p>We're so excited to see you again!</p>
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
       <label>
-        USERNAME OR EMAIL
+        USERNAME OR EMAIL <span>{errors.map(error => <span key={error}>{error}</span>)}</span>
         <br/>
         <br/>
         <input 
@@ -51,7 +48,7 @@ const LoginFormPage = () => {
       </label>
       <br/>
       <label>
-        PASSWORD
+        PASSWORD <span>{errors.map(error => <span key={error}>{error}</span>)}</span>
         <br/>
         <br/>
         <input
