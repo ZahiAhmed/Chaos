@@ -35,7 +35,7 @@ const renderApplication = () => {
     <React.StrictMode>
       <Body />
     </React.StrictMode>,
-    document.getElementById('everything')
+    document.getElementById('root')
   );
 }
 

@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
-html, body {
+html, body, #root {
     height: 100%;
+    width: 100%;
     background-image: url("https://images.alphacoders.com/129/1291249.png");
     font-family: Arial, Helvetica, sans-serif;
 }
