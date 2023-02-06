@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import './reset.css';
 import './index.css';
 import App from './App';
 import configureStore from './store';
 import csrfFetch, { restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
 
-function Root() {
+function Body() {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -32,9 +33,9 @@ if (process.env.NODE_ENV !== 'production') {
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <Root />
+      <Body />
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById('everything')
   );
 }
 
