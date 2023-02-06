@@ -33,6 +33,7 @@ input {
 span {
     color: rgb(231, 134, 134);
     margin-bottom: 1%;
+    font-style: italic;
 }
 
 button {

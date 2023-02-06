@@ -5,4 +5,5 @@ html, body, #root {
     background-image: url("https://images.alphacoders.com/129/1291249.png");
     font-family: Arial, Helvetica, sans-serif;
     background-size: cover;
+    background-color: cornflowerblue;
 }

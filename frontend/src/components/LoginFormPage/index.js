@@ -62,6 +62,9 @@ const LoginFormPage = () => {
       <br/>
       <button type="submit">Log In</button>
     </form>
+    <br/>
+    <br/>
+      <button onClick="" >Demo Login</button>
     <p className='redirect'>Need an account? <a href="/signup">Register</a></p>
     </div>
   );
