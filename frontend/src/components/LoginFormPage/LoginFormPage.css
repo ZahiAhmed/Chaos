@@ -6,13 +6,13 @@
 .form {
     background-color: rgb(54,57,62);
     border-radius: 2%;
-    width: 50%;
-    color: rgba(245, 245, 245, 0.829);
+    width: 35%;
+    color: rgba(245, 245, 245, 0.724);
     height: fit-content;
     margin: auto;
-    padding: 5%;
-    font-weight: bold;
-    font-size: small;
+    padding: 3%;
+    font-weight: bolder;
+    font-size: 70%;
 }
 
 input:focus{
@@ -25,17 +25,28 @@ input {
     color: whitesmoke;
     background-color: rgb(30, 33, 37);
     border: 2px solid rgb(30, 33, 37);
-    margin-bottom: 10%;
+    margin-bottom: 8%;
     border-radius: 2%;
     font-size: larger;
 }
 
+ul {
+    color: rgb(231, 134, 134);
+    margin-bottom: 1%;
+}
+
 button {
-    background-color: rgb(67,78,228);
-    width: 102%;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    background-color: rgb(75,86,206);
+    width: 102%;    
+    padding-top: 3%;
+    padding-bottom: 3%;
     color: whitesmoke;
+    cursor: pointer;
+    font-size: small;
+}
+
+button:hover{
+    opacity: 0.9;
 }
 
 h1 {
@@ -52,3 +63,23 @@ p {
     font-weight: bold;
 }
 
+.redirect {
+    margin-top: 2%;
+    text-align: left;
+    font-size: small;
+    margin-bottom: -3%;
+}
+
+a {
+    color: rgb(0,175,244);
+    text-decoration: none
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#forgotpassword {
+    margin-top: -6%;
+    margin-bottom: 1%;
+}

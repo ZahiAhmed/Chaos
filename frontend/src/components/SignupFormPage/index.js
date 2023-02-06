@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import '../LoginFormPage/LoginFormPage.css'
 
-function SignupFormPage() {
+const SignupFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -20,10 +21,9 @@ function SignupFormPage() {
         .catch(async (res) => {
         let data;
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if the server is down
+          data = await res.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
@@ -31,13 +31,16 @@ function SignupFormPage() {
       });
     }
   return (
-    <div>
+    <div className="form">
+    <h1>Create an account</h1>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
       <label>
-        Email
+        EMAIL
+        <br/>
+        <br/>
         <input
           type="text"
           value={email}
@@ -45,8 +48,11 @@ function SignupFormPage() {
           required
         />
       </label>
+      <br/>
       <label>
-        Username
+        USERNAME
+        <br/>
+        <br/>
         <input
           type="text"
           value={username}
@@ -54,8 +60,11 @@ function SignupFormPage() {
           required
         />
       </label>
+      <br/>
       <label>
-        Password
+        PASSWORD
+        <br/>
+        <br/>
         <input
           type="password"
           value={password}
@@ -63,8 +72,10 @@ function SignupFormPage() {
           required
         />
       </label>
+      <br/>
       <button type="submit">Sign Up</button>
     </form>
+    <p className="redirect"><a href="/login">Already have an account?</a></p>
     </div>
   );
 }

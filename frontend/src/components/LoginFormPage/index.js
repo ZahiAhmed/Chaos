@@ -3,7 +3,8 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginFormPage.css';
-function LoginFormPage() {
+
+const LoginFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
@@ -19,10 +20,9 @@ function LoginFormPage() {
       .catch(async (res) => {
         let data;
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if the server is down
+          data = await res.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
@@ -60,10 +60,12 @@ function LoginFormPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <p id="forgotpassword" className="redirect"><a href="/login">Forgot Password?</a></p>
       </label>
       <br/>
       <button type="submit">Log In</button>
     </form>
+    <p className='redirect'>Need an account? <a href="/signup">Register</a></p>
     </div>
   );
 }
