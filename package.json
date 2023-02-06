@@ -1,0 +1,25 @@
+{
+  "name": "chaos",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZahiAhmed/Chaos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZahiAhmed/Chaos/issues"
+  },
+  "homepage": "https://github.com/ZahiAhmed/Chaos#readme",
+  "engines": {
+    "node": "16.x"
+  }
+}
