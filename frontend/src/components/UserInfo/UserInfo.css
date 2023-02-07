@@ -1,0 +1,24 @@
+.user-info {
+    bottom: 0;
+    left: 70px;
+    width: 210px;
+    background-color: rgb(40, 44, 49);
+    height: 7%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-info p {
+    height: 100%;
+    font-size: small;
+    cursor: pointer;
+    margin: auto;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+}
+
+.user-info p:hover {
+    background-color: rgb(76, 80, 85);
+}
