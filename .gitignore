@@ -26,7 +26,7 @@
 !/tmp/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
-# /config/master.key
+/config/master.key
 .byebug_history
 .DS_Store
 /public
