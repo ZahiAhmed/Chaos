@@ -48,7 +48,6 @@ const SignupFormPage = () => {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
       </label>
       <br/>
@@ -60,7 +59,6 @@ const SignupFormPage = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
       </label>
       <br/>
@@ -72,7 +70,6 @@ const SignupFormPage = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
       </label>
       <br/>

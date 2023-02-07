@@ -48,7 +48,6 @@ const LoginFormPage = () => {
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
         />
       </label>
       <br/>
@@ -60,7 +59,6 @@ const LoginFormPage = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
         <p id="forgotpassword" className="redirect"><a href="/login">Forgot Password?</a></p>
       </label>
