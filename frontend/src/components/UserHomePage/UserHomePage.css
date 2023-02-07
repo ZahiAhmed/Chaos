@@ -1,8 +1,14 @@
 .logout {
     background-color: rgb(30, 33, 37);
-    border: 2px solid rgb(30, 33, 37);
+    border: 2px solid rgb(238, 241, 246);
     width: 10%;
     height: 10%;
     color: whitesmoke;
     cursor: pointer;
+}
+
+#user-page{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(30, 33, 37);
 }

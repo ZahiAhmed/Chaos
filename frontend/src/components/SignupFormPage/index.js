@@ -11,7 +11,7 @@ const SignupFormPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
+  const splitErrors = {email: [], username: [], password: []}
   if (sessionUser) return <Redirect to={`/${sessionUser.username}`} />;
 
   const handleSubmit = (e) => {
@@ -30,12 +30,18 @@ const SignupFormPage = () => {
         else setErrors([response.statusText]);
       });
     }
+    errors.forEach(error => {
+      if(error.includes("Email")) splitErrors.email.push(error)
+      if(error.includes("Username")) splitErrors.username.push(error)
+      if(error.includes("Password")) splitErrors.password.push(error)
+    })
+    
   return (
     <div className='login' id="form">
     <h1 className='login' >Create an account</h1>
     <form className='login'  onSubmit={handleSubmit}>
       <label className='login' >
-        EMAIL <span className='login' >{errors.map(error => <span key={error}>{error}</span>)}</span>
+        EMAIL <span className='login' >{splitErrors.email.map(error => <span key={error}> - {error} </span>)}</span>
         <br/>
         <br/>
         <input className='login' 
@@ -47,7 +53,7 @@ const SignupFormPage = () => {
       </label>
       <br/>
       <label className='login' >
-        USERNAME
+        USERNAME <span className='login' >{splitErrors.username.map(error => <span key={error}> - {error} </span>)}</span>
         <br/>
         <br/>
         <input className='login' 
@@ -59,7 +65,7 @@ const SignupFormPage = () => {
       </label>
       <br/>
       <label className='login' >
-        PASSWORD
+        PASSWORD <span className='login' >{splitErrors.password.map(error => <span key={error}> - {error} </span>)}</span>
         <br/>
         <br/>
         <input className='login' 

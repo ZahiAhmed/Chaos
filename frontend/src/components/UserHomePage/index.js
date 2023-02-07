@@ -9,14 +9,16 @@ const UserHomePage = () => {
     let sessionUser = useSelector(state => state.session.user);
     if (!sessionUser) return <Redirect to={`/login`}/>;
     
-    const handleLogout = (e) => {
+    const handleLogout = async (e) => {
         e.preventDefault()
-        dispatch(sessionActions.logout());
+        await dispatch(sessionActions.logout());
         window.location.reload();
     }
 
     return (
+        <div id="user-page">
         <button className='logout' onClick={handleLogout}>Logout</button>
+        </div>
     )
 }
 
