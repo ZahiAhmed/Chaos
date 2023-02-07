@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import UserHomePage from "./components/UserHomePage";
@@ -16,6 +16,10 @@ function App() {
       </Route>
       <Route path="/:username">
         <UserHomePage/>
+      </Route>
+      <Route exact path="/">
+        <Redirect to="/login"/>
+        <LoginFormPage/>
       </Route>
     </Switch>
   );
