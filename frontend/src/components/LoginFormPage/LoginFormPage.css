@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.form {
+#form {
     background-color: rgb(54,57,62);
     border-radius: 2%;
     width: 35%;
@@ -15,11 +15,11 @@
     font-size: 70%;
 }
 
-input:focus{
+.login input:focus{
     outline: none
 }
 
-input {
+.login input {
     width: 97%;
     padding: 2%;
     color: whitesmoke;
@@ -30,13 +30,13 @@ input {
     font-size: larger;
 }
 
-span {
+.login span {
     color: rgb(231, 134, 134);
     margin-bottom: 1%;
     font-style: italic;
 }
 
-button {
+.login button {
     background-color: rgb(75,86,206);
     width: 102%;    
     padding-top: 4%;
@@ -44,13 +44,14 @@ button {
     color: whitesmoke;
     cursor: pointer;
     font-size: small;
+    border-radius: 2%;
 }
 
-button:hover{
+.login button:hover{
     opacity: 0.9;
 }
 
-h1 {
+.login h1 {
     margin-bottom: 3%;
     text-align: center;
     font-size: 200%;
@@ -71,12 +72,12 @@ p {
     margin-bottom: -3%;
 }
 
-a {
+.login a {
     color: rgb(0,175,244);
     text-decoration: none
 }
 
-a:hover{
+.login a:hover{
     text-decoration: underline;
 }
 

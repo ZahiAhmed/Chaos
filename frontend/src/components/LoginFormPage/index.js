@@ -11,35 +11,40 @@ const LoginFormPage = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to={`/${sessionUser.username}`}/>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
-      .catch(async (res) => {
+      .catch(async (response) => {
         let data;
         try {
-          data = await res.clone().json();
+          data = await response.clone().json();
         } catch {
-          data = await res.text();
+          data = await response.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+        else setErrors([response.statusText]);
       });
   }
 
+  const loginDemo = (e) => {
+    e.preventDefault()
+    dispatch(sessionActions.login({credential: 'Demo-Zaus', password: 'zausbaus'}))
+  }
+
   return (
-    <div className="form">
-    <h1>Welcome back!</h1>
-    <p>We're so excited to see you again!</p>
-    <form onSubmit={handleSubmit}>
-      <label>
-        USERNAME OR EMAIL <span>{errors.map(error => <span key={error}>{error}</span>)}</span>
+    <div className='login' id="form" >
+    <h1 className='login'>Welcome back!</h1>
+    <p className='login'>We're so excited to see you again!</p>
+    <form className='login' onSubmit={handleSubmit}>
+      <label className='login'>
+        USERNAME OR EMAIL <span className='login'>{errors.map(error => <span key={error}>{error}</span>)}</span>
         <br/>
         <br/>
-        <input 
+        <input className='login'
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
@@ -47,11 +52,11 @@ const LoginFormPage = () => {
         />
       </label>
       <br/>
-      <label>
-        PASSWORD <span>{errors.map(error => <span key={error}>{error}</span>)}</span>
+      <label className='login'>
+        PASSWORD <span className='login'>{errors.map(error => <span key={error}>{error}</span>)}</span>
         <br/>
         <br/>
-        <input
+        <input className='login'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -60,11 +65,11 @@ const LoginFormPage = () => {
         <p id="forgotpassword" className="redirect"><a href="/login">Forgot Password?</a></p>
       </label>
       <br/>
-      <button type="submit">Log In</button>
-    </form>
+      <button type="submit" className='login'>Log In</button>
+    </form >
     <br/>
     <br/>
-      <button onClick="" >Demo Login</button>
+      <button onClick={loginDemo} className='login'>Demo Login</button>
     <p className='redirect'>Need an account? <a href="/signup">Register</a></p>
     </div>
   );

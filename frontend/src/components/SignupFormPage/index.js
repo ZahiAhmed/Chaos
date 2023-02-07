@@ -12,33 +12,33 @@ const SignupFormPage = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to={`/${sessionUser.username}`} />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
+        .catch(async (response) => {
         let data;
         try {
-          data = await res.clone().json();
+          data = await response.clone().json();
         } catch {
-          data = await res.text();
+          data = await response.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+        else setErrors([response.statusText]);
       });
     }
   return (
-    <div className="form">
-    <h1>Create an account</h1>
-    <form onSubmit={handleSubmit}>
-      <label>
-        EMAIL <span>{errors.map(error => <span key={error}>{error}</span>)}</span>
+    <div className='login' id="form">
+    <h1 className='login' >Create an account</h1>
+    <form className='login'  onSubmit={handleSubmit}>
+      <label className='login' >
+        EMAIL <span className='login' >{errors.map(error => <span key={error}>{error}</span>)}</span>
         <br/>
         <br/>
-        <input
+        <input className='login' 
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -46,11 +46,11 @@ const SignupFormPage = () => {
         />
       </label>
       <br/>
-      <label>
+      <label className='login' >
         USERNAME
         <br/>
         <br/>
-        <input
+        <input className='login' 
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -58,11 +58,11 @@ const SignupFormPage = () => {
         />
       </label>
       <br/>
-      <label>
+      <label className='login' >
         PASSWORD
         <br/>
         <br/>
-        <input
+        <input className='login' 
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -70,7 +70,7 @@ const SignupFormPage = () => {
         />
       </label>
       <br/>
-      <button type="submit">Sign Up</button>
+      <button className='login'  type="submit">Sign Up</button>
     </form>
     <p className="redirect"><a href="/login">Already have an account?</a></p>
     </div>

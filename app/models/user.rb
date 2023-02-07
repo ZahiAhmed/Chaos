@@ -24,7 +24,7 @@ class User < ApplicationRecord
         self.save!
         self.session_token
     end
-  
+
     def self.find_by_credentials(credential, password)
       user = User.find_by(username: credential) || User.find_by(email: credential)
       if user&.authenticate(password)
@@ -33,4 +33,5 @@ class User < ApplicationRecord
         nil
       end
     end
+
 end
