@@ -1,0 +1,9 @@
+.friendlist {
+    height: 100%;
+    left: 70px;
+    top: 0;
+    overflow: auto;
+    position: fixed;
+    width: 210px;
+    background-color: rgb(60, 66, 73);
+}

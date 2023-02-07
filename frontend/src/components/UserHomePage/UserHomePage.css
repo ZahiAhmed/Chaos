@@ -5,10 +5,12 @@
     height: 10%;
     color: whitesmoke;
     cursor: pointer;
+    margin-left: auto;
 }
 
 #user-page{
+    display: flex;
     height: 100%;
     width: 100%;
-    background-color: rgb(30, 33, 37);
+    background-color: rgb(66, 71, 78);
 }

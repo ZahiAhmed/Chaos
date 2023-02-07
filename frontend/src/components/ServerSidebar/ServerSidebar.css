@@ -1,0 +1,9 @@
+.servers {
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    position: fixed;
+    width: 70px;
+    background-color: rgb(30, 33, 37);
+}

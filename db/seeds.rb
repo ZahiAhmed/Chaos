@@ -19,5 +19,11 @@ ApplicationRecord.transaction do
       email: 'demozaus@zaus.io', 
       password: 'zausbaus'
     )
+
+    User.create!(
+      username: 'zaus', 
+      email: 'zaus@zaus.io', 
+      password: 'zausbaus'
+    )
     puts "Done!"
 end
