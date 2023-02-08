@@ -3,10 +3,11 @@
     left: 70px;
     width: 210px;
     background-color: rgb(40, 44, 49);
-    height: 7%;
+    height: 5%;
     position: fixed;
     display: flex;
     justify-content: space-between;
+    position: absolute;
 }
 
 .user-info p {
@@ -16,7 +17,7 @@
     margin: auto;
     padding-left: 10%;
     padding-right: 10%;
-    padding-top: 5%;
+    padding-top: 8%;
 }
 
 .user-info p:hover {
