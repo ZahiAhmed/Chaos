@@ -4,8 +4,8 @@ import './ServerSidebar.css'
 const ServerSidebar = () => {
 
     return(
-        <div className="servers">
-        </div>
+        <aside className="servers">
+        </aside>
     )
 }
 

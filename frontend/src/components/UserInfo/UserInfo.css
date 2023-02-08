@@ -10,7 +10,10 @@
     position: absolute;
 }
 
-.user-info p {
+.user-info button {
+    padding-bottom: 5%;
+    color: rgba(255, 255, 255, 0.521);
+    font-weight: bold;
     height: 100%;
     font-size: small;
     cursor: pointer;
@@ -20,6 +23,6 @@
     padding-top: 8%;
 }
 
-.user-info p:hover {
+.user-info button:hover {
     background-color: rgb(76, 80, 85);
 }

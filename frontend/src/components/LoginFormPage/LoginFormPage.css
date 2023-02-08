@@ -16,7 +16,7 @@
 }
 
 .login input:focus{
-    outline: none
+    outline: none;
 }
 
 .login input {

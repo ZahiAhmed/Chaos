@@ -4,11 +4,11 @@ import './Friendlist.css'
 const Friendlist = () => {
 
     return (
-        <div className='friendlist'>
+        <aside className='friendlist'>
             <div>
             <h1 className="friend-label">Friends</h1>
             </div>
-        </div>
+        </aside>
     )
 }
 

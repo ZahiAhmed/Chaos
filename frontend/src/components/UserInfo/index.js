@@ -12,8 +12,8 @@ const UserInfo = () => {
     }
     return (
         <div className="user-info">
-            <p>{sessionUser.username}</p>
-            <p onClick={handleLogout}>Logout</p>
+            <button>{sessionUser.username}</button>
+            <button onClick={handleLogout}>Logout</button>
         </div>
     )
 }
