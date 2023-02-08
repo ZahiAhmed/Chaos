@@ -1,4 +1,3 @@
-import * as sessionActions from '../../store/session';
 import { Redirect, useParams  } from 'react-router-dom';
 import React from "react";
 import { useSelector } from 'react-redux';
