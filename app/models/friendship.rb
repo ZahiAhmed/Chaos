@@ -9,7 +9,8 @@
 #  updated_at :datetime         not null
 #
 class Friendship < ApplicationRecord
-
+    validates :friend_id, uniqueness: { scope: :user_id }
+    
     belongs_to :user,
         primary_key: :id,
         foreign_key: :user_id,

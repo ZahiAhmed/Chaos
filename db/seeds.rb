@@ -8,11 +8,12 @@
 
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
+    Friendship.destroy_all
     User.destroy_all
-  
     puts "Resetting primary keys..."
     ApplicationRecord.connection.reset_pk_sequence!('users')
-  
+    ApplicationRecord.connection.reset_pk_sequence!('friendships')
+
     puts "Creating users..."
     User.create!(
       username: 'Demo-Zaus', 
@@ -25,5 +26,17 @@ ApplicationRecord.transaction do
       email: 'zaus@zaus.io', 
       password: 'zausbaus'
     )
+
+    puts "Creating friendships..."
+    Friendship.create!(
+      user_id: 1,
+      friend_id: 2
+    )
+
+    Friendship.create!(
+      user_id: 2,
+      friend_id: 1
+    )
+
     puts "Done!"
 end

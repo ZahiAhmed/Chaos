@@ -65,7 +65,7 @@ table:focus, caption:focus, tbody:focus, tfoot:focus, thead:focus, tr:focus, th:
 article:focus, aside:focus, canvas:focus, details:focus, embed:focus, 
 figure:focus, figcaption:focus, footer:focus, header:focus, hgroup:focus, 
 menu:focus, nav:focus, output:focus, ruby:focus, section:focus, summary:focus,
-time:focus, mark:focus, audio:focus, video:focus, button:focus{
+time:focus, mark:focus, audio:focus, video:focus, button:focus {
 	outline: rgb(0,175,244) solid 5px;
-	border-radius: 2%
+	border-radius: 2%;
 }
