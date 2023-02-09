@@ -1,15 +1,22 @@
-import React from "react";
+import {useEffect} from 'react';
+import { useDispatch, useSelector} from "react-redux";
+import { fetchFriends } from "../../store/friendships";
+import Friendlabel from "./Friendlabel";
 import './Friendlist.css'
 
+
 const Friendlist = () => {
+    const dispatch = useDispatch()
+    const friends = useSelector(state => Object.values(state.friendships))
+    useEffect(() => {
+        dispatch(fetchFriends())
+    },[])
 
     return (
-        <aside className='friendlist'>
-            <div>
-            <h1 className="friend-label">Friends</h1>
-            </div>
-        </aside>
+        <div className='friendlist'>
+            {friends.map(friend => <Friendlabel key={friend.friendId} friend={friend}/>)}
+        </div>
     )
 }
 
-export default Friendlist;
+export default Friendlist

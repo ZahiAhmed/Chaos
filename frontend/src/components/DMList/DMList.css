@@ -1,0 +1,21 @@
+.dm {
+    height: 100%;
+    left: 72px;
+    top: 0;
+    overflow: auto;
+    position: fixed;
+    width: 240px;
+    background-color: rgb(48, 53, 58);
+    color:rgba(245, 245, 245, 0.685);
+}
+
+.dm div {
+    top: 0;
+    height: 7%;
+    text-align: center;
+}
+
+.dm-label {
+    margin-top: 5%;
+    font-weight: bold;
+}

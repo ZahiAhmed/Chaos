@@ -3,8 +3,9 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import './UserHomePage.css'
 import ServerSidebar from '../ServerSidebar';
-import Friendlist from '../Friendlist';
 import UserInfo from "../UserInfo";
+import DMList from '../DMList';
+import Friendlist from '../Friendlist';
 
 const UserHomePage = () => {
     const {username} = useParams()
@@ -15,8 +16,9 @@ const UserHomePage = () => {
     return (
         <div id="user-page">
             <ServerSidebar/>
-            <Friendlist/>
+            <DMList/>
             <UserInfo/>
+            <Friendlist/>
         </div>
     )
 }

@@ -8,7 +8,8 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch, { restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
-import * as friendshipActions from './store/friendship'
+import * as friendshipsActions from './store/friendships'
+import * as usersActions from './store/users'
 function Body() {
   return (
     <Provider store={store}>
@@ -24,7 +25,8 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions
-  window.friendshipActions = friendshipActions
+  window.friendshipsActions = friendshipsActions
+  window.usersActions = usersActions
 }
 
 if (process.env.NODE_ENV !== 'production') {

@@ -32,7 +32,7 @@ const LoginFormPage = () => {
 
   const loginDemo = (e) => {
     e.preventDefault()
-    dispatch(sessionActions.login({credential: 'Demo-Zaus', password: 'zausbaus'}))
+    dispatch(sessionActions.login({credential: 'zaus', password: 'zausbaus'}))
   }
 
   return (

@@ -1,21 +1,23 @@
 .friendlist {
+    font-size: larger;
+    left: 312px;
     height: 100%;
-    left: 70px;
-    top: 0;
+    width: 62%;
     overflow: auto;
+    /* border-right: 1px solid rgba(245, 245, 245, 0.432); */
+    color: rgba(245, 245, 245, 0.685);
     position: fixed;
-    width: 210px;
-    background-color: rgb(48, 53, 58);
-    color:rgba(245, 245, 245, 0.685);
+    padding-top: 10%;
 }
 
 .friendlist div {
-    top: 0;
-    height: 7%;
-    text-align: center;
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    padding: 20px;
+    border-top: 1px solid rgba(245, 245, 245, 0.384);
 }
 
-.friend-label {
-    margin-top: 5%;
-    font-weight: bold;
+.friendlist div:hover {
+    opacity: 0.4;
 }

@@ -15,15 +15,34 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('friendships')
 
     puts "Creating users..."
+    
     User.create!(
-      username: 'Demo-Zaus', 
-      email: 'demozaus@zaus.io', 
+      username: 'zaus', 
+      email: 'zaus@zaus.io', 
       password: 'zausbaus'
     )
 
     User.create!(
-      username: 'zaus', 
-      email: 'zaus@zaus.io', 
+      username: 'ayce', 
+      email: 'ayce@lacap.io', 
+      password: 'zausbaus'
+    )
+
+    User.create!(
+      username: 'kinka', 
+      email: 'kinka@tse.io', 
+      password: 'zausbaus'
+    )
+
+    User.create!(
+      username: 'kyle', 
+      email: 'kyle@ginzburg.io', 
+      password: 'zausbaus'
+    )
+
+    User.create!(
+      username: 'peter', 
+      email: 'peter@peter.io', 
       password: 'zausbaus'
     )
 
@@ -35,6 +54,36 @@ ApplicationRecord.transaction do
 
     Friendship.create!(
       user_id: 2,
+      friend_id: 1
+    )
+
+    Friendship.create!(
+      user_id: 1,
+      friend_id: 3
+    )
+
+    Friendship.create!(
+      user_id: 3,
+      friend_id: 1
+    )
+
+    Friendship.create!(
+      user_id: 1,
+      friend_id: 4
+    )
+
+    Friendship.create!(
+      user_id: 4,
+      friend_id: 1
+    )
+
+    Friendship.create!(
+      user_id: 1,
+      friend_id: 5
+    )
+
+    Friendship.create!(
+      user_id: 5,
       friend_id: 1
     )
 
