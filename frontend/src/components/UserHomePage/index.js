@@ -6,6 +6,7 @@ import ServerSidebar from '../ServerSidebar';
 import UserInfo from "../UserInfo";
 import DMList from '../DMList';
 import Friendlist from '../Friendlist';
+import AllUsers from '../AllUsers';
 
 const UserHomePage = () => {
     const {username} = useParams()
@@ -19,6 +20,7 @@ const UserHomePage = () => {
             <DMList/>
             <UserInfo/>
             <Friendlist/>
+            <AllUsers/>
         </div>
     )
 }

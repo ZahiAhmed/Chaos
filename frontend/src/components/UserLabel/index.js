@@ -1,9 +1,9 @@
 import React from 'react';
+import './UserLabel.css'
 
 const Friendlabel = (props) => {
-    // debugger
     return(
-        <div>
+        <div className="user-label">
             {props.friend.username}
         </div>
     )

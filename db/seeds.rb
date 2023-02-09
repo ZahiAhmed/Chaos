@@ -46,6 +46,12 @@ ApplicationRecord.transaction do
       password: 'zausbaus'
     )
 
+    User.create!(
+      username: 'spencer', 
+      email: 'spencer@iascone.io', 
+      password: 'zausbaus'
+    )
+
     puts "Creating friendships..."
     Friendship.create!(
       user_id: 1,
@@ -86,6 +92,7 @@ ApplicationRecord.transaction do
       user_id: 5,
       friend_id: 1
     )
+
 
     puts "Done!"
 end

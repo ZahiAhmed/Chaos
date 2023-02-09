@@ -1,0 +1,12 @@
+.user-label {
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    padding: 18px;
+    border-top: 1px solid rgba(245, 245, 245, 0.384);
+}
+
+.user-label:hover {
+    color: aliceblue;
+    background-color: rgba(245, 245, 245, 0.027);
+}

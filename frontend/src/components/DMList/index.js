@@ -6,7 +6,7 @@ const DMList = () => {
     return (
         <aside className='dm'>
             <div>
-            <h1 className="dm-label">Friends</h1>
+            <h1 className="dm-label">Direct Messages</h1>
             </div>
         </aside>
     )
