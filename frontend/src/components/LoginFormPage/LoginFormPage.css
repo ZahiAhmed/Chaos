@@ -5,7 +5,7 @@
 
 #form {
     background-color: rgb(54,57,62);
-    border-radius: 2%;
+    border-radius: 2px;
     width: 35%;
     color: rgba(245, 245, 245, 0.724);
     height: fit-content;
@@ -26,7 +26,7 @@
     background-color: rgb(30, 33, 37);
     border: 2px solid rgb(30, 33, 37);
     margin-bottom: 8%;
-    border-radius: 2%;
+    border-radius: 2px;
     font-size: larger;
 }
 
@@ -44,7 +44,7 @@
     color: whitesmoke;
     cursor: pointer;
     font-size: small;
-    border-radius: 2%;
+    border-radius: 2px;
 }
 
 .login button:hover{

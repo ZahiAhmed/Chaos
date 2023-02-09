@@ -29,10 +29,6 @@ if (process.env.NODE_ENV !== 'production') {
   window.usersActions = usersActions
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
-}
-
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>

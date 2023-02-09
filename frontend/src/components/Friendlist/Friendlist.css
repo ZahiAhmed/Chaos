@@ -1,11 +1,24 @@
 .friendlist {
     font-size: larger;
-    left: 312px;
+    left: 350px;
     height: 100%;
-    width: 55%;
+    width: 50%;
     overflow: auto;
-    /* border-right: 1px solid rgba(245, 245, 245, 0.432); */
     color: rgba(245, 245, 245, 0.685);
     position: fixed;
-    padding-top: 10%;
+}
+
+.friendlist input {
+    margin-left: 2%;
+    width: 95%;
+    height: 33px;
+    border-radius: 2px;
+    background-color: rgb(30, 33, 37);
+    border: 1px solid rgb(30, 33, 37);
+    color: rgba(245, 245, 245, 0.685);
+    font-size: medium;
+}
+
+.friendlist input:focus {
+    outline: none;
 }

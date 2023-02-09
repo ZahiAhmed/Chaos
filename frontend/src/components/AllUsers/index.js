@@ -14,8 +14,8 @@ const AllUsers = () => {
 
     return (
         <div className='userslist'>
-            <h1>Add Friend</h1>
-            {users.map(friend => <UserLabel key={friend.id} friend={friend}/>)}
+            {/* <h1>Add Friend</h1>
+            {users.map(friend => <UserLabel key={friend.id} friend={friend}/>)} */}
         </div>
     )
 }

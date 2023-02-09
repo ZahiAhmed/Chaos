@@ -56,6 +56,7 @@ ApplicationRecord.transaction do
     Friendship.create!(
       user_id: 1,
       friend_id: 2
+      
     )
 
     Friendship.create!(

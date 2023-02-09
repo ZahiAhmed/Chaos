@@ -2,11 +2,35 @@
     width: 100%;
     text-align: left;
     margin: auto;
-    padding: 18px;
-    border-top: 1px solid rgba(245, 245, 245, 0.384);
+    padding: 20px;
+    border-top: 1px solid rgba(245, 245, 245, 0.164);
+    display: flex;
+    justify-content: space-between;
+    color: aliceblue;
 }
 
 .user-label:hover {
-    color: aliceblue;
     background-color: rgba(245, 245, 245, 0.027);
+}
+
+.user-label:hover #user-id{
+    visibility: visible;
+}
+
+.user-label button{ 
+    color: rgba(245, 245, 245, 0.685);
+    margin-left: 1px;
+    cursor: pointer;
+}
+
+.user-label button:hover{
+    color: aliceblue;
+}
+
+#user-id {
+    visibility: hidden;
+    margin-right: auto;
+    color: rgba(245, 245, 245, 0.685);
+    font-size: small;
+    margin-top: auto;
 }

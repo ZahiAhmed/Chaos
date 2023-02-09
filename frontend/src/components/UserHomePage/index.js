@@ -13,7 +13,7 @@ const UserHomePage = () => {
     const sessionUser = useSelector(state => state.session.user);
     if (!sessionUser) return <Redirect to={`/login`}/>;
     if (sessionUser.username !== username) return <Redirect to={`/${sessionUser.username}`} />
-
+    
     return (
         <div id="user-page">
             <ServerSidebar/>
