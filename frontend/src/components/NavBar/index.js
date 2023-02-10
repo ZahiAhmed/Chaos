@@ -12,7 +12,7 @@ const NavBar = () => {
         document.querySelector('.friendlist').style.visibility = "hidden"
         document.querySelector('.addfriendpage').style.visibility = "visible"
     }
-
+    
     return (
         <div className="navbar">
             <button id='showfriends' onClick={showFriends}>Friends</button>

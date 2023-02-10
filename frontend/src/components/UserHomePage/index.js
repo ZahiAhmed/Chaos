@@ -6,7 +6,6 @@ import ServerSidebar from '../ServerSidebar';
 import UserInfo from "../UserInfo";
 import DMList from '../DMList';
 import Friendlist from '../Friendlist';
-import AllUsers from '../AllUsers';
 import NavBar from '../NavBar';
 import AddFriendPage from '../AddFriendPage';
 
@@ -24,7 +23,6 @@ const UserHomePage = () => {
             <UserInfo/>
             <Friendlist/>
             <AddFriendPage userId={sessionUser.id}/>
-            <AllUsers/>
         </div>
     )
 }

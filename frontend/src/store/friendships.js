@@ -54,7 +54,7 @@ const friendshipsReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type) {
         case RECEIVE_FRIENDS:
-            return{...state, ...action.friendships}
+            return{...action.friendships}
         case REMOVE_FRIEND:
             delete newState[action.friendshipId]
             return newState

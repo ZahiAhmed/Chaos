@@ -5,7 +5,7 @@ import './AddFriendPage.css'
 
 const AddFriendPage = (props) => {
     const dispatch = useDispatch()
-    const [friend, setFriend] = useState(null)
+    const [friend, setFriend] = useState('')
     const handleRequest = e => {
         e.preventDefault()
         return (
