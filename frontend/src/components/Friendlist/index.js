@@ -13,7 +13,7 @@ const Friendlist = ({hidden}) => {
             dispatch(fetchFriends(searchValue)).then(()=>{
             setIsLoading(false)
         })
-    },[searchValue, isLoading])
+    },[searchValue, isLoading, hidden])
     
     return (
         <div className='friendlist'>

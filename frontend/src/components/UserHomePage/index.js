@@ -11,18 +11,18 @@ import AddFriendPage from '../AddFriendPage';
 const UserHomePage = () => {
     const {username} = useParams()
     const sessionUser = useSelector(state => state.session.user);
-    const [hidden, setHidden] = useState({hide: false})
+    const [hidden, setHidden] = useState(false)
     
     if (!sessionUser) return <Redirect to={`/login`}/>;
     if (sessionUser.username !== username) return <Redirect to={`/${sessionUser.username}`} />
 
-    const page = hidden.hide ? <AddFriendPage userId = {sessionUser.id}/> : <Friendlist/>
+    const page = hidden ? <AddFriendPage userId = {sessionUser.id}/> : <Friendlist hidden={hidden}/>
 
     return (
         <div id="user-page">
         <nav className="navbar">
-            <button id='showfriends' onClick={e => (setHidden({hide: false}))}>Friends</button>
-            <button id='addfriend' onClick={e => (setHidden({hide: true}))}>Add Friend</button>
+            <button id='showfriends' onClick={e => (setHidden(false))}>Friends</button>
+            <button id='addfriend' onClick={e => (setHidden(true))}>Add Friend</button>
         </nav>
             <ServerSidebar/>
             <DMList/>
