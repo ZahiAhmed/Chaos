@@ -39,6 +39,7 @@ ol, ul {
 }
 button {
   background: none;
+  cursor: pointer;
 }
 blockquote, q {
 	quotes: none;

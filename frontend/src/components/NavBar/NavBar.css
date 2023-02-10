@@ -1,0 +1,25 @@
+.navbar {
+    top: 0;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.229);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar button {
+    margin-right: 10%;
+    margin-left: 10%;
+    cursor: pointer;
+    color: aliceblue;
+    padding: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#addfriend {
+    background-color: green;
+    border-radius: 5px;
+    height: fit-content;
+}

@@ -1,0 +1,56 @@
+.addfriendpage {
+    font-size: larger;
+    left: 312px;
+    top: 70px;
+    height: 15%;
+    width: 835px;
+    color: rgba(245, 245, 245, 0.685);
+    position: fixed;
+    visibility: hidden;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.384);
+}
+.addfriendpage p {
+    text-align: left;
+    font-size: small;
+    margin-top: 15px;
+    margin-left: 5%;
+    margin-bottom: 30px;
+}
+
+.addfriendpage h1{
+    margin-left: 5%;
+    font-size: medium;
+    font-weight: bolder;
+    color: aliceblue;
+}
+
+.addfriendpage input {
+    width: 90%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: -1%;
+    color: whitesmoke;
+    background-color: rgb(30, 33, 37);
+    border: 2px solid rgb(30, 33, 37);
+    border-radius: 5px;
+    margin-left: 5%;
+    font-size: small
+}
+
+.addfriendpage button {
+    background-color: rgb(75,86,206);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: whitesmoke;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: -160px;
+    position: fixed;
+    font-size: small;
+}
+
+.addfriendform {
+    display: flex;
+}

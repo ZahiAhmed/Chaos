@@ -25,10 +25,16 @@ export const unfriend = (friendshipId) => async dispatch => {
     dispatch(removeFriend(friendshipId))
 }
 
-export const fetchFriends = () => async dispatch => {
+export const fetchFriends = (search = '') => async dispatch => {
     const response = await fetch(`/api/friendships`)
     const friendships = await response.json()
-    dispatch(receiveFriends(friendships))
+    const filteredFriendships = Object.keys(friendships).reduce((filtered, key) => {
+        if (friendships[key].username.includes(search)) {
+            filtered[key] = friendships[key]
+        }
+        return filtered
+    }, {})
+    dispatch(receiveFriends(filteredFriendships))
 }
 
 export const addFriend = (friendship) => async dispatch => {

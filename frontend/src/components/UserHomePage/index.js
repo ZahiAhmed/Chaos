@@ -7,19 +7,23 @@ import UserInfo from "../UserInfo";
 import DMList from '../DMList';
 import Friendlist from '../Friendlist';
 import AllUsers from '../AllUsers';
+import NavBar from '../NavBar';
+import AddFriendPage from '../AddFriendPage';
 
 const UserHomePage = () => {
     const {username} = useParams()
     const sessionUser = useSelector(state => state.session.user);
     if (!sessionUser) return <Redirect to={`/login`}/>;
     if (sessionUser.username !== username) return <Redirect to={`/${sessionUser.username}`} />
-    
+
     return (
         <div id="user-page">
+            <NavBar/>
             <ServerSidebar/>
             <DMList/>
             <UserInfo/>
             <Friendlist/>
+            <AddFriendPage userId={sessionUser.id}/>
             <AllUsers/>
         </div>
     )

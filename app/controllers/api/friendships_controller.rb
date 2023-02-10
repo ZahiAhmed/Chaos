@@ -7,10 +7,14 @@ class Api::FriendshipsController < ApplicationController
     end
 
     def create
-        @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
-        if @friendship.save
+        if (current_user.id === params[:friend_id]) 
+            render json: ["Cannot friend self"], status: 418
         else
-            render json: ["Already friended"], status: 418
+            @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
+            if @friendship.save
+            else
+                render json: ["Already friended"], status: 418
+            end
         end
     end
 
