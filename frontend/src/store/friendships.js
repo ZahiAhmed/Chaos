@@ -46,8 +46,10 @@ export const addFriend = (friendship) => async dispatch => {
         body: JSON.stringify(friendship)
     })
 
-    const data = await response.json()
-    dispatch(add(data))
+    if (response.ok){
+        const data = await response.json()
+        dispatch(add(data))
+    }
 }
 
 const friendshipsReducer = (state = {}, action) => {

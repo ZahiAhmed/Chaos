@@ -4,7 +4,7 @@ import { fetchFriends } from "../../store/friendships";
 import UserLabel from "../UserLabel";
 import './Friendlist.css'
 
-const Friendlist = () => {
+const Friendlist = ({hidden}) => {
     const dispatch = useDispatch()    
     const friends = useSelector(state=> Object.values(state.friendships))
     const [searchValue, setSearchValue] = useState('');
@@ -22,7 +22,7 @@ const Friendlist = () => {
             />
             <br/>
             <br/>
-            {friends.map(friend => <UserLabel key={friend.id} user={friend}/>)}
+            {friends.map((friend, i) => <UserLabel key={i} user={friend}/>)}
         </div>
     )
 }

@@ -7,14 +7,26 @@ class Api::FriendshipsController < ApplicationController
     end
 
     def create
-        if (current_user.id === params[:friend_id]) 
-            render json: ["Cannot friend self"], status: 418
-        else
-            @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
-            if @friendship.save
+        friend_params = params[:friend_id].split("#")
+        friend_username = friend_params[0]
+        friend_id = friend_params[1].to_i
+        
+        if (friend_params.length != 2)
+           return render json: {errors: ["Invalid user"]}, status: 418
+        end
+        if @user = User.find_by(id: friend_id, username: friend_username)
+            if (params[:user_id] === @user.id) 
+                return render json: {errors: ["Cannot friend self"]}, status: 418
             else
-                render json: ["Already friended"], status: 418
+                @friendship = Friendship.new(user_id: params[:user_id], friend_id: @user.id)
+                if @friendship.save
+                    return render json: {message: 'Successfully Added'}
+                else
+                    return render json: {errors: ["Already friended"]}, status: 418
+                end
             end
+        else
+           return render json: {errors: ["User doesn't exist"]}, status: 418
         end
     end
 

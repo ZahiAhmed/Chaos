@@ -2,11 +2,10 @@
     font-size: larger;
     left: 350px;
     top: 70px;
-    height: 15%;
+    height: 25%;
     width: 60%;
     color: rgba(245, 245, 245, 0.685);
     position: fixed;
-    visibility: hidden;
     border-bottom: 1px solid rgba(245, 245, 245, 0.384);
 }
 .addfriendpage p {
@@ -38,18 +37,26 @@
 }
 
 .addfriendpage button {
-    background-color: rgb(75,86,206);
+    background-color: rgb(86, 97, 223);
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: whitesmoke;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: white;
     border-radius: 5px;
     display: inline-block;
     margin-left: -160px;
     position: fixed;
     font-size: small;
-    margin-top: -7px;
+    margin-top: -4px;
+}
+
+.addfriendpage button:hover{
+    background-color: rgba(75, 86, 206, 0.658);
+}
+
+.addfriendform input:focus {
+    outline: rgb(0,175,244) solid 2px;
 }
 
 .addfriendform {
