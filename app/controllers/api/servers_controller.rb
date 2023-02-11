@@ -7,7 +7,7 @@ class Api::ServersController < ApplicationController
     end
 
     def show
-        @servers = Server.find_by(id: params[:id])
+        @server = Server.find_by(id: params[:id])
         render :show
     end
 
@@ -21,7 +21,7 @@ class Api::ServersController < ApplicationController
             #member.create
             render :show
         else
-            render json: { @server.errors.full_messages}, status: 418
+            render json: {errors: @server.errors.full_messages}, status: 418
         end
     end
 
@@ -41,7 +41,7 @@ class Api::ServersController < ApplicationController
     def destroy
         @server = Server.find_by(id: params[:id])
         if (@server.owner_id == current_user.id)
-            #members.destroy
+            # members.destroy
             @server.destroy
         end
     end

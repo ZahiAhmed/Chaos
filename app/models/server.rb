@@ -10,7 +10,8 @@
 #  updated_at  :datetime         not null
 #
 class Server < ApplicationRecord
-    validates :server_name, :owner_id, presence: true
+    validates :owner_id, presence: true
+    validates :server_name, length: {in: 2..30}
 
     belongs_to :owner,
         primary_key: :id,
