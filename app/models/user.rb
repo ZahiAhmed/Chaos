@@ -55,4 +55,9 @@ class User < ApplicationRecord
       primary_key: :id,
       foreign_key: :friend_id,
       class_name: :Friendship
+
+    has_many :servers,
+      primary_key: :id,
+      foreign_key: :owner_id,
+      class_name: :Server
 end

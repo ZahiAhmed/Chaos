@@ -5,7 +5,6 @@ import './UserProfile.css'
 
 const UserProfile = ({user}) => {
 
-
     return (
         <div className="user-modal">
             <UserIcon className={"profile-icon"}/>
