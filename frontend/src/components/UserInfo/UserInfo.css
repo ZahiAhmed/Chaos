@@ -26,3 +26,18 @@
 .user-info button:hover {
     background-color: rgb(76, 80, 85);
 }
+
+.user-info-icon {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    margin:auto;
+    margin-right: 0px
+}
+
+.user-info-icon img{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+
