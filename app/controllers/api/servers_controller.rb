@@ -10,8 +10,9 @@ class Api::ServersController < ApplicationController
         @server = Server.find_by(id: params[:id])
         if @server
             render :show
+        else
+            render json: {server: nil}
         end
-        render json: {server: nil}
     end
 
     def create

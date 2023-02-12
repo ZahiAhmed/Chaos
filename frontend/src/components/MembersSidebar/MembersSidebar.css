@@ -1,0 +1,11 @@
+.server-members{
+    height: 100%;
+    right: 0;
+    top: 0;
+    overflow: auto;
+    position: fixed;
+    width: 240px;
+    background-color: rgb(48, 53, 58);
+    color:rgba(245, 245, 245, 0.685);
+    font-size: medium;
+}

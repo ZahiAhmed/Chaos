@@ -4,5 +4,6 @@
         json.username user.username
         json.email user.email
         json.created_at user.created_at
+        json.servers user.member_of
     end
 end

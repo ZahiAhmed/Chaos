@@ -109,9 +109,90 @@ ApplicationRecord.transaction do
     puts "Creating servers..."
     
     Server.create!(
-      server_name: "aA",
+      server_name: "aA Zaus",
       owner_id: 1
     )
+
+
+    Server.create!(
+      server_name: "aA Ayce",
+      owner_id: 2
+    )
+
+    Server.create!(
+      server_name: "aA Kinka",
+      owner_id: 3
+    )
+
+    Server.create!(
+      server_name: "aA Kyle",
+      owner_id: 4
+    )
+
+    Server.create!(
+      server_name: "aA Peter",
+      owner_id: 5
+    )
+
+    Server.create!(
+      server_name: "aA Spencer",
+      owner_id: 6
+    )
+
+    Server.create!(
+      server_name: "aA Walker",
+      owner_id: 7
+    )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
+
+    # Server.create!(
+    #   server_name: "aA",
+    #   owner_id: 1
+    # )
 
     puts "Creating members..."
 
@@ -121,12 +202,143 @@ ApplicationRecord.transaction do
       owner: true
     )
 
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 8,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 9,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 10,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 11,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 12,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 13,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 14,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 15,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 16,
+    #   owner: true
+    # )
+
+    # Member.create!(
+    #   member_id: 1,
+    #   server_id: 17,
+    #   owner: true
+    # )
+
     Member.create!(
       member_id: 2,
       server_id: 1,
       owner: false
     )
 
+    Member.create!(
+      member_id: 2,
+      server_id: 2,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 1,
+      server_id: 2,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 1,
+      server_id: 3,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 3,
+      server_id: 3,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 1,
+      server_id: 4,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 4,
+      server_id: 4,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 1,
+      server_id: 5,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 5,
+      server_id: 5,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 1,
+      server_id: 6,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 6,
+      server_id: 6,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 7,
+      server_id: 7,
+      owner: false
+    )
+
+    Member.create!(
+      member_id: 1,
+      server_id: 7,
+      owner: false
+    )
     puts "Done!"
     
 end
