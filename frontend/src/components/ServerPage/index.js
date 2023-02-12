@@ -12,6 +12,7 @@ const ServerPage = () => {
     if (!sessionUser) return <Redirect to={`/login`}/>;
     if(sessionUser.servers.find((server)=> server.id === serverId)) return <Redirect to={`/${sessionUser.username}`} />
 
+    
     return (
         <div id="server-page">
         <ServerChannels/>
