@@ -5,10 +5,14 @@ class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
     # protect_from_forgery with: :exception
     before_action :snake_case_params, :attach_authenticity_token
-    helper_method :current_user, :require_logged_in
+    helper_method :current_user, :require_logged_in, :current_server
 
     def current_user
         @current_user ||=  User.find_by(session_token: session[:session_token])
+    end
+
+    def current_server 
+      @current_server ||= Server.find_by(id: )
     end
 
     def logged_in?

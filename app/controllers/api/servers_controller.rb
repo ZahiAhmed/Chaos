@@ -8,16 +8,18 @@ class Api::ServersController < ApplicationController
 
     def show
         @server = Server.find_by(id: params[:id])
-        render :show
+        if @server
+            render :show
+        end
+        render json: {server: nil}
     end
 
     def create
         @server = Server.new(
             server_name: params[:server_name],
             description: params[:description],
-            owner_id: current_user.id
+            owner_id: params[:owner_id]
         )
-        
         if @server.save
             @member = Member.create(member_id: current_user.id, server_id: @server.id, owner: true)
             render :show
@@ -28,14 +30,14 @@ class Api::ServersController < ApplicationController
 
     def update
         @server = Server.find_by(id: params[:id])
-        if @server.update(
+        if (@server&.update(
             server_name: params[:server_name],
             description: params[:description],
-            owner_id: current_user.id
-        )
+            owner_id: params[:owner_id]
+        )) && (@server.owner_id == current_user.id)
             render :show
         else
-            render json: {errors: @server.errors.full_messages}, status: 418
+            render json: { errors: ["Must have a name"] }, status: 418
         end
     end
 
@@ -43,7 +45,7 @@ class Api::ServersController < ApplicationController
         @server = Server.find_by(id: params[:id])
         if (@server.owner_id == current_user.id)
             @members = Member.where(server_id: @server.id)
-            @members.each |member| do
+            @members.each do |member|
                 member.destroy
             end
             @server.destroy

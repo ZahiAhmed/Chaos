@@ -3,10 +3,14 @@ import thunk from "redux-thunk";
 import session from './session';
 import friendships from './friendships'
 import users from './users'
+import servers from './servers'
+import members from './members'
 const rootReducer = combineReducers({
     session,
     friendships,
-    users
+    users,
+    servers,
+    members
 })
 
 let enhancer;
