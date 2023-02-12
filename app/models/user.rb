@@ -60,4 +60,9 @@ class User < ApplicationRecord
       primary_key: :id,
       foreign_key: :owner_id,
       class_name: :Server
+
+    has_many :member_of,
+      primary_key: :id,
+      foreign_key: :member_id,
+      class_name: :Member
 end

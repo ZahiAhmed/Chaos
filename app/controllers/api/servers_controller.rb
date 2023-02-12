@@ -17,8 +17,9 @@ class Api::ServersController < ApplicationController
             description: params[:description],
             owner_id: current_user.id
         )
+        
         if @server.save
-            #member.create
+            @member = Member.create(member_id: current_user.id, server_id: @server.id, owner: true)
             render :show
         else
             render json: {errors: @server.errors.full_messages}, status: 418
@@ -41,8 +42,12 @@ class Api::ServersController < ApplicationController
     def destroy
         @server = Server.find_by(id: params[:id])
         if (@server.owner_id == current_user.id)
-            # members.destroy
+            @members = Member.where(server_id: @server.id)
+            @members.each |member| do
+                member.destroy
+            end
             @server.destroy
         end
     end
+
 end
