@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState} from "react";
+import { useDispatch, useSelector} from "react-redux";
+import { useHistory } from "react-router-dom";
 import { deleteServer} from "../../store/servers";
 import { deleteMember } from "../../store/members";
 import { Modal } from "../../context/Modal";
@@ -10,6 +11,7 @@ import "./SettingsModal.css"
 
 const ServerChannels = ({ server, isOwner, members }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [hidden, setHidden] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const serverName = server ? server.serverName : "";
@@ -20,6 +22,7 @@ const ServerChannels = ({ server, isOwner, members }) => {
     e.preventDefault();
     if (isOwner) dispatch(deleteServer(server.id));
     if (!isOwner) dispatch(deleteMember(members[sessionUser.id].memberId))
+    history.push(`/${sessionUser.username}`)
   };
   const dropDown = isOwner ? (
     <div className="dropdown">

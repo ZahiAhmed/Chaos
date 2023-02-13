@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
+import { Link } from "react-router-dom";
 import "./ServerSidebar.css";
-
 
 const ServerSidebar = ({ servers }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,8 +29,12 @@ const ServerSidebar = ({ servers }) => {
         {servers.map((server, i) => (
           <ServerIcon key={i} server={server} />
         ))}
-        <button className="server-icon" onClick={() => setShowModal(true)}>+</button>
-        <button className="server-icon"></button>
+        <button className="server-icon" onClick={() => setShowModal(true)}>
+          +
+        </button>
+        <Link to="/explore">
+          <button className="server-icon"></button>
+        </Link>
       </aside>
       {showModal && (
         <Modal
@@ -39,7 +43,7 @@ const ServerSidebar = ({ servers }) => {
           modalContent={"form-content"}
           onClose={() => setShowModal(false)}
         >
-          <NewServerForm sessionUser={sessionUser}/>
+          <NewServerForm sessionUser={sessionUser} />
         </Modal>
       )}
     </>

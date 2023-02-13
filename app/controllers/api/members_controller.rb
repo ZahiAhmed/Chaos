@@ -20,7 +20,6 @@ class Api::MembersController < ApplicationController
 
     def destroy
         @member = Member.find_by(id: params[:id])
-        debugger
         @server = Server.find_by(id: @member.server_id)
         if (@member.member_id == @server.owner_id)
             return render json: {errors: ["Owner can't leave server"]}, status: 418
