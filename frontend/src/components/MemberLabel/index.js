@@ -1,26 +1,26 @@
 import UserIcon from "../UserIcon";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector} from "react-redux";
+import { useState} from "react";
 import { Modal } from "../../context/Modal";
-import { deleteMember } from '../../store/members';
+import { deleteMember } from "../../store/members";
 import UserProfile from "../UserProfile";
 import "./MemberLabel.css";
 import "./MemberModal.css";
-const MemberLabel = ({ member }) => {
+const MemberLabel = ({ member, isOwner }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
-  const sessionUser = useSelector (state => state.session.user)
-
+  const sessionUser = useSelector(state => state.session.user)
+  
   const handleKick = (e) => {
     e.preventDefault();
-    dispatch(deleteMember(member.id))
+    dispatch(deleteMember(member.id));
   };
 
-  const kickButton = sessionUser.id ?
-    <button onClick={handleKick} className="remove-member-button">
-      Kick
-    </button> : null
+  const kickButton = isOwner && member.id !== sessionUser.id ? (
+      <button onClick={handleKick} className="remove-member-button">
+        Kick
+      </button>
+    ) : null;
 
   return (
     <>
