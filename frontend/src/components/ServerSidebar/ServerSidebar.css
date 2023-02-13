@@ -2,11 +2,16 @@
     height: 100%;
     left: 0;
     top: 0;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
     position: fixed;
     width: 72px;
     background-color: rgb(30, 33, 37);
     align-items: center;
+}
+
+.servers::-webkit-scrollbar {
+    display: none
 }
 
 #line {

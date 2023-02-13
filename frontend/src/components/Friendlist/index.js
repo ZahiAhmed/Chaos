@@ -4,6 +4,7 @@ import { fetchFriends } from "../../store/friendships";
 import UserLabel from "../UserLabel";
 import './Friendlist.css'
 
+
 const Friendlist = ({hidden}) => {
     const dispatch = useDispatch()    
     const friends = useSelector(state=> Object.values(state.friendships))

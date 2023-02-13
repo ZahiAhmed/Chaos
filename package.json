@@ -21,5 +21,8 @@
   "homepage": "https://github.com/ZahiAhmed/Chaos#readme",
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "perfect-scrollbar": "^1.5.5"
   }
 }

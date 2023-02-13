@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import ServerIcon from "../ServerIcon";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -6,10 +6,12 @@ import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
 import "./ServerSidebar.css";
 
+
 const ServerSidebar = ({ servers }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+
   const handleClick = (e) => {
     e.preventDefault();
     history.push(`/${sessionUser.username}`);
@@ -28,6 +30,7 @@ const ServerSidebar = ({ servers }) => {
           <ServerIcon key={i} server={server} />
         ))}
         <button className="server-icon" onClick={() => setShowModal(true)}>+</button>
+        <button className="server-icon"></button>
       </aside>
       {showModal && (
         <Modal

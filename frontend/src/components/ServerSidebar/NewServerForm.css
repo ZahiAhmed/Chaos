@@ -21,8 +21,8 @@
 #form-content{
     position: absolute;
     background-color:rgb(255, 255, 255);
-    width: 20%;
-    height: 40%;
+    width: 300px;
+    height: 375px;
     border-radius: 10px;
 }
 

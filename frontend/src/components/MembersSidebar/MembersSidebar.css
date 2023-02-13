@@ -9,3 +9,7 @@
     color:rgba(245, 245, 245, 0.685);
     font-size: medium;
 }
+
+.server-members::-webkit-scrollbar{
+    display: none;
+}

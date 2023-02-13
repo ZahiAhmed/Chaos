@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteServer, updateServer } from "../../store/servers";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteServer} from "../../store/servers";
 import { deleteMember } from "../../store/members";
 import { Modal } from "../../context/Modal";
 import EditServer from "../EditServer";
@@ -12,13 +12,14 @@ const ServerChannels = ({ server, isOwner, members }) => {
   const dispatch = useDispatch();
   const [hidden, setHidden] = useState(true);
   const [showModal, setShowModal] = useState(false);
-
   const serverName = server ? server.serverName : "";
   const buttonText = isOwner ? "Delete Server" : "Leave Server";
+  const sessionUser = useSelector(state => state.session.user)
+
   const handleLeave = (e) => {
     e.preventDefault();
     if (isOwner) dispatch(deleteServer(server.id));
-    // if (!isOwner) dispatch(deleteMember())
+    if (!isOwner) dispatch(deleteMember())
   };
   const dropDown = isOwner ? (
     <div className="dropdown">

@@ -16,7 +16,7 @@ const NewServerForm = ({ sessionUser }) => {
         description: description,
         owner_id: sessionUser.id
       })
-    );
+    )
   };
 
   return (
