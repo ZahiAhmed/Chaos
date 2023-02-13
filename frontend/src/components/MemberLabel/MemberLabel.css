@@ -7,7 +7,7 @@
 }
 
 .member-label:hover{
-    background-color: rgba(245, 245, 245, 0.093)
+    background-color: rgb(71, 78, 85)
 }
 
 .member-icon {
@@ -31,4 +31,9 @@
     border-radius: 20px;
     font-size: small;
     margin-left: 20px;
+}
+
+.remove-member-button:hover {
+    color: whitesmoke;
+    background-color: crimson
 }

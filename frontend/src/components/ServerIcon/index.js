@@ -4,11 +4,11 @@ import './ServerIcon.css'
 
 const ServerIcon = ({server}) => {
     return (
-        <button className="server-icon">
         <Link to={`/servers/${server.id}`}>
+        <button className="server-icon">
             {server.serverName.toUpperCase().slice(0,1)}
-        </Link>
         </button>
+        </Link>
     )
 }
 

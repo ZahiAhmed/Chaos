@@ -1,6 +1,7 @@
 import { Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchServer } from "../../store/servers";
+import { fetchMembers } from "../../store/members";
 import { useEffect} from "react";
 import ServerSidebar from "../ServerSidebar";
 import MembersSidebar from "../MembersSidebar";
@@ -15,9 +16,12 @@ const ServerPage = () => {
   const server = useSelector((state) =>
     state.servers ? state.servers[serverId] : {}
   );
-
+  const members = useSelector((state) =>
+  state.members ? Object.values(state.members) : []
+);
   useEffect(() => {
     dispatch(fetchServer(serverId))
+    dispatch(fetchMembers(serverId))
   }, [serverId]);
 
 
@@ -29,9 +33,9 @@ const ServerPage = () => {
 
   return (
     <div id="server-page">
-      <ServerChannels server={server} />
+      <ServerChannels server={server} isOwner={isOwner} members={members}/>
       <ServerSidebar servers={sessionUser.servers} />
-      <MembersSidebar isOwner={isOwner}/>
+      <MembersSidebar isOwner={isOwner} members={members}/>
       <UserInfo />
     </div>
   );

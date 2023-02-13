@@ -9,6 +9,7 @@ const AddFriendPage = (props) => {
     const [errors, setErrors] = useState([])
     const handleRequest = e => {
         e.preventDefault()
+        setFriend('')
         return (
             dispatch(addFriend({user_id: props.userId, friend_id: friend })))
         .catch(async (response) => {
