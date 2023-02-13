@@ -17,7 +17,7 @@ const ServerPage = () => {
     state.servers ? state.servers[serverId] : {}
   );
   const members = useSelector((state) =>
-  state.members ? Object.values(state.members) : []
+  state.members ? state.members : {}
 );
   useEffect(() => {
     dispatch(fetchServer(serverId))
@@ -35,7 +35,7 @@ const ServerPage = () => {
     <div id="server-page">
       <ServerChannels server={server} isOwner={isOwner} members={members}/>
       <ServerSidebar servers={sessionUser.servers} />
-      <MembersSidebar isOwner={isOwner} members={members}/>
+      <MembersSidebar isOwner={isOwner} members={Object.values(members)}/>
       <UserInfo />
     </div>
   );

@@ -19,7 +19,7 @@ const ServerChannels = ({ server, isOwner, members }) => {
   const handleLeave = (e) => {
     e.preventDefault();
     if (isOwner) dispatch(deleteServer(server.id));
-    if (!isOwner) dispatch(deleteMember())
+    if (!isOwner) dispatch(deleteMember(members[sessionUser.id].memberId))
   };
   const dropDown = isOwner ? (
     <div className="dropdown">

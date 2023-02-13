@@ -1,5 +1,5 @@
 @members.each do |member|
-    json.set! member.id do
+    json.set! member.member.id do
         json.id member.member.id
         json.username member.member.username
         json.email member.member.email
