@@ -82,7 +82,13 @@
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.08);
     border: none;
+    resize: none;
 }
+
+#submit-server textarea::-webkit-scrollbar {
+    display: none
+}
+
 
 #submit-server textarea:focus{
     outline: none;
