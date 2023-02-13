@@ -1,0 +1,21 @@
+.explore-page {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(66, 71, 78);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.explore-page::-webkit-scrollbar{
+    display: none
+}
+
+.wallpaper-div {
+    margin-top: 20px;
+    margin-left: 26%;
+    width: 72%;
+    height: 50%;
+    border-radius: 10px;
+    background-image: url('https://miro.medium.com/max/1400/0*eByPMDyvGsPY4JKk');
+    background-size: cover;
+}

@@ -1,0 +1,27 @@
+.explore-sidebar{
+    height: 100%;
+    left: 72px;
+    top: 0;
+    overflow: auto;
+    position: fixed;
+    width: 240px;
+    background-color: rgb(48, 53, 58);
+    color:rgba(245, 245, 245, 0.685);
+}
+
+.explore-sidebar div{
+    top: 0;
+    height: 7%;
+    text-align: center;
+}
+
+.explore-header{
+    margin-top: 5%;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.229);
+    height: 38px;
+    font-size: x-large;
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+}
