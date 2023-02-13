@@ -1,0 +1,27 @@
+#member-positioning {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#member-modal-background{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+}
+
+#member-modal-content{
+    position: absolute;
+    background-color:rgb(70, 70, 70);
+    width: 30%;
+    height: 60%;
+    border-radius: 10px;
+}

@@ -6,4 +6,13 @@
     position: fixed;
     width: 72px;
     background-color: rgb(30, 33, 37);
+    align-items: center;
+}
+
+#line {
+    width: 30%;
+}
+
+#home-button{
+    margin-top: 20%;
 }

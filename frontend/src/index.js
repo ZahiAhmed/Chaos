@@ -10,7 +10,10 @@ import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import * as friendshipsActions from './store/friendships'
 import * as usersActions from './store/users'
+import * as serverActions from './store/servers'
+import * as memberActions from './store/members'
 import { ModalProvider } from './context/Modal';
+
 function Root() {
   return (
     <ModalProvider>
@@ -30,6 +33,8 @@ if (process.env.NODE_ENV !== 'production') {
   window.sessionActions = sessionActions
   window.friendshipsActions = friendshipsActions
   window.usersActions = usersActions
+  window.serverActions = serverActions
+  window.memberActions = memberActions
 }
 
 const renderApplication = () => {

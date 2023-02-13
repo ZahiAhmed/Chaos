@@ -1,0 +1,39 @@
+.member-label{
+    width: 100%;
+    height: 6%;
+    padding-top: 5%;
+    text-indent: 5%;
+    cursor: pointer;
+}
+
+.member-label:hover{
+    background-color: rgb(71, 78, 85)
+}
+
+.member-icon {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+}
+
+.member-icon img{
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    margin-bottom: -15px;
+    margin-right: 10px;
+}
+
+.remove-member-button {
+    color: crimson;
+    background-color:  rgb(30, 33, 37);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: small;
+    margin-left: 20px;
+}
+
+.remove-member-button:hover {
+    color: whitesmoke;
+    background-color: crimson
+}

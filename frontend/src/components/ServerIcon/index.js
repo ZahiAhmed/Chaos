@@ -1,13 +1,14 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import './ServerIcon.css'
 
-const ServerIcon = ({user}) => {
-
+const ServerIcon = ({server}) => {
     return (
-        <span className="server-icon">
-            <p></p>
-            {user.username.toUpperCase().slice(0,1)}
-        </span>
+        <Link to={`/servers/${server.id}`}>
+        <button className="server-icon">
+            {server.serverName.toUpperCase().slice(0,1)}
+        </button>
+        </Link>
     )
 }
 
