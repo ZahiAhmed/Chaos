@@ -1,11 +1,10 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import ServerIcon from "../ServerIcon";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ServerSidebar.css";
 
 const ServerSidebar = ({ servers }) => {
@@ -25,7 +24,7 @@ const ServerSidebar = ({ servers }) => {
           id="home-button"
           className="server-icon"
           onClick={handleClick}
-        ><FontAwesomeIcon icon="fa-brands fa-discord" /></button>
+        ></button>
         <hr id="line"></hr>
         {servers.map((server, i) => (
           <ServerIcon key={i} server={server} />

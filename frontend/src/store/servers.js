@@ -20,14 +20,13 @@ const receiveServers = (servers) => ({
 export const fetchServers = (search='') => async dispatch => {
     const response = await fetch('/api/servers')
     const servers = await response.json();
-    console.log(servers)
     const filteredServers = Object.keys(servers).reduce((filtered, key) => {
         if(servers[key].serverName.includes(search)){
             filtered[key] = servers[key]
         }
         return filtered
     }, {})
-    dispatch(receiveServers(filteredServers))
+    dispatch(receiveServers(servers))
 }
 
 export const fetchServer = (serverId) => async dispatch => {

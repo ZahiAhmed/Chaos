@@ -21,7 +21,7 @@ const ExplorePage = () => {
     dispatch(fetchServers(searchValue)).then(()=>{
         isLoading(false)
     })
-  }, [searchValue, loading]);
+  }, [searchValue,loading]);
 
   if (!sessionUser) return <Redirect to={`/login`} />;
 
