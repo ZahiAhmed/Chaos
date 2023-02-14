@@ -63,3 +63,11 @@
     margin-right: 10px;
     margin-top: 2px;
 }
+
+#pending {
+    color: rgba(245, 245, 245, 0.685);
+    font-size: medium;
+    padding-top: 10px;
+    margin-right: 10%;
+}
+

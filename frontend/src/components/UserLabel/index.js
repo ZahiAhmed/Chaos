@@ -9,6 +9,7 @@ import "./ProfileModal.css";
 
 const UserLabel = ({ user }) => {
   const dispatch = useDispatch();
+  const pending = user.pending ? "Pending..." : null
   const handleUnfriend = (e) => {
     e.preventDefault();
     dispatch(unfriend(user.friendshipId));
@@ -20,6 +21,7 @@ const UserLabel = ({ user }) => {
         <UserIcon className={"friendlist-icon"} />
         {user.username}
         <span id="user-id">{`#${user.id}`}</span>
+        <span id="pending">{pending}</span>
         <span className="user-options">
           <button className="unfriend" onClick={handleUnfriend}>
             Unfriend

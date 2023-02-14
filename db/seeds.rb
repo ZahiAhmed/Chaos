@@ -67,43 +67,50 @@ ApplicationRecord.transaction do
     
     Friendship.create!(
       user_id: 1,
-      friend_id: 2
-      
+      friend_id: 2,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 2,
-      friend_id: 1
+      friend_id: 1,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 1,
-      friend_id: 3
+      friend_id: 3,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 3,
-      friend_id: 1
+      friend_id: 1,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 1,
-      friend_id: 4
+      friend_id: 4,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 4,
-      friend_id: 1
+      friend_id: 1,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 1,
-      friend_id: 5
+      friend_id: 5,
+      pending: false
     )
 
     Friendship.create!(
       user_id: 5,
-      friend_id: 1
+      friend_id: 1,
+      pending: false
     )
 
     puts "Creating servers..."

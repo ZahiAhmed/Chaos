@@ -11,13 +11,7 @@
 class Friendship < ApplicationRecord
     validates :user_id, :friend_id, presence: true
     validates :friend_id, uniqueness: { scope: :user_id }
-    validates :pending, inclusion: {in: [true,false]}, allow_nil: true
-    
-    attr_reader  :pending
-
-    def pending=(pending)
-        @pending = pending
-    end
+    validates :pending, inclusion: {in: [true,false]}
 
     belongs_to :user,
         primary_key: :id,

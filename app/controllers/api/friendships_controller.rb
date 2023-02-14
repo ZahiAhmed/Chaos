@@ -21,10 +21,8 @@ class Api::FriendshipsController < ApplicationController
                 @friendship = Friendship.new(user_id: params[:user_id], friend_id: @user.id)
                 @otherside = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
                 if(@otherside)
-                    @friendship.pending=(false)
-                    @otherside.pending=(false)
-                else
-                    @friendship.pending = (true)
+                    @friendship.pending = false
+                    @otherside.pending = false
                 end
                 if @friendship.save
                     return render json: {message: 'Successfully Added'}
