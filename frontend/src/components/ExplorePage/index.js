@@ -9,12 +9,11 @@ import ExploreSidebar from "../ExploreSidebar";
 import ServerCard from "./ServerCard";
 import "./ExplorePage.css";
 
-const ExplorePage = () => {
+const ExplorePage = () => {  
   const dispatch = useDispatch();
   const servers = useSelector((state) => Object.values(state.servers))
   const sessionUser = useSelector((state) => state.session.user);
   const [searchValue, setSearchValue] = useState("");
-  console.log(servers)
   useEffect(() => {
     dispatch(fetchServers(searchValue))
   }, [searchValue]);
@@ -23,7 +22,7 @@ const ExplorePage = () => {
 
   return (
     <div className="explore-page">
-      <ExploreSidebar />
+      <ExploreSidebar/>
       <ServerSidebar servers={sessionUser.servers} />
       <UserInfo />
       <div className="explore-content">
@@ -43,7 +42,7 @@ const ExplorePage = () => {
         <h2>Featured communities</h2>
         <div className="server-list">
           {servers.map((server, i) => (
-              <ServerCard key={i} server={server} />
+              <ServerCard key={i} sessionUser={sessionUser} server={server} />
               ))}
         </div>
         </div>

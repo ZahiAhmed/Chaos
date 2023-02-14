@@ -1,8 +1,56 @@
 .server-card {
-    width: 225px;
+    width: 97%;
     height: 300px;
-    border: 2px solid red;
+    margin:auto;
     margin-block-start: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 10px;
+    margin-inline-start: 5px;
+    border-radius: 10px;
+    background-color: rgb(240,71,71);
+    cursor: pointer;
+}
+
+.server-card:hover {
+    box-shadow: 0px 0px 25px 0px darkgray;
+}
+
+#card-header{
+    width: 100%;
+    height: 60%;
+    background-color: rgb(48, 53, 58);
+    margin-top: 44%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#card-header h3 {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    text-indent: 10%;
+}
+
+#card-header p {
+    color: darkgray;
+}
+
+.server-owner-icon img{
+    border-radius: 20px;
+    border: 5px solid rgb(48, 53, 58);
+    width: 60px;
+    height: 60px;
+    margin-top: -10%;
+    margin-left: 5%;
+}
+
+#num-members {
+    text-align: center;
+    margin-top: 20%;
+    font-size: x-small;
+}
+
+#description {
+    text-align: left;
+    text-indent: 5%;
+    font-size: small;
+    font-weight: normal;
 }

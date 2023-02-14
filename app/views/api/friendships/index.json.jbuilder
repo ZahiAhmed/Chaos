@@ -4,6 +4,7 @@
         json.id friendship.friend.id
         json.username friendship.friend.username
         json.email friendship.friend.email
+        json.pending friendship.pending
         json.created_at friendship.created_at
     end
 end

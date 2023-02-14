@@ -15,8 +15,8 @@ class Friendship < ApplicationRecord
     
     attr_reader  :pending
 
-    def pending=
-        # @pending = 
+    def pending=(pending)
+        @pending = pending
     end
 
     belongs_to :user,

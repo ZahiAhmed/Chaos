@@ -19,6 +19,13 @@ class Api::FriendshipsController < ApplicationController
                 return render json: {errors: ["Cannot friend self"]}, status: 418
             else
                 @friendship = Friendship.new(user_id: params[:user_id], friend_id: @user.id)
+                @otherside = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
+                if(@otherside)
+                    @friendship.pending=(false)
+                    @otherside.pending=(false)
+                else
+                    @friendship.pending = (true)
+                end
                 if @friendship.save
                     return render json: {message: 'Successfully Added'}
                 else

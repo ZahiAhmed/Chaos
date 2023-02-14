@@ -65,10 +65,9 @@
 }
 
 .bottom-explore{
-    width: 108%;
+    width: 100%;
     height: 100%;
     padding: 60px;
-    margin-left: -40px;
 }
 
 .bottom-explore h2 {
@@ -81,8 +80,6 @@
     margin-top: 20px;
     width: 100%;
     height: max-content;
-    border: 2px solid black;
-    display:flex;
-    flex-wrap: wrap;
-    margin-block-start: 0em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
