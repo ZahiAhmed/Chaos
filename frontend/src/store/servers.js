@@ -17,10 +17,17 @@ const receiveServers = (servers) => ({
     servers
 })
 
-export const fetchServers = () => async dispatch => {
+export const fetchServers = (search='') => async dispatch => {
     const response = await fetch('/api/servers')
     const servers = await response.json();
-    dispatch(receiveServers(servers))
+    console.log(servers)
+    const filteredServers = Object.keys(servers).reduce((filtered, key) => {
+        if(servers[key].serverName.includes(search)){
+            filtered[key] = servers[key]
+        }
+        return filtered
+    }, {})
+    dispatch(receiveServers(filteredServers))
 }
 
 export const fetchServer = (serverId) => async dispatch => {
@@ -67,13 +74,13 @@ export const deleteServer = (serverId) => async dispatch => {
 const serversReducer = (state={}, action) => {
     const newState = {...state}
     switch (action.type) {
-        case RECEIVE_SERVER: 
-            newState[action.server.id] = action.server
-            return newState
         case RECEIVE_SERVERS:
-            return {...state, ...action.servers}
+            return {...action.servers}
         case REMOVE_SERVER:
             delete newState[action.serverId]
+            return newState
+        case RECEIVE_SERVER: 
+            newState[action.server.id] = action.server
             return newState
         default:
             return state

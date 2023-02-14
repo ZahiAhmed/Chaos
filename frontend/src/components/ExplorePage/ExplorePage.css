@@ -62,3 +62,26 @@
     font-weight: normal;
     color: white
 }
+
+.bottom-explore{
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    padding: 60px;
+}
+
+.bottom-explore h2 {
+    color:white;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.server-list{
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

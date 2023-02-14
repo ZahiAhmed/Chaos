@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ServerSidebar.css";
 
 const ServerSidebar = ({ servers }) => {
@@ -24,16 +25,16 @@ const ServerSidebar = ({ servers }) => {
           id="home-button"
           className="server-icon"
           onClick={handleClick}
-        ></button>
+        ><FontAwesomeIcon icon="fa-brands fa-discord" /></button>
         <hr id="line"></hr>
         {servers.map((server, i) => (
           <ServerIcon key={i} server={server} />
         ))}
-        <button className="server-icon" onClick={() => setShowModal(true)}>
+        <button id="addserver" className="server-icon" onClick={() => setShowModal(true)}>
           +
         </button>
         <Link to="/explore">
-          <button className="server-icon"></button>
+          <button id="redirect-explore" className="server-icon"> </button>
         </Link>
       </aside>
       {showModal && (
