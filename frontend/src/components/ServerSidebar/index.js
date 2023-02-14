@@ -1,16 +1,22 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import ServerIcon from "../ServerIcon";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
 import { Link } from "react-router-dom";
+import {reload} from "../../store/session"
 import "./ServerSidebar.css";
 
 const ServerSidebar = ({ servers }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+  const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(()=> {
+    dispatch(reload())
+  },[])
 
   const handleClick = (e) => {
     e.preventDefault();

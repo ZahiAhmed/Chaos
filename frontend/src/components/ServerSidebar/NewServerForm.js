@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createServer } from "../../store/servers";
-import { reload } from "../../store/session";
 import "./NewServerForm.css";
 
 const NewServerForm = ({ sessionUser }) => {

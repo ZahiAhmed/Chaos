@@ -11,7 +11,7 @@
 #
 class Server < ApplicationRecord
     validates :owner_id, presence: true
-    validates :server_name, length: {in: 2..30}
+    validates :server_name, length: {in: 1..30}
 
     belongs_to :owner,
         primary_key: :id,
