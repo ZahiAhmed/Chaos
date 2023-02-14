@@ -2,20 +2,63 @@
     height: 100%;
     width: 100%;
     background-color: rgb(66, 71, 78);
-    overflow: hidden;
-    overflow-y: scroll;
 }
 
-.explore-page::-webkit-scrollbar{
+.explore-content{
+    background-color: rgb(66, 71, 78);
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    margin-left: 312px;
+    width: 77%;
+}
+
+.explore-content::-webkit-scrollbar{
     display: none
 }
 
 .wallpaper-div {
-    margin-top: 20px;
-    margin-left: 26%;
-    width: 72%;
-    height: 50%;
+    margin: auto;
+    width: 90%;
+    height: 30%;
     border-radius: 10px;
     background-image: url('https://miro.medium.com/max/1400/0*eByPMDyvGsPY4JKk');
+    background-size: contain;
+    background-repeat: no-repeat;
     background-size: cover;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.inner-wallpaper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+    width: 50%;
+}
+
+.inner-wallpaper h1, p, input{
+    margin: 5px;
+}
+
+.inner-wallpaper input{
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none
+}
+
+.inner-wallpaper h1{
+    font-size: larger;
+    font-weight: bold;
+    color: white
+}
+
+.inner-wallpaper p{
+    font-size: small;
+    font-weight: normal;
+    color: white
 }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteServer} from "../../store/servers";
 import { deleteMember } from "../../store/members";
+import { reload } from "../../store/session";
 import { Modal } from "../../context/Modal";
 import EditServer from "../EditServer";
 import "./ServerChannels.css";
@@ -18,10 +19,11 @@ const ServerChannels = ({ server, isOwner, members }) => {
   const buttonText = isOwner ? "Delete Server" : "Leave Server";
   const sessionUser = useSelector(state => state.session.user)
 
-  const handleLeave = (e) => {
+  const handleLeave = async (e) => {
     e.preventDefault();
-    if (isOwner) dispatch(deleteServer(server.id));
-    if (!isOwner) dispatch(deleteMember(members[sessionUser.id].memberId))
+    if (isOwner) await dispatch(deleteServer(server.id));
+    if (!isOwner) await dispatch(deleteMember(members[sessionUser.id].memberId))
+    await dispatch(reload());
     history.push(`/${sessionUser.username}`)
   };
   const dropDown = isOwner ? (

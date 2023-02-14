@@ -1,8 +1,7 @@
 import csrfFetch from './csrf';
 
-const SET_CURRENT_USER = 'session/setCurrentUser';
-const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
-// const RECEIVE_CURRENT_USER = 'session/receiveCurrentUser';
+const SET_CURRENT_USER = 'session/SET_CURRENT_USER';
+const REMOVE_CURRENT_USER = 'session/REMOVE_CURRENT_USER';
 
 const storeCSRFToken = response => {
   const csrfToken = response.headers.get("X-CSRF-Token");
@@ -37,6 +36,13 @@ export const login = ({ credential, password }) => async dispatch => {
   dispatch(setCurrentUser(data.user));
   return response;
 };
+
+export const reload = () => async dispatch => {
+  const response = await csrfFetch("/api/session")
+  const data = await response.json();
+  storeCurrentUser(data.user)
+  dispatch(setCurrentUser(data.user));
+}
 
 export const logout = () => async dispatch => {
     const response = await csrfFetch("/api/session", {

@@ -109,38 +109,38 @@ ApplicationRecord.transaction do
     puts "Creating servers..."
     
     Server.create!(
-      server_name: "aA Zaus",
+      server_name: "Zaus' server",
       owner_id: 1
     )
 
 
     Server.create!(
-      server_name: "aA Ayce",
+      server_name: "Ayce's server",
       owner_id: 2
     )
 
     Server.create!(
-      server_name: "aA Kinka",
+      server_name: "Kinka's server",
       owner_id: 3
     )
 
     Server.create!(
-      server_name: "aA Kyle",
+      server_name: "Kyle's server",
       owner_id: 4
     )
 
     Server.create!(
-      server_name: "aA Peter",
+      server_name: "Peter's server",
       owner_id: 5
     )
 
     Server.create!(
-      server_name: "aA Spencer",
+      server_name: "Spencers'server",
       owner_id: 6
     )
 
     Server.create!(
-      server_name: "aA Walker",
+      server_name: "Walker's server",
       owner_id: 7
     )
 

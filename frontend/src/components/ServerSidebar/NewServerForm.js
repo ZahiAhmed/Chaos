@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createServer } from "../../store/servers";
+import { reload } from "../../store/session";
 import "./NewServerForm.css";
 
 const NewServerForm = ({ sessionUser }) => {
@@ -9,7 +10,7 @@ const NewServerForm = ({ sessionUser }) => {
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
-  const handleForm = () => {
+  const handleForm = async (e) => {
     dispatch(
       createServer({
         server_name: serverName,
@@ -17,6 +18,7 @@ const NewServerForm = ({ sessionUser }) => {
         owner_id: sessionUser.id
       })
     )
+  dispatch(reload());
   };
 
   return (
