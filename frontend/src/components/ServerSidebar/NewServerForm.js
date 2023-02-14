@@ -10,7 +10,7 @@ const NewServerForm = ({ sessionUser }) => {
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
-  const handleForm = async (e) => {
+  const handleForm = (e) => {
     dispatch(
       createServer({
         server_name: serverName,
@@ -18,7 +18,6 @@ const NewServerForm = ({ sessionUser }) => {
         owner_id: sessionUser.id
       })
     )
-  dispatch(reload());
   };
 
   return (

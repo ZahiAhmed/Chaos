@@ -11,17 +11,13 @@ import "./ExplorePage.css";
 
 const ExplorePage = () => {
   const dispatch = useDispatch();
-  const servers = useSelector((state) =>
-    state.servers ? Object.values(state.servers) : {}
-  );
+  const servers = useSelector((state) => Object.values(state.servers))
   const sessionUser = useSelector((state) => state.session.user);
   const [searchValue, setSearchValue] = useState("");
-  const [loading , isLoading] = useState(true)
+  console.log(servers)
   useEffect(() => {
-    dispatch(fetchServers(searchValue)).then(()=>{
-        isLoading(false)
-    })
-  }, [searchValue,loading]);
+    dispatch(fetchServers(searchValue))
+  }, [searchValue]);
 
   if (!sessionUser) return <Redirect to={`/login`} />;
 

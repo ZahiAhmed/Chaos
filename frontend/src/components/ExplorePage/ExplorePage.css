@@ -6,11 +6,12 @@
 
 .explore-content{
     background-color: rgb(66, 71, 78);
-    overflow: hidden;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100%;
     margin-left: 312px;
     width: 77%;
+    position: fixed;
 }
 
 .explore-content::-webkit-scrollbar{
@@ -20,7 +21,7 @@
 .wallpaper-div {
     margin: auto;
     width: 90%;
-    height: 30%;
+    height: 50%;
     border-radius: 10px;
     background-image: url('https://miro.medium.com/max/1400/0*eByPMDyvGsPY4JKk');
     background-size: contain;
@@ -64,10 +65,10 @@
 }
 
 .bottom-explore{
-    width: 100%;
+    width: 108%;
     height: 100%;
-    margin-top: 50px;
     padding: 60px;
+    margin-left: -40px;
 }
 
 .bottom-explore h2 {
@@ -79,9 +80,9 @@
 .server-list{
     margin-top: 20px;
     width: 100%;
-    height: 100%;
+    height: max-content;
     border: 2px solid black;
-    display: flex;
-    justify-content: space-between;
+    display:flex;
     flex-wrap: wrap;
+    margin-block-start: 0em;
 }
