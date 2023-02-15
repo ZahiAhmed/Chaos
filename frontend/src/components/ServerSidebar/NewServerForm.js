@@ -1,23 +1,28 @@
 import { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createServer } from "../../store/servers";
 import "./NewServerForm.css";
 
 const NewServerForm = ({ sessionUser }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [serverName, setServerName] = useState(
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
-  const handleForm = (e) => {
-    dispatch(
+  const handleForm = async (e) => {
+    history.push('/')
+    await dispatch(
       createServer({
         server_name: serverName,
         description: description,
         owner_id: sessionUser.id
       })
-    )
-  };
+    ).then (async ()=>{
+      await history.push(`/servers/${sessionUser.servers[0].id + 1}`)
+    })
+  }
 
   return (
     <div className="new-server-form">

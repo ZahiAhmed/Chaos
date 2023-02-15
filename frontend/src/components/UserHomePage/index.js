@@ -1,5 +1,5 @@
-import { Redirect, useParams  } from 'react-router-dom';
-import {useState} from "react";
+import { Redirect, useParams, useHistory  } from 'react-router-dom';
+import {useState, useEffect} from "react";
 import { useSelector } from 'react-redux';
 import './UserHomePage.css'
 import ServerSidebar from '../ServerSidebar';
@@ -12,10 +12,11 @@ const UserHomePage = () => {
     const [hidden, setHidden] = useState(false)
     const {username} = useParams()
     const sessionUser = useSelector(state => state.session.user);
+    
     if (!sessionUser) return <Redirect to={`/login`}/>;
     if (sessionUser.username !== username) return <Redirect to={`/${sessionUser.username}`} />
-
     const page = hidden ? <AddFriendPage userId = {sessionUser.id}/> : <Friendlist hidden={hidden}/>
+
 
     return (
         <div id="user-page">

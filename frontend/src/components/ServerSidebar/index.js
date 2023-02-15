@@ -16,7 +16,7 @@ const ServerSidebar = ({ servers }) => {
 
   useEffect(() => {
     dispatch(reload());
-  }, []);
+  }, [sessionUser.servers.length]);
 
   const handleClick = (e) => {
     e.preventDefault();
