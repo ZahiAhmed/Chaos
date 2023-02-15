@@ -30,10 +30,10 @@ const ServerCard = ({ sessionUser, server }) => {
     <div onClick={handleClick} className="server-card">
       <div id="card-header">
         <UserIcon className={"server-owner-icon"} />
-        <br />
-        <br />
+        <br/>
+        <br/>
         <h3>{server.serverName}</h3>
-        <br />
+        <br/>
         <p id="description">{server.description}</p>
         <p id="num-members">
           {members} {plural}

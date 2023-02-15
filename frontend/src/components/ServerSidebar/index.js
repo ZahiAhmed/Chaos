@@ -1,22 +1,22 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ServerIcon from "../ServerIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
 import { Link } from "react-router-dom";
-import {reload} from "../../store/session"
+import { reload } from "../../store/session";
 import "./ServerSidebar.css";
 
 const ServerSidebar = ({ servers }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(()=> {
-    dispatch(reload())
-  },[])
+  useEffect(() => {
+    dispatch(reload());
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -32,14 +32,27 @@ const ServerSidebar = ({ servers }) => {
           onClick={handleClick}
         ></button>
         <hr id="line"></hr>
+        <a href="https://github.com/ZahiAhmed">
+          <button id="github" className="server-icon"></button>
+        </a>
+        <a href="https://www.linkedin.com/in/zahiahmed/">
+          <button id="linkedin" className="server-icon"></button>
+        </a>
+        <hr id="line"></hr>
         {servers.map((server, i) => (
           <ServerIcon key={i} server={server} />
         ))}
-        <button id="addserver" className="server-icon" onClick={() => setShowModal(true)}>
+        <button
+          id="addserver"
+          className="server-icon"
+          onClick={() => setShowModal(true)}
+        >
           +
         </button>
         <Link to="/explore">
-          <button id="redirect-explore" className="server-icon"> </button>
+          <button id="redirect-explore" className="server-icon">
+            {" "}
+          </button>
         </Link>
       </aside>
       {showModal && (

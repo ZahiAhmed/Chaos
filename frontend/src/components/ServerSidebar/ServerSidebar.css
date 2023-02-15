@@ -27,3 +27,16 @@
     color:limegreen
 }
 
+#github {
+    background-image: url('./github-purple.png');
+    background-size: contain;
+}
+
+#linkedin {
+    background-image: url('./linkedin-purple.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 5px solid purple;
+}
+
