@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :friendships, only: [:index, :create, :destroy]
     resources :users, only: [:create, :index]
     resource :session, only: [:show, :create, :destroy]
+    resources :text_channels, only: [:index, :show, :create, :update, :destroy]
+    resources :messages, only: [:create, :update, :destroy]
   end
 
   get '*path', to: "static_pages#frontend_index"

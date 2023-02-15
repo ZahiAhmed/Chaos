@@ -69,4 +69,14 @@ class User < ApplicationRecord
     has_many :servers_in,
       through: :member_of,
       source: :server
+
+    has_many :messages,
+      primary_key: :id,
+      foreign_key: :author_id,
+      class_name: :Message
+
+    has_many :text_channel,
+      primary_key: :id,
+      foreign_key: :server_owner_id,
+      class_name: :TextChannel
 end

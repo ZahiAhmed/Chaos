@@ -21,5 +21,12 @@ class Server < ApplicationRecord
     has_many :members,
         primary_key: :id,
         foreign_key: :server_id,
-        class_name: :Member
+        class_name: :Member,
+        dependent: :destroy
+
+    has_many :text_channels,
+        primary_key: :id,
+        foreign_key: :server_id,
+        class_name: :TextChannel,
+        dependent: :destroy
 end

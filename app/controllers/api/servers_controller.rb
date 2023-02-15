@@ -23,6 +23,7 @@ class Api::ServersController < ApplicationController
         )
         if @server.save
             @member = Member.create(member_id: current_user.id, server_id: @server.id, owner: true)
+            @text_channel.create(server_id: @server.id, server_owner_id: current_user.id, topic: "general")
             render :show
         else
             render json: {errors: @server.errors.full_messages}, status: 418
@@ -45,10 +46,6 @@ class Api::ServersController < ApplicationController
     def destroy
         @server = Server.find_by(id: params[:id])
         if (@server.owner_id == current_user.id)
-            @members = Member.where(server_id: @server.id)
-            @members.each do |member|
-                member.destroy
-            end
             @server.destroy
         end
     end
