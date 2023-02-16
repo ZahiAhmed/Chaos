@@ -17,16 +17,14 @@ export const removeMessage = (messageId) => ({
     messageId,
   })
 
-
 export const fetchMessages = (channelId) => async dispatch => {
   const response = await fetch(`/api/text_channels/${channelId}/messages`)
   const messages = await response.json();
   dispatch(receiveMessages(messages))
 }
 
-
 export const createMessage = (message) => async dispatch => {
-  const response = await fetch('api/messages', {
+  const response = await fetch('/api/messages', {
     method: "POST",
     headers: {
       'Content-type': 'application/json'
@@ -37,8 +35,8 @@ export const createMessage = (message) => async dispatch => {
   dispatch(receiveMessage(messageContent))
 }
 
-  export const updateMessages = (message) => async (dispatch) => {
-    const response = await fetch(`api/messages/${message.id}`, {
+  export const updateMessage = (message) => async (dispatch) => {
+    const response = await fetch(`/api/messages/${message.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

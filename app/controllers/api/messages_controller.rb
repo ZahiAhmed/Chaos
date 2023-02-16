@@ -2,7 +2,7 @@ class Api::MessagesController < ApplicationController
     before_action :require_logged_in
     
     def index
-        @messages = Message.where(channel_id: params[:channel_id])
+        @messages = Message.where(channel_id: params[:text_channel_id])
         render :index
     end
     
@@ -21,7 +21,7 @@ class Api::MessagesController < ApplicationController
             channel_id: params[:channel_id],
             sender_id: params[:sender_id],
             body: params[:body]
-        )) && (@message.owner_id == current_user.id)
+        )) && (@message.sender_id == current_user.id)
             render :show #, locals: {message: @message}
         end
         if (@message.body == '')
