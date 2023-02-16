@@ -36,6 +36,10 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def from_template(template, locals = {})
+      JSON.parse(self.class.render(:json, template: template, locals: locals))
+    end
+
     private
     def invalid_authenticity_token
       render json: { message: 'Invalid authenticity token' }, status: :unprocessable_entity
