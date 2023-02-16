@@ -1,7 +1,7 @@
 json.extract! message, 
     :id,
     :body,
-    :author_id,
+    :sender_id,
     :channel_id,
     :created_at,
     :updated_at

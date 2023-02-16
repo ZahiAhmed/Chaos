@@ -22,7 +22,7 @@ const ServerPage = () => {
   useEffect(() => {
     dispatch(fetchServer(serverId))
     dispatch(fetchMembers(serverId))
-  }, [serverId]);
+  }, [serverId, members.length]);
 
 
   if (!sessionUser) return <Redirect to={`/login`} />;

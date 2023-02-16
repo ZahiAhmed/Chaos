@@ -72,7 +72,7 @@ class User < ApplicationRecord
 
     has_many :messages,
       primary_key: :id,
-      foreign_key: :author_id,
+      foreign_key: :sender_id,
       class_name: :Message
 
     has_many :text_channel,

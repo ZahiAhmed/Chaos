@@ -36,7 +36,7 @@ export function storeCSRFToken(response) {
     return res;
   }
 
-  export const csrfAPIFetch = async (url, {data, headers = {}, ...options } = {}) => {
+  export const csrfApiFetch = async (url, {data, headers = {}, ...options } = {}) => {
     headers = {
       ...headers,
       "X-CSRF-Token": localStorage.getItem("X-CSRF-Token"),

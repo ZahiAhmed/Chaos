@@ -1,36 +1,30 @@
-import csrfApiFetch from "./csrf";
+import {csrfApiFetch} from './csrf';
 
 const RECEIVE_MESSAGE = "messages/RECEIVE_MESSAGE";
 const RECEIVE_MESSAGES = "messages/RECEIVE_MESSAGES";
 const REMOVE_MESSAGE = "messages/REMOVE_MESSAGE";
 
-export const receiveMessage = (message) => {
-  return {
+export const receiveMessage = (message) => ({
     type: RECEIVE_MESSAGE,
     message,
-  };
-};
+  })
 
-export const receiveMessages = (messages) => {
-  return {
+export const receiveMessages = (messages) => ({
     type: RECEIVE_MESSAGES,
     messages,
-  };
-};
+  })
 
-export const removeMessage = (messageId) => {
-  return {
+export const removeMessage = (messageId) => ({
     type: REMOVE_MESSAGE,
     messageId,
-  };
-};
+  })
 
 export const getMessages = (channelId) => (state) => {
   return Object.values(state.messages)
     .filter((message) => message.channelId === parseInt(channelId))
     .map((message) => ({
       ...message,
-      author: state.users[message.authorId]?.username,
+      sender: state.users[message.senderId]?.username,
     }))
     .sort(({ createdAt: timeA }, { createdAt: timeB }) =>
       Math.sign(new Date(timeA).getTime() - new Date(timeB).getTime())
@@ -43,12 +37,18 @@ export const createMessage = (message) =>
     data: { message },
   });
 
-export const destroyMessage = (id) =>
-  csrfApiFetch(`messages/${id}`, {
+  export const updateMessage = (message) =>
+  csrfApiFetch("messages", {
+    method: "PATCH",
+    data: { message },
+  });
+
+export const destroyMessage = (messageId) =>
+  csrfApiFetch(`messages/${messageId}`, {
     method: "DELETE",
   });
 
-export const messagesReducer = (state = {}, action) => {
+const messagesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_MESSAGE:
       const { message } = action;
@@ -63,3 +63,5 @@ export const messagesReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export default messagesReducer;

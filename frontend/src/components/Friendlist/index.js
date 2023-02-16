@@ -18,7 +18,7 @@ const Friendlist = ({hidden}) => {
     
     return (
         <div className='friendlist'>
-            <input id="search-friend" type="search" placeholder='Search' value={searchValue}
+            <input id="search-friend" type="search" placeholder='Search' autoComplete='off' value={searchValue}
                 onChange={e => (setSearchValue(e.target.value))}
             />
             <br/>

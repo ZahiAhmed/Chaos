@@ -29,7 +29,7 @@ class Api::TextChannelsController < ApplicationController
 
     def update 
         @text_channel = TextChannel.find_by(id: params[:id])
-        if (text_channel&.update(
+        if (@text_channel&.update(
             server_id: params[:server_id],
             server_owner_id: params[:server_owner_id],
             topic: params[:topic]

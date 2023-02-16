@@ -1,12 +1,7 @@
-import csrfFetch from './csrf';
+import csrfFetch, {storeCSRFToken} from './csrf';
 
 const SET_CURRENT_USER = 'session/SET_CURRENT_USER';
 const REMOVE_CURRENT_USER = 'session/REMOVE_CURRENT_USER';
-
-const storeCSRFToken = response => {
-  const csrfToken = response.headers.get("X-CSRF-Token");
-  if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
-}
 
 const storeCurrentUser = user => {
   if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));

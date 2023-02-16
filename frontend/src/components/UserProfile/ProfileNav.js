@@ -8,6 +8,7 @@ const ProfileNav = ({user}) => {
             <div className='member-since'>
                 <p>CHAOS MEMBER SINCE</p>
                 <p className='createdat'>{user.createdAt.slice(0,10)}</p>
+                <p className ='createdat'>{user.email}</p>
             </div>
         </nav>
     )

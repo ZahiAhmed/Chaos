@@ -5,12 +5,16 @@ import friendships from './friendships'
 import users from './users'
 import servers from './servers'
 import members from './members'
+import textChannels from './textChannels'
+import messsages from './messages'
 const rootReducer = combineReducers({
     session,
     friendships,
     users,
     servers,
-    members
+    members,
+    textChannels,
+    messsages
 })
 
 let enhancer;
