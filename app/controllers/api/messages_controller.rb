@@ -5,7 +5,7 @@ class Api::MessagesController < ApplicationController
         @messages = Message.where(channel_id: params[:channel_id])
         render :index
     end
-
+    
     def create
         @message = Message.new(channel_id: params[:channel_id], sender_id: params[:sender_id], body: params[:body])
         if @message.save

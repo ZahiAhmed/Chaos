@@ -1,5 +1,3 @@
-import {csrfApiFetch} from './csrf';
-
 const RECEIVE_MESSAGE = "messages/RECEIVE_MESSAGE";
 const RECEIVE_MESSAGES = "messages/RECEIVE_MESSAGES";
 const REMOVE_MESSAGE = "messages/REMOVE_MESSAGE";
@@ -19,34 +17,44 @@ export const removeMessage = (messageId) => ({
     messageId,
   })
 
-export const getMessages = (channelId) => (state) => {
-  return Object.values(state.messages)
-    .filter((message) => message.channelId === parseInt(channelId))
-    .map((message) => ({
-      ...message,
-      sender: state.users[message.senderId]?.username,
-    }))
-    .sort(({ createdAt: timeA }, { createdAt: timeB }) =>
-      Math.sign(new Date(timeA).getTime() - new Date(timeB).getTime())
-    );
-};
 
-export const createMessage = (message) =>
-  csrfApiFetch("messages", {
+export const fetchMessages = (channelId) => async dispatch => {
+  const response = await fetch(`/api/text_channels/${channelId}/messages`)
+  const messages = await response.json();
+  dispatch(receiveMessages(messages))
+}
+
+
+export const createMessage = (message) => async dispatch => {
+  const response = await fetch('api/messages', {
     method: "POST",
-    data: { message },
-  });
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(message)
+  })
+  const messageContent = await response.json();
+  dispatch(receiveMessage(messageContent))
+}
 
-  export const updateMessage = (message) =>
-  csrfApiFetch("messages", {
-    method: "PATCH",
-    data: { message },
-  });
+  export const updateMessages = (message) => async (dispatch) => {
+    const response = await fetch(`api/messages/${message.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
+    const messageContent = await response.json();
+    dispatch(receiveMessage(messageContent));
+  };
 
-export const destroyMessage = (messageId) =>
-  csrfApiFetch(`messages/${messageId}`, {
-    method: "DELETE",
-  });
+  export const deleteMessage = messageId => async dispatch => {
+      const response = await fetch(`/api/messages/${messageId}`, {
+        method: "DELETE",
+      });
+      dispatch(removeMessage(messageId))
+  } 
 
 const messagesReducer = (state = {}, action) => {
   switch (action.type) {

@@ -38,7 +38,6 @@ export const createMember = (member) => async dispatch => {
 }
 
 export const deleteMember = (member) => async dispatch => {
-    debugger
     const response = await fetch(`/api/members/${member.memberId}`, {
         method: "DELETE"
     })
