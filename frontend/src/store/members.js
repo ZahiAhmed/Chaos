@@ -12,9 +12,9 @@ const receiveMembers = (members) => ({
     members
 })
 
-const removeMember = (memberId) => ({
+const removeMember = (member) => ({
     type: REMOVE_MEMBER,
-    memberId
+    member
 })
 
 export const fetchMembers = (serverId) => async dispatch => {
@@ -37,11 +37,12 @@ export const createMember = (member) => async dispatch => {
     }
 }
 
-export const deleteMember = (memberId) => async dispatch => {
-    const response = await fetch(`/api/members/${memberId}`, {
+export const deleteMember = (member) => async dispatch => {
+    debugger
+    const response = await fetch(`/api/members/${member.memberId}`, {
         method: "DELETE"
     })
-    dispatch(removeMember(memberId))
+    dispatch(removeMember(member))
 }
 
 const membersReducer = (state={}, action) => {
@@ -53,7 +54,7 @@ const membersReducer = (state={}, action) => {
         case RECEIVE_MEMBERS:
             return {...action.members}
         case REMOVE_MEMBER:
-            delete newState[action.memberId]
+            delete newState[action.member.id]
             return newState
         default:
             return state

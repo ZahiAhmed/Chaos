@@ -2,7 +2,7 @@ import UserIcon from "../UserIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
-import { deleteMember } from "../../store/members";
+import { deleteMember, fetchMembers } from "../../store/members";
 import UserProfile from "../UserProfile";
 import "./MemberLabel.css";
 import "./MemberModal.css";
@@ -10,11 +10,11 @@ const MemberLabel = ({ member, isOwner }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
-
+  const serverId = member.serverId;
   const handleKick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(deleteMember(member.memberId));
+    dispatch(deleteMember(member))
   };
 
   const kickButton =

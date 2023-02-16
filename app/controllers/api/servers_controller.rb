@@ -44,11 +44,9 @@ class Api::ServersController < ApplicationController
     end
 
     def destroy
-        debugger
         @server = Server.find_by(id: params[:id])
         if (@server.owner_id == current_user.id)
             @server.destroy
         end
     end
-
 end

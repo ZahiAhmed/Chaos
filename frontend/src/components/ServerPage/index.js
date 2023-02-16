@@ -1,13 +1,14 @@
 import { Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchServer } from "../../store/servers";
-import { fetchMembers } from "../../store/members";
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import ServerSidebar from "../ServerSidebar";
 import MembersSidebar from "../MembersSidebar";
 import UserInfo from "../UserInfo";
 import "./ServerPage.css";
 import ServerChannels from "../ServerChannels";
+import { fetchMembers } from "../../store/members";
+import { reload } from "../../store/session";
 
 const ServerPage = () => {
   const { serverId } = useParams();
@@ -16,12 +17,12 @@ const ServerPage = () => {
   const server = useSelector((state) =>
     state.servers ? state.servers[serverId] : {}
   );
-  const members = useSelector((state) =>
-  state.members ? state.members : {}
-);
+  const members = useSelector((state) => state.members ? state.members : {} );
   useEffect(() => {
-    dispatch(fetchServer(serverId))
+    dispatch(fetchServer(serverId)).then(() => {
     dispatch(fetchMembers(serverId))
+    dispatch(reload());
+  })
   }, [serverId, members.length]);
 
 
