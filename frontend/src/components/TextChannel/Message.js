@@ -1,24 +1,27 @@
-const Message = ({ body, sender, createdAt }) => {
-  const formattedTime = getFormattedTime(createdAt);
+import { useSelector } from "react-redux";
+import './Message.css'
 
+const Message = ({ body, senderId, createdAt }) => {
+  const formattedTime = getFormattedTime(createdAt);
+  const members = useSelector((state) => (state ? state.members : []));
   return (
     <div className="message">
-      <span className="message__author">{author}</span>
+      <span className="message__author">{members[senderId].username}</span>
       <span className="message__timestamp">{formattedTime}</span>
-      <p>{getFormattedBody(body, mentionedUsernames)}</p>
+      <p>{body}</p>
     </div>
   );
 };
 
-function getFormattedBody(body, usernames) {
-  return usernames.length
-    ? body
-        .split(new RegExp(`(${usernames.join("|")})`))
-        .map((text, idx) =>
-          idx % 2 === 0 ? text : <strong key={text}>{text}</strong>
-        )
-    : body;
-}
+// function getFormattedBody(body, usernames) {
+//   return usernames.length
+//     ? body
+//         .split(new RegExp(`(${usernames.join("|")})`))
+//         .map((text, idx) =>
+//           idx % 2 === 0 ? text : <strong key={text}>{text}</strong>
+//         )
+//     : body;
+// }
 
 function getFormattedTime(dateString) {
   const date = new Date(dateString);

@@ -9,9 +9,10 @@ import "./ServerPage.css";
 import ServerChannels from "../ServerChannels";
 import { fetchMembers } from "../../store/members";
 import { reload } from "../../store/session";
+import TextChannel from "../TextChannel";
 
 const ServerPage = () => {
-  const { serverId } = useParams();
+  const { serverId, channelId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const server = useSelector((state) =>
@@ -37,6 +38,7 @@ const ServerPage = () => {
       <ServerChannels server={server} isOwner={isOwner} members={members}/>
       <ServerSidebar servers={sessionUser.servers} />
       <MembersSidebar isOwner={isOwner} members={Object.values(members)}/>
+      <TextChannel channelId={channelId}/>
       <UserInfo />
     </div>
   );
