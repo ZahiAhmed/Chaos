@@ -32,10 +32,10 @@ const ServerSidebar = ({ servers }) => {
           onClick={handleClick}
         ></button>
         <hr id="line"></hr>
-        <a href="https://github.com/ZahiAhmed">
+        <a target="_blank" href="https://github.com/ZahiAhmed">
           <button id="github" className="server-icon"></button>
         </a>
-        <a href="https://www.linkedin.com/in/zahiahmed/">
+        <a target="_blank" href="https://www.linkedin.com/in/zahiahmed/">
           <button id="linkedin" className="server-icon"></button>
         </a>
         <hr id="line"></hr>

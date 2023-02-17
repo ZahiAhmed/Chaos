@@ -6,7 +6,7 @@
     position: fixed;
     width: 240px;
     background-color: rgb(48, 53, 58);
-    color:rgba(245, 245, 245, 0.685);
+    color:white;
 }
 
 .dm div {
@@ -20,4 +20,5 @@
     font-weight: bold;
     border-bottom: 1px solid rgba(0, 0, 0, 0.229);
     height: 38px;
+    padding-top: 8px;
 }
