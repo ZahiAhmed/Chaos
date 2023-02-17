@@ -20,6 +20,10 @@
 
 #home-button{
     margin-top: 20%;
+    background-image: url('./discord-home-icon.png');
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #addserver {
