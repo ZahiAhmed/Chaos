@@ -14,7 +14,7 @@ const MemberLabel = ({ member, isOwner }) => {
   const handleKick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(deleteMember(member.id));
+    dispatch(deleteMember(member));
   };
 
   const kickButton =

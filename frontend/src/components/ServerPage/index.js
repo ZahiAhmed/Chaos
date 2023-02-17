@@ -8,6 +8,7 @@ import MembersSidebar from "../MembersSidebar";
 import UserInfo from "../UserInfo";
 import "./ServerPage.css";
 import ServerChannels from "../ServerChannels";
+import { reload } from "../../store/session";
 
 const ServerPage = () => {
   const { serverId } = useParams();
@@ -22,6 +23,7 @@ const ServerPage = () => {
   useEffect(() => {
     dispatch(fetchServer(serverId))
     dispatch(fetchMembers(serverId))
+    dispatch(reload())
   }, [serverId]);
 
 
