@@ -27,25 +27,21 @@ const TextChannel = ({ channelId }) => {
   const numMessages = useRef(0);
   const activeMessageId = parseInt(history.location.hash.slice(1));
 
-  // Scroll to message selected from mentions menu
   useEffect(() => {
     if (activeMessageRef.current) scrollToMessage();
   }, [activeMessageId]);
 
-  // Scroll to new messages as they come in
   useEffect(() => {
     if (
       channelId === prevChannel.current &&
       numMessages.current < messages.length
     ) {
-      // Remove any hash values from the URL
       if (history.location.hash) history.push(history.location.pathname);
       scrollToBottom();
     }
     numMessages.current = messages.length;
   }, [messages, channelId, history]);
 
-  // Effect to run when entering a room
   useEffect(() => {
     dispatch(fetchTextChannel(channelId));
     dispatch(fetchMessages(channelId)).then(() => {
@@ -92,7 +88,6 @@ const TextChannel = ({ channelId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger
     createMessage({ body, channelId, senderId: sessionUser.id }).then(() => {
       // dispatch(receiveMessage(message));
       // dispatch(receiveUser(user));
@@ -141,43 +136,5 @@ const TextChannel = ({ channelId }) => {
     </section>
   );
 };
-
-//   // ...
-//   // Effect to run when entering a room
-//   useEffect(() => {
-//     // ...
-
-//     // Add the following lines to the end of the `useEffect` to create a
-//     // subscription:
-//     const subscription = consumer.subscriptions.create(
-//       {
-//         channel: "TextChannels",
-//         id: textChannelId,
-//       },
-//       {
-//         // received: message => {
-//         //   console.log('Received message: ', message);
-//         // }
-//         received: ({type, message, user }) => {
-//           switch(type){
-//             case 'RECEIVE_MESSAGE':
-//               dispatch(receiveMessage(message));
-//               dispatch(receiveUser(user));
-//               break;
-//             case 'DESTROY_MESSAGE':
-//               dispatch(removeMessage(id))
-//               break;
-//             default:
-//               console.log('Unhandled broadcast: ', type);
-//               break;
-//           }
-//         },
-//       }
-//     );
-
-//     return () => subscription?.unsubscribe();
-//   }, [textChannelId, dispatch]); // This line is already present in the file
-//   // ...
-// };
 
 export default TextChannel;

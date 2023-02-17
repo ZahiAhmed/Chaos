@@ -6,6 +6,7 @@ import { deleteMember } from "../../store/members";
 import UserProfile from "../UserProfile";
 import "./MemberLabel.css";
 import "./MemberModal.css";
+
 const MemberLabel = ({ member, isOwner }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);

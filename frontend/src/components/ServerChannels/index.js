@@ -1,19 +1,22 @@
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteServer} from "../../store/servers";
 import { deleteMember } from "../../store/members";
 import { Modal } from "../../context/Modal";
+import TextChannelLabel from "../TextChannelLabel";
 import EditServer from "../EditServer";
+import CreateChannel from "../CreateChannel";
 import "./ServerChannels.css";
 import "./SettingsModal.css"
 
-const ServerChannels = ({ server, isOwner, members }) => {
+const ServerChannels = ({ server, isOwner, members, channels }) => {
   const dispatch = useDispatch();
   const history = useHistory()
   const [hidden, setHidden] = useState(true);
-  const [showModal, setShowModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [createModal, setCreateModal] = useState(false);
   const serverName = server ? server.serverName : "";
   const buttonText = isOwner ? "Delete Server" : "Leave Server";
   const sessionUser = useSelector(state => state.session.user)
@@ -26,8 +29,11 @@ const ServerChannels = ({ server, isOwner, members }) => {
   };
   const dropDown = isOwner ? (
     <div className="dropdown">
-      <button id="edit" onClick={(e) => setShowModal(true)}>
+      <button id="edit" onClick={(e) => setEditModal(true)}>
         Edit Server
+      </button>
+      <button id="edit" onClick={(e) => setCreateModal(true)}>
+        Create Channel
       </button>
       <button id="leave" onClick={handleLeave}>
         {buttonText}
@@ -52,15 +58,25 @@ const ServerChannels = ({ server, isOwner, members }) => {
         </h1>
       </div>
       {show}
+    {channels.map((channel,i) => <TextChannelLabel key={i} channel={channel} isOwner={isOwner}/>)}
     </aside>
-      {showModal && (
+      {editModal && (
         <Modal
           modal={"settings-positioning"}
           modalBackground={"settings-background"}
           modalContent={"edit-server-content"}
-          onClose={() => setShowModal(false)}
+          onClose={() => setEditModal(false)}
         >
           <EditServer server={server} />
+        </Modal>
+      )}
+      {createModal && (
+        <Modal
+        modal={"settings-positioning"}
+        modalBackground={"settings-background"}
+        modalContent={"edit-server-content"}
+        onClose={() => setCreateModal(false)}>
+          <CreateChannel server={server}/>
         </Modal>
       )}
     </>

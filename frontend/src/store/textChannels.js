@@ -54,7 +54,7 @@ export const updateTextChannel = (channel) => async dispatch => {
   dispatch(receiveTextChannel(textChannel))
 }
 
-export const destroyTextChannel = (channelId) => async dispatch => {
+export const deleteTextChannel = (channelId) => async dispatch => {
   const response = await fetch(`/api/text_channels/${channelId}`,{
     method: "DELETE"
   })
