@@ -24,13 +24,13 @@ const ServerPage = () => {
   );
 
   const members = useSelector((state) => (state.members ? state.members : {}));
-  useEffect(async () => {
-    await dispatch(fetchServer(serverId)).then(() => {
+  useEffect(() => {
+      dispatch(fetchServer(serverId))
       dispatch(fetchMembers(serverId));
       dispatch(fetchTextChannels(serverId));
       dispatch(reload());
-    });
-  }, [serverId, members.length, channels.length]);
+  }, [serverId]);
+  
   if (!sessionUser) return <Redirect to={`/login`} />;
   if (sessionUser.servers.find((server) => !server.id === serverId))
     return <Redirect to={`/${sessionUser.username}`} />;
