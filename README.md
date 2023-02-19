@@ -1,6 +1,6 @@
 # [Chaos and Harmony](https://chaos-2ce2.onrender.com/)
 
-Chaos n' Harmony is a full-stack web application clone of Discord. It connects users by being able to create servers or clubs and also has an integrated friendlist for each user. 
+Chaos in Harmony is a full-stack web application clone of Discord. It connects users by being able to create servers or clubs and also has an integrated friendlist for each user. 
 
 ## Features
 
