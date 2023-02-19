@@ -1,6 +1,6 @@
-# [Chaos in Harmony](https://chaos-2ce2.onrender.com/)
+# [Chaos](https://chaos-2ce2.onrender.com/)
 
-Chaos in Harmony is a full-stack web application clone of Discord. It connects users by being able to create servers or clubs and also has an integrated friendlist for each user. 
+Chaos is a full-stack web application clone of Discord. It connects users by being able to create servers or clubs and also has an integrated friendlist for each user. 
 
 ## Features
 
@@ -26,6 +26,7 @@ Chaos in Harmony is a full-stack web application clone of Discord. It connects u
 - Ruby on Rails
 - React/Redux
 - Postgresql
+- CSS
 - Websockets
 
 ## Future Implementations
