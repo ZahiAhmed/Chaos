@@ -23,13 +23,13 @@ Chaos n' Harmony is a full-stack web application clone of Discord. It connects u
 - Splash page shows name and description of each server
 - Functional search bar to filter through the servers
 
-# Technologies Used
+## Technologies Used
 - Ruby on Rails
 - React/Redux
 - Postgresql
 - Websockets
 
-# Future Implementations
+## Future Implementations
 - Text-channels and chat feature
 - Voice chat 
 - Direct Messages between friends
