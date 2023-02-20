@@ -60,7 +60,6 @@ const LoginFormPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* <p id="forgotpassword" className="redirect"><a href="/login">Forgot Password?</a></p> */}
       </label>
       <br/>
       <button type="submit" className='login'>Log In</button>
