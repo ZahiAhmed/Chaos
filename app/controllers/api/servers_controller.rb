@@ -23,7 +23,7 @@ class Api::ServersController < ApplicationController
         )
         if @server.save
             @member = Member.create(member_id: current_user.id, server_id: @server.id, owner: true)
-            @text_channel.create(server_id: @server.id, server_owner_id: current_user.id, topic: "general")
+            @text_channel = TextChannel.create(server_id: @server.id, server_owner_id: @server.owner_id, topic: "general")
             render :show
         else
             render json: {errors: @server.errors.full_messages}, status: 418

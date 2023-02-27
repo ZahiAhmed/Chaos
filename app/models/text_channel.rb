@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: text_channels
+#
+#  id              :bigint           not null, primary key
+#  server_id       :bigint           not null
+#  server_owner_id :bigint           not null
+#  topic           :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class TextChannel < ApplicationRecord
     validates :topic, presence: true
 
