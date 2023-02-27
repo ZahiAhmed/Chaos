@@ -15,7 +15,8 @@ class Api::TextChannelsController < ApplicationController
         end
     end
 
-    def create 
+    def create
+        debugger
         @text_channel = TextChannel.new(
             server_id: params[:server_id],
             server_owner_id: params[:server_owner_id],
