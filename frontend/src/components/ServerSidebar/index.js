@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { reload } from "../../store/session";
 import "./ServerSidebar.css";
 
-const ServerSidebar = ({ servers }) => {
+const ServerSidebar = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const ServerSidebar = ({ servers }) => {
           <button id="linkedin" className="server-icon"></button>
         </a>
         <hr id="line"></hr>
-        {servers.map((server, i) => (
+        {sessionUser.servers.map((server, i) => (
           <ServerIcon key={i} server={server} />
         ))}
         <button

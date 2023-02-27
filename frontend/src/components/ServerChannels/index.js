@@ -6,10 +6,11 @@ import { deleteServer} from "../../store/servers";
 import { deleteMember } from "../../store/members";
 import { Modal } from "../../context/Modal";
 import EditServer from "../EditServer";
+import TextChannelLabel from "./TextChannelLabel";
 import "./ServerChannels.css";
 import "./SettingsModal.css"
 
-const ServerChannels = ({ server, isOwner, members }) => {
+const ServerChannels = ({ server, isOwner, members, textChannels }) => {
   const dispatch = useDispatch();
   const history = useHistory()
   const [hidden, setHidden] = useState(true);
@@ -50,6 +51,9 @@ const ServerChannels = ({ server, isOwner, members }) => {
         <h1 className="server-title" onClick={(e) => setHidden(!hidden)}>
           {serverName}{" "}
         </h1>
+      </div>
+      <div id="server-channels">
+        {textChannels.map((textChannel, i) => <TextChannelLabel key={i} textChannel={textChannel}/> )}
       </div>
       {show}
     </aside>

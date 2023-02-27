@@ -9,6 +9,7 @@
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     Member.destroy_all
+    TextChannel.destroy_all
     Server.destroy_all
     Friendship.destroy_all
     User.destroy_all
@@ -18,7 +19,7 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('friendships')
     ApplicationRecord.connection.reset_pk_sequence!('servers')
     ApplicationRecord.connection.reset_pk_sequence!('members')
-
+    ApplicationRecord.connection.reset_pk_sequence!('text_channels')
     puts "Creating users..."
 
     User.create!(
@@ -120,10 +121,22 @@ ApplicationRecord.transaction do
       owner_id: 1
     )
 
+    TextChannel.create!(
+      server_id: 1,
+      server_owner_id: 1, 
+      topic: "general"
+    )
+
 
     Server.create!(
       server_name: "Ayce's server",
       owner_id: 2
+    )
+
+    TextChannel.create!(
+      server_id: 2,
+      server_owner_id: 2, 
+      topic: "general"
     )
 
     Server.create!(
@@ -131,9 +144,21 @@ ApplicationRecord.transaction do
       owner_id: 3
     )
 
+    TextChannel.create!(
+      server_id: 3,
+      server_owner_id: 3, 
+      topic: "general"
+    )
+
     Server.create!(
       server_name: "Kyle's server",
       owner_id: 4
+    )
+
+    TextChannel.create!(
+      server_id: 4,
+      server_owner_id: 4, 
+      topic: "general"
     )
 
     Server.create!(
@@ -141,9 +166,21 @@ ApplicationRecord.transaction do
       owner_id: 5
     )
 
+    TextChannel.create!(
+      server_id: 5,
+      server_owner_id: 5, 
+      topic: "general"
+    )
+
     Server.create!(
       server_name: "Spencers'server",
       owner_id: 6
+    )
+
+    TextChannel.create!(
+      server_id: 6,
+      server_owner_id: 6, 
+      topic: "general"
     )
 
     Server.create!(
@@ -151,55 +188,11 @@ ApplicationRecord.transaction do
       owner_id: 7
     )
 
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
-
-    # Server.create!(
-    #   server_name: "aA",
-    #   owner_id: 1
-    # )
+    TextChannel.create!(
+      server_id: 7,
+      server_owner_id: 7, 
+      topic: "general"
+    )
 
     puts "Creating members..."
 
@@ -208,66 +201,6 @@ ApplicationRecord.transaction do
       server_id: 1,
       owner: true
     )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 8,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 9,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 10,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 11,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 12,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 13,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 14,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 15,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 16,
-    #   owner: true
-    # )
-
-    # Member.create!(
-    #   member_id: 1,
-    #   server_id: 17,
-    #   owner: true
-    # )
 
     Member.create!(
       member_id: 2,
