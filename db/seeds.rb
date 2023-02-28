@@ -124,7 +124,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 1,
       server_owner_id: 1, 
-      topic: "general"
+      topic: "general1"
     )
 
 
@@ -136,7 +136,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 2,
       server_owner_id: 2, 
-      topic: "general"
+      topic: "general2"
     )
 
     Server.create!(
@@ -147,7 +147,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 3,
       server_owner_id: 3, 
-      topic: "general"
+      topic: "general3"
     )
 
     Server.create!(
@@ -158,7 +158,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 4,
       server_owner_id: 4, 
-      topic: "general"
+      topic: "general4"
     )
 
     Server.create!(
@@ -169,7 +169,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 5,
       server_owner_id: 5, 
-      topic: "general"
+      topic: "general5"
     )
 
     Server.create!(
@@ -180,7 +180,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 6,
       server_owner_id: 6, 
-      topic: "general"
+      topic: "general6"
     )
 
     Server.create!(
@@ -191,7 +191,7 @@ ApplicationRecord.transaction do
     TextChannel.create!(
       server_id: 7,
       server_owner_id: 7, 
-      topic: "general"
+      topic: "general7"
     )
 
     puts "Creating members..."
