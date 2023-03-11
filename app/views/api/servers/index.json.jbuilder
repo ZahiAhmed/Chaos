@@ -4,5 +4,5 @@ json.array! @servers.each do |server|
         json.array!(server.members) do |member|
           json.extract! member, :member_id
         end
-    end
+      end
 end

@@ -28,10 +28,12 @@ const ServerPage = () => {
     dispatch(fetchTextChannels(serverId));
     dispatch(reload());
   }, [serverId, textChannels.length]);
-  if(!channelId && textChannels.length) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
+  if(!channelId && server?.textChannels[0]) return <Redirect to={`/servers/${serverId}/${server?.textChannels[0].id}`} />
   if (!sessionUser) return <Redirect to={`/login`} />;
   if (sessionUser.servers.find((server) => server.id === serverId))
     return <Redirect to={`/${sessionUser.username}`} />;
+
+  
 
   const isOwner = server ? sessionUser.id === server.ownerId : false;
 

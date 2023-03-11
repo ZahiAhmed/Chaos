@@ -39,7 +39,7 @@ const ServerSidebar = () => {
           <button id="linkedin" className="server-icon"></button>
         </a>
         <hr id="line"></hr>
-        {sessionUser.servers.map((server, i) => (
+        {sessionUser?.servers?.map((server, i) => (
           <ServerIcon key={i} server={server} />
         ))}
         <button
