@@ -67,7 +67,7 @@ const textChannelsReducer = (state = {}, action) => {
       const {textChannel} = action;
       return { ...state, [textChannel.id]: textChannel };
     case RECEIVE_TEXT_CHANNELS:
-      return { ...state, ...action.textChannels };
+      return {...action.textChannels };
     case REMOVE_TEXT_CHANNEL:
       const newState = { ...state };
       delete newState[action.textChannelId];

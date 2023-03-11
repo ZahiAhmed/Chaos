@@ -9,8 +9,7 @@ const CreateChannel = ({ server }) => {
   const handleForm = (e) => {
     dispatch(
       createTextChannel({
-        server_id: server.id,
-        server_owner_id: server.owner_id,
+        server_id: server?.id,
         topic: channelTopic,
       })
     )

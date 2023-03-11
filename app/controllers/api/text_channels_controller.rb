@@ -18,7 +18,7 @@ class Api::TextChannelsController < ApplicationController
     def create
         @text_channel = TextChannel.new(
             server_id: params[:server_id],
-            server_owner_id: params[:server_owner_id],
+            server_owner_id: current_user.id,
             topic: params[:topic])
         if (@text_channel.server_owner_id == current_user.id && @text_channel.save)
             render :show
