@@ -1,54 +1,107 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { deleteTextChannel} from "../../store/textChannels"
+import { deleteTextChannel, updateTextChannel } from "../../store/textChannels";
 import { Modal } from "../../context/Modal";
 import { Redirect, useParams, useHistory } from "react-router-dom";
 
-import "./TextChannelLabel.css"
+import "./TextChannelLabel.css";
 
-const TextChannelLabel = ({textChannel, isOwner}) => {
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const {serverId} = useParams();
-    // const {channelId} = useParams();
-    const [editModal, setEditModal] = useState(false);
-    const currentChannel = true
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        await dispatch(deleteTextChannel(textChannel.id)).then(()=> {
-            if(currentChannel){
-                return <Redirect to={`/servers/${serverId}`} />
-                // history.push(`/servers/${serverId}`)
-            }
-        })
+const TextChannelLabel = ({ textChannel, isOwner }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { serverId } = useParams();
+  const [channelTopic, setChannelTopic] = useState(textChannel.topic);
+  const [editModal, setEditModal] = useState(false);
+  const currentChannel = true;
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    await dispatch(deleteTextChannel(textChannel.id)).then(() => {
+      if (currentChannel) {
+        history.push(`/servers/${serverId}`);
+      }
+    });
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    dispatch(updateTextChannel({
+        ...textChannel,
+        topic: channelTopic
+    }))
+    if(!channelTopic) {
+        setChannelTopic(textChannel.topic)
     }
+    setEditModal(false)
+  }
 
-    const buttons = isOwner ? <span className="channel-buttons">
 
-
-        <span title="delete channel">
-    <button className="channel-button" id="delete-channel" onClick={handleDelete}>
-        ❌
+  const buttons = isOwner ? (
+    <span className="channel-buttons">
+      <span title="delete channel">
+        <button
+          className="channel-button"
+          id="delete-channel"
+          onClick={handleDelete}
+        >
+          ❌
         </button>
-        </span>
-        <span title="edit channel">
-    <button className="channel-button" id="edit-channel" onClick={ (e) => setEditModal(true)}>
-        ✎
+      </span>
+      <span title="edit channel">
+        <button
+          className="channel-button"
+          id="edit-channel"
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            setEditModal(true)
+        }}
+        >
+          ✎
         </button>
-        </span>
+      </span>
     </span>
-    : null
-    return (
-        <Link to={`/servers/${textChannel.serverId}/${textChannel.id}`}>
-        <li> <span className="channel-name">
-             # {textChannel.topic} 
-            </span>
+  ) : null;
+  return (
+    <>
+    <Link to={`/servers/${textChannel.serverId}/${textChannel.id}`}>
+      <li>
+        {" "}
+        <span className="channel-name"># {textChannel.topic}</span>
         {buttons}
-        </li>
-        </Link>
-    )
-}
+      </li>
+    </Link>
+      {editModal && (
+          <Modal
+          modal={"settings-positioning"}
+          modalBackground={"settings-background"}
+          modalContent={"edit-server-content"}
+          onClose={() => setEditModal(false)}
+          >
+    <div className="edit-server-form">
+      <h1 id="mainheader--editform"> Edit Channel </h1>
+      <br />
+      <form id="edit-submit-server" onSubmit={handleEdit}>
+        <label>
+          CHANNEL NAME
+          <br />
+          <input
+            type="text"
+            value={channelTopic}
+            onChange={(e) => setChannelTopic(e.target.value)}
+          />
+        </label>
+        <br />
+        <br />
+        <button type="submit">Update Channel</button>
+      </form>
+    </div>
+        </Modal>
+      )}
+      </>
+  );
+};
 
 export default TextChannelLabel;

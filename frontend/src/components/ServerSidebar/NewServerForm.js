@@ -12,6 +12,8 @@ const NewServerForm = ({ sessionUser }) => {
   );
   const [description, setDescription] = useState();
   const handleForm = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     history.push('/')
     await dispatch(
       createServer({

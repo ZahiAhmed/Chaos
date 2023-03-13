@@ -28,7 +28,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
     history.push(`/${sessionUser.username}`);
   };
   const dropDown = isOwner ? (
-    <div className="dropdown">
+    <div className="dropdown" onClick={() => setHidden(true)}>
       <button id="edit" onClick={(e) => setEditModal(true)}>
         Edit Server
       </button>
@@ -57,12 +57,12 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
             {serverName}{" "}
           </h1>
         </div>
+          {show}
         <div id="server-channels">
           {textChannels.map((textChannel, i) => (
             <TextChannelLabel key={i} textChannel={textChannel} isOwner={isOwner}/>
           ))}
         </div>
-        {show}
       </aside>
       {editModal && (
         <Modal

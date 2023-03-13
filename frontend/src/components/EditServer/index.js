@@ -9,6 +9,7 @@ const EditServer = ({ server }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    e.stopPropagation()
     dispatch(
       updateServer({
         id: server.id,

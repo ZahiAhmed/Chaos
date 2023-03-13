@@ -30,13 +30,9 @@ class Api::TextChannelsController < ApplicationController
     def update 
         @text_channel = TextChannel.find_by(id: params[:id])
         if (@text_channel&.update(
-            server_id: params[:server_id],
-            server_owner_id: params[:server_owner_id],
             topic: params[:topic]
         )) && (@text_channel.server_owner_id == current_user.id)
             render :show
-        else
-            render json: { errors: ["Must have a topic"]}, status: 418
         end
     end
 
