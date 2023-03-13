@@ -32,12 +32,12 @@
 .dropdown{
     background-color: rgb(25, 25, 25);
     text-align: left;
-    width: 200px;
     margin: auto;
     font-size: small;
     width: 90%;
     margin-top: 10px;
     border-radius: 10px;
+    z-index: 1px;
 }
 
 .dropdown button {

@@ -25,15 +25,26 @@ const TextChannelLabel = ({textChannel, isOwner}) => {
         })
     }
 
-    const buttons = isOwner ? <div className="channel-buttons">
+    const buttons = isOwner ? <span className="channel-buttons">
 
-    <button className="channel-button" id="delete-channel" onClick={handleDelete}>x</button>
-    <button className="channel-button" id="edit-channel" onClick={ (e) => setEditModal(true)}>✎</button>
-    </div>
+
+        <span title="delete channel">
+    <button className="channel-button" id="delete-channel" onClick={handleDelete}>
+        ❌
+        </button>
+        </span>
+        <span title="edit channel">
+    <button className="channel-button" id="edit-channel" onClick={ (e) => setEditModal(true)}>
+        ✎
+        </button>
+        </span>
+    </span>
     : null
     return (
         <Link to={`/servers/${textChannel.serverId}/${textChannel.id}`}>
-        <li> # {textChannel.topic} 
+        <li> <span className="channel-name">
+             # {textChannel.topic} 
+            </span>
         {buttons}
         </li>
         </Link>

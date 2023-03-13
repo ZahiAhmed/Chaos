@@ -5,4 +5,9 @@ json.array! @servers.each do |server|
           json.extract! member, :member_id
         end
       end
+      json.textChannels do
+        json.array!(server.text_channels) do |text_channel|
+          json.extract! text_channel, :id
+        end
+      end
 end

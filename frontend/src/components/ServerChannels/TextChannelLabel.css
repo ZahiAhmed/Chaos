@@ -1,8 +1,10 @@
+#server-channels {
+    z-index: -1px;
+}
+
 #server-channels a {
     text-decoration: none;
     color: white;
-    display: flex;
-    justify-content: space-between;
 }
 
 #server-channels li:hover {
@@ -14,18 +16,21 @@
     padding-bottom: 5px;
     list-style-type: none;
     text-indent: 5%;
+    margin-top: 10px;
+    /* display: block; */
 }
 
 .channel-buttons{
-    
+    margin-left: 10px;
 }
 
 
 .channel-button {
     border-radius: 3px;
-    border: 1px solid black;
+    padding: 3px;
+    /* font-size: small; */
 }
 
-#delete-channel{
-    background-color: red;
+.channel-button:hover {
+    background-color: rgb(48, 53, 58);
 }
