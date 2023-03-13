@@ -59,7 +59,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
         </div>
         <div id="server-channels">
           {textChannels.map((textChannel, i) => (
-            <TextChannelLabel key={i} textChannel={textChannel} />
+            <TextChannelLabel key={i} textChannel={textChannel} isOwner={isOwner}/>
           ))}
         </div>
         {show}

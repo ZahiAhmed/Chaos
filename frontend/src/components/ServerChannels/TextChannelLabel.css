@@ -1,6 +1,8 @@
 #server-channels a {
     text-decoration: none;
     color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
 #server-channels li:hover {
@@ -12,4 +14,18 @@
     padding-bottom: 5px;
     list-style-type: none;
     text-indent: 5%;
+}
+
+.channel-buttons{
+    
+}
+
+
+.channel-button {
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+#delete-channel{
+    background-color: red;
 }

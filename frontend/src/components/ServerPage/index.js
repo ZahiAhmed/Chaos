@@ -27,7 +27,7 @@ const ServerPage = () => {
     dispatch(fetchMembers(serverId));
     dispatch(fetchTextChannels(serverId));
     dispatch(reload());
-  }, [serverId, channelId, textChannels.length]);
+  }, [serverId, channelId, textChannels.length, server?.textChannels.length]);
   if(!channelId && server?.textChannels[0]) return <Redirect to={`/servers/${serverId}/${server?.textChannels[0].id}`} />
   if (!sessionUser) return <Redirect to={`/login`} />;
   if (sessionUser.servers.find((server) => server.id === serverId))
