@@ -3,24 +3,20 @@ import { createTextChannel } from "../../store/textChannels";
 import { useState } from "react";
 import "../EditServer/EditServer.css";
 import { useHistory } from "react-router-dom";
-const CreateChannel = ({ server }) => {
+const CreateChannel = ({ server, textChannels }) => {
   const dispatch = useDispatch();
   const [channelTopic, setChannelTopic] = useState(null);
   const history = useHistory();
   const handleForm = async (e) => {
-    history.push(`/servers/${server.id}/${server.textChannels[0].id}`);
     await dispatch(
       createTextChannel({
         server_id: server?.id,
         topic: channelTopic,
       })
-    ).then(async () => {
-      await history.push(
-        `/servers/${server.id}/${
-          server.textChannels[server.textChannels.length - 1].id
-        }`
-      );
-    });
+      ).then(async () => {
+        await history.push( `/servers/${server.id}`)
+        await window.location.reload();
+      })
   };
 
   return (

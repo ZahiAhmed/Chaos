@@ -1,0 +1,15 @@
+#server-channels a {
+    text-decoration: none;
+    color: white;
+}
+
+#server-channels li:hover {
+   background-color: rgb(71, 78, 85)
+}
+
+#server-channels li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style-type: none;
+    text-indent: 5%;
+}

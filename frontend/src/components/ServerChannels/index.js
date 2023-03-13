@@ -81,7 +81,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
           modalContent={"edit-server-content"}
           onClose={() => setCreateModal(false)}
         >
-          <CreateChannel server={server} />
+          <CreateChannel server={server} textChannel={textChannels} />
         </Modal>
       )}
     </>
