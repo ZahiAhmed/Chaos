@@ -35,7 +35,7 @@ export const fetchServer = (serverId) => async (dispatch) => {
 };
 
 export const createServer = (server) => async (dispatch) => {
-  const response = await fetch("api/servers", {
+  const response = await fetch("/api/servers", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

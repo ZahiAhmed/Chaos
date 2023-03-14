@@ -1,31 +1,55 @@
 import { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { createServer } from "../../store/servers";
+import { useHistory, useParams, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { createServer, fetchServer } from "../../store/servers";
+import { reload } from "../../store/session";
 import "./NewServerForm.css";
 
-const NewServerForm = ({ sessionUser }) => {
+const NewServerForm = ({ sessionUser, setShowModal }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  // const servers = useSelector( state => state.servers ? Object.values(state.servers) : [] )
   const [serverName, setServerName] = useState(
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
   const handleForm = async (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    history.push('/')
+    e.preventDefault();
+    e.stopPropagation();
+    if (serverName && !serverName.split(" ").length === serverName.length + 1) {
+      history.push("/");
+    }
     await dispatch(
       createServer({
         server_name: serverName,
         description: description,
-        owner_id: sessionUser.id
+        owner_id: sessionUser.id,
       })
-    ).then (async ()=>{
-      await history.push(`/servers/${sessionUser.servers[0].id + 1}`)
-      // dispatch reload then go to new server
-    })
-  }
+    ).then(async () => {
+      if (
+        !serverName ||
+        serverName.split(" ").length === serverName.length + 1
+      ) {
+        //errors
+      } else {
+        setShowModal(false);
+        await history.push(`/servers/${sessionUser.servers[0].id + 1}`) //have to fix this line
+      }
+    });
+  };
+
+  // const handleForm = async (e) => {
+  //   history.push('/')
+  //   await dispatch(
+  //     createServer({
+  //       server_name: serverName,
+  //       description: description,
+  //       owner_id: sessionUser.id
+  //     })
+  //   ).then (async ()=>{
+  //     await history.push(`/servers/${sessionUser.servers[0].id + 1}`)
+  //   })
+  // }
 
   return (
     <div className="new-server-form">

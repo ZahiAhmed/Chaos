@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { updateServer } from "../../store/servers";
 import { useState } from "react";
 import "./EditServer.css";
-const EditServer = ({ server }) => {
+const EditServer = ({ server, setEditModal }) => {
   const dispatch = useDispatch();
   const [serverName, setServerName] = useState(server.serverName);
   const [description, setDescription] = useState(server.description || '');
@@ -17,9 +17,12 @@ const EditServer = ({ server }) => {
         description: description,
         owner_id: server.ownerId
       })
-    );
-    window.location.reload();
-    //pass seteditmodal as prop and close here 
+    )
+    if(!serverName || serverName.split(' ').length === serverName.length + 1) {
+    //errors
+    }else {
+    setEditModal(false)
+    }
   };
   return (
     <div className="edit-server-form">

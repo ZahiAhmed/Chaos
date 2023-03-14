@@ -62,7 +62,7 @@ const ServerSidebar = () => {
           modalContent={"form-content"}
           onClose={() => setShowModal(false)}
         >
-          <NewServerForm sessionUser={sessionUser} />
+          <NewServerForm sessionUser={sessionUser} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

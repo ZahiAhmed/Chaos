@@ -3,7 +3,7 @@ import { createTextChannel } from "../../store/textChannels";
 import { useState } from "react";
 import "../EditServer/EditServer.css";
 
-const CreateChannel = ({ server, textChannels }) => {
+const CreateChannel = ({ server, setCreateModal }) => {
   const dispatch = useDispatch();
   const [channelTopic, setChannelTopic] = useState(null);
   const handleForm = async (e) => {
@@ -15,7 +15,11 @@ const CreateChannel = ({ server, textChannels }) => {
         topic: channelTopic,
       })
     )
-    //pass setcreatemodal as prop and close here
+    if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1) {
+      //errors
+    }else {
+    setCreateModal(false)
+    }
   };
 
   return (

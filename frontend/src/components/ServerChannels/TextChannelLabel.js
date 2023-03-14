@@ -32,6 +32,7 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
         topic: channelTopic
     }))
     if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1) {
+    //errors
     }else {
         setEditModal(false)
     }

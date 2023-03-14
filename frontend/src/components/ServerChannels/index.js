@@ -71,7 +71,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
           modalContent={"edit-server-content"}
           onClose={() => setEditModal(false)}
         >
-          <EditServer server={server} />
+          <EditServer server={server} setEditModal={setEditModal} />
         </Modal>
       )}
       {createModal && (
@@ -81,7 +81,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
           modalContent={"edit-server-content"}
           onClose={() => setCreateModal(false)}
         >
-          <CreateChannel server={server} textChannel={textChannels} />
+          <CreateChannel server={server} textChannel={textChannels} setCreateModal={setCreateModal}/>
         </Modal>
       )}
     </>
