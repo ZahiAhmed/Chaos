@@ -32,9 +32,9 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
         topic: channelTopic
     }))
     if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1) {
-        setChannelTopic(textChannel.topic)
+    }else {
+        setEditModal(false)
     }
-    setEditModal(false)
   }
 
   const buttons = isOwner ? (
@@ -77,7 +77,10 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
           modal={"settings-positioning"}
           modalBackground={"settings-background"}
           modalContent={"edit-server-content"}
-          onClose={() => setEditModal(false)}
+          onClose={() => {
+            setChannelTopic(textChannel.topic) 
+            setEditModal(false)
+        }}
           >
     <div className="edit-server-form">
       <h1 id="mainheader--editform"> Edit Channel </h1>
