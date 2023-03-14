@@ -38,19 +38,6 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
     });
   };
 
-  // const handleForm = async (e) => {
-  //   history.push('/')
-  //   await dispatch(
-  //     createServer({
-  //       server_name: serverName,
-  //       description: description,
-  //       owner_id: sessionUser.id
-  //     })
-  //   ).then (async ()=>{
-  //     await history.push(`/servers/${sessionUser.servers[0].id + 1}`)
-  //   })
-  // }
-
   return (
     <div className="new-server-form">
       <h1 id="mainheader-form">Create your server</h1>
