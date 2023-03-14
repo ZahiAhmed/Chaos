@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createServer, fetchServer } from "../../store/servers";
+import { createServer, fetchServers } from "../../store/servers";
 import { reload } from "../../store/session";
 import "./NewServerForm.css";
 
 const NewServerForm = ({ sessionUser, setShowModal }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const allServers = useSelector(state => state.servers ? Object.values(state.servers) : [])
   const [serverName, setServerName] = useState(
     `${sessionUser.username}'s server`
   );
@@ -22,6 +23,10 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
     }
   },[serverName])
 
+  useEffect (()=>{
+    dispatch(fetchServers())
+  },[])
+
   const handleForm = async (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -34,7 +39,7 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
       })
     ).then(async () => {
         setShowModal(false);
-        await history.push(`/servers/${sessionUser.servers[0].id + 1}`) //have to fix this line
+        await history.push(`/servers/${allServers[allServers.length-1].id + 1}`) //have to fix this line
     });
   };
 

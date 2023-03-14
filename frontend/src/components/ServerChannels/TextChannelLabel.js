@@ -10,7 +10,7 @@ import "./TextChannelLabel.css";
 const TextChannelLabel = ({ textChannel, isOwner }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { serverId, channelId } = useParams();
+  const { serverId } = useParams();
   const [channelTopic, setChannelTopic] = useState(textChannel.topic);
   const [editModal, setEditModal] = useState(false);
   const [hidden, setHidden] = useState(true)
@@ -51,10 +51,11 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
           className="channel-button"
           id="delete-channel"
           onClick={handleDelete}
-        >
+          >
           ❌
         </button>
       </span>
+
       <span title="edit channel">
         <button
           className="channel-button"

@@ -30,13 +30,15 @@ const ServerPage = () => {
     dispatch(reload());
   }, [serverId, channelId]);
 
-  if(!channelId && server?.textChannels[0]) return <Redirect to={`/servers/${serverId}/${server?.textChannels[0].id}`} />
-  if(channelId && server?.textChannels[0]) {
+
+  if(!channelId && textChannels[0]) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
+  if(channelId && textChannels[0]) {
+    // debugger
     let exists = false
-    server?.textChannels.filter(textChannel => {
+    textChannels.filter(textChannel => {
       if(channelId === textChannel.id.toString()) exists = true;
     })
-    if(!exists) return <Redirect to={`/servers/${serverId}/${server?.textChannels[0].id}`} />
+    if(!exists) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
   }
   if (!sessionUser) return <Redirect to={`/login`} />;
   if (sessionUser.servers.find((server) => server.id === serverId))

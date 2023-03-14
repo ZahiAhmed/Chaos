@@ -22,9 +22,12 @@ export const fetchServers =
   async (dispatch) => {
     const response = await fetch("/api/servers");
     const servers = await response.json();
-    const filteredServers = servers.filter((server) =>
-      server.serverName.toLowerCase().includes(search.toLocaleLowerCase())
-    );
+    const filteredServers = Object.keys(servers).reduce((filtered, key) => {
+        if (servers[key].serverName.toLowerCase().includes(search.toLowerCase())) {
+            filtered[key] = servers[key]
+        }
+        return filtered
+    }, {})
     dispatch(receiveServers(filteredServers));
   };
 

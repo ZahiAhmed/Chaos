@@ -1,4 +1,5 @@
-json.array! @servers.each do |server|
+@servers.each do |server|
+  json.set! server.id do
     json.partial! "server", server: server
       json.members do
         json.array!(server.members) do |member|
@@ -10,4 +11,5 @@ json.array! @servers.each do |server|
           json.extract! text_channel, :id
         end
       end
+end
 end
