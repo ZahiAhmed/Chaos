@@ -19,6 +19,7 @@ const EditServer = ({ server }) => {
       })
     );
     window.location.reload();
+    //pass seteditmodal as prop and close here 
   };
   return (
     <div className="edit-server-form">

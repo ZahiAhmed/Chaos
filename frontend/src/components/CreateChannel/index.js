@@ -15,6 +15,7 @@ const CreateChannel = ({ server, textChannels }) => {
         topic: channelTopic,
       })
     )
+    //pass setcreatemodal as prop and close here
   };
 
   return (

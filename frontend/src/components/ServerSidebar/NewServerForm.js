@@ -23,6 +23,7 @@ const NewServerForm = ({ sessionUser }) => {
       })
     ).then (async ()=>{
       await history.push(`/servers/${sessionUser.servers[0].id + 1}`)
+      // dispatch reload then go to new server
     })
   }
 
