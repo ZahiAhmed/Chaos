@@ -31,12 +31,11 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
         ...textChannel,
         topic: channelTopic
     }))
-    if(!channelTopic) {
+    if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1) {
         setChannelTopic(textChannel.topic)
     }
     setEditModal(false)
   }
-
 
   const buttons = isOwner ? (
     <span className="channel-buttons">
