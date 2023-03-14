@@ -1,25 +1,34 @@
 import { useDispatch } from "react-redux";
 import { createTextChannel } from "../../store/textChannels";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../EditServer/EditServer.css";
 
 const CreateChannel = ({ server, setCreateModal }) => {
   const dispatch = useDispatch();
-  const [channelTopic, setChannelTopic] = useState(null);
+  const [channelTopic, setChannelTopic] = useState('');
+  const [hidden, setHidden] = useState(true);
+
+  useEffect(() => {
+    if (
+      !channelTopic ||
+      channelTopic.split(" ").length === channelTopic.length + 1
+    ) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  }, [channelTopic]);
+
   const handleForm = async (e) => {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
     await dispatch(
       createTextChannel({
         server_id: server?.id,
         topic: channelTopic,
       })
-    )
-    if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1) {
-      //errors
-    }else {
-    setCreateModal(false)
-    }
+    );
+    setCreateModal(false);
   };
 
   return (
@@ -29,6 +38,9 @@ const CreateChannel = ({ server, setCreateModal }) => {
       <form id="edit-submit-server" onSubmit={handleForm}>
         <label>
           CHANNEL NAME
+          {hidden ? (
+            <span className="errors"> - Must have at least one character </span>
+          ) : null}
           <br />
           <input
             type="text"
@@ -38,7 +50,13 @@ const CreateChannel = ({ server, setCreateModal }) => {
         </label>
         <br />
         <br />
-        <button type="submit">Create Channel</button>
+        {hidden ? (
+          <button style={{ opacity: "0.5" }} disabled>
+            Create Channel
+          </button>
+        ) : (
+          <button type="submit">Create Channel</button>
+        )}{" "}
       </form>
     </div>
   );

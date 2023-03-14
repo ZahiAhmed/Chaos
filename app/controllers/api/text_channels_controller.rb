@@ -33,6 +33,8 @@ class Api::TextChannelsController < ApplicationController
             topic: params[:topic]
         )) && (@text_channel.server_owner_id == current_user.id)
             render :show
+        else
+            render json: {errors: "Must have a topic"}, status: 418
         end
     end
 

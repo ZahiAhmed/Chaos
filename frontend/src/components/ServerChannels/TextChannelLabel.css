@@ -17,7 +17,6 @@
     list-style-type: none;
     text-indent: 5%;
     margin-top: 10px;
-    /* display: block; */
 }
 
 .channel-buttons{
@@ -33,4 +32,9 @@
 
 .channel-button:hover {
     background-color: rgb(48, 53, 58);
+}
+
+.errors {
+    color: rgb(231, 134, 134);
+    font-style: italic;
 }

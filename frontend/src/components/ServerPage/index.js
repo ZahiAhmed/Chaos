@@ -22,18 +22,26 @@ const ServerPage = () => {
   const textChannels = useSelector((state) =>
     state.textChannels ? Object.values(state.textChannels) : []
   );
+
   useEffect(() => {
     dispatch(fetchServer(serverId));
     dispatch(fetchMembers(serverId));
     dispatch(fetchTextChannels(serverId));
     dispatch(reload());
   }, [serverId, channelId]);
+
   if(!channelId && server?.textChannels[0]) return <Redirect to={`/servers/${serverId}/${server?.textChannels[0].id}`} />
+  if(channelId && server?.textChannels[0]) {
+    let exists = false
+    server?.textChannels.filter(textChannel => {
+      if(channelId === textChannel.id.toString()) exists = true;
+    })
+    if(!exists) return <Redirect to={`/servers/${serverId}/${server?.textChannels[0].id}`} />
+  }
   if (!sessionUser) return <Redirect to={`/login`} />;
   if (sessionUser.servers.find((server) => server.id === serverId))
     return <Redirect to={`/${sessionUser.username}`} />;
 
-  
 
   const isOwner = server ? sessionUser.id === server.ownerId : false;
 

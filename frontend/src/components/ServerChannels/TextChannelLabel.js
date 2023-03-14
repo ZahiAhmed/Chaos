@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { deleteTextChannel, updateTextChannel } from "../../store/textChannels";
 import { Modal } from "../../context/Modal";
 import { Redirect, useParams, useHistory } from "react-router-dom";
@@ -10,16 +10,26 @@ import "./TextChannelLabel.css";
 const TextChannelLabel = ({ textChannel, isOwner }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { serverId } = useParams();
+  const { serverId, channelId } = useParams();
   const [channelTopic, setChannelTopic] = useState(textChannel.topic);
   const [editModal, setEditModal] = useState(false);
+  const [hidden, setHidden] = useState(true)
   const currentChannel = true;
+
+  useEffect (() => {
+    if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1){
+      setHidden(true)
+    }else{
+      setHidden(false)
+    }
+  },[channelTopic])
+
   const handleDelete = async (e) => {
     e.preventDefault();
     e.stopPropagation();
     await dispatch(deleteTextChannel(textChannel.id)).then(() => {
       if (currentChannel) {
-        history.push(`/servers/${serverId}`);
+        history.push(`/servers/${serverId}`); 
       }
     });
   };
@@ -31,11 +41,7 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
         ...textChannel,
         topic: channelTopic
     }))
-    if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1) {
-    //errors
-    }else {
         setEditModal(false)
-    }
   }
 
   const buttons = isOwner ? (
@@ -89,6 +95,7 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
       <form id="edit-submit-server" onSubmit={handleEdit}>
         <label>
           CHANNEL NAME
+          { hidden ? <span className="errors"> - Must have at least one character </span> : null}
           <br />
           <input
             type="text"
@@ -98,7 +105,9 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
         </label>
         <br />
         <br />
+        {hidden ? <button style={{opacity: "0.5"}} disabled >Update Channel</button> : 
         <button type="submit">Update Channel</button>
+        }
       </form>
     </div>
         </Modal>

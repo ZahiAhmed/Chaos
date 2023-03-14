@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createServer, fetchServer } from "../../store/servers";
@@ -8,17 +8,24 @@ import "./NewServerForm.css";
 const NewServerForm = ({ sessionUser, setShowModal }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  // const servers = useSelector( state => state.servers ? Object.values(state.servers) : [] )
   const [serverName, setServerName] = useState(
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
+  const [hidden, setHidden] = useState(true)
+
+  useEffect (() => {
+    if(!serverName || serverName.split(' ').length === serverName.length + 1){
+      setHidden(true)
+    }else{
+      setHidden(false)
+    }
+  },[serverName])
+
   const handleForm = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (serverName && !serverName.split(" ").length === serverName.length + 1) {
-      history.push("/");
-    }
+    history.push("/");
     await dispatch(
       createServer({
         server_name: serverName,
@@ -26,15 +33,8 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
         owner_id: sessionUser.id,
       })
     ).then(async () => {
-      if (
-        !serverName ||
-        serverName.split(" ").length === serverName.length + 1
-      ) {
-        //errors
-      } else {
         setShowModal(false);
         await history.push(`/servers/${sessionUser.servers[0].id + 1}`) //have to fix this line
-      }
     });
   };
 
@@ -50,6 +50,7 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
       <form id="submit-server" onSubmit={handleForm}>
         <label>
           SERVER NAME
+          { hidden ? <span className="errors"> - Must have at least one character </span> : null}
           <br />
           <input
             type="text"
@@ -70,7 +71,9 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
         </label>
         <br />
         <br />
+        {hidden ? <button style={{opacity: "0.5"}} disabled >Create</button> : 
         <button type="submit">Create</button>
+        }
       </form>
     </div>
   );
