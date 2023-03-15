@@ -7,7 +7,6 @@
     width: 240px;
     background-color: rgb(48, 53, 58);
     color:rgba(245, 245, 245, 0.995);
-    z-index: 2;
 }
 
 .server-header {
@@ -38,7 +37,6 @@
     width: 90%;
     margin-top: 10px;
     border-radius: 10px;
-    z-index: 1px;
 }
 
 .dropdown button {

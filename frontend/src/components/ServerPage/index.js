@@ -49,11 +49,11 @@ const ServerPage = () => {
 
   return (
     <div id="server-page">
+      <MembersSidebar isOwner={isOwner} members={Object.values(members)} />
       <ServerSidebar servers={sessionUser.servers} />
       <ServerChannels server={server} isOwner={isOwner} members={members} textChannels={textChannels} />
       <UserInfo />
-      <TextChannel channelId={channelId?.toString()}/>
-      <MembersSidebar isOwner={isOwner} members={Object.values(members)} />
+      <TextChannel channelId={channelId?.toString()} />
     </div>
   );
 };

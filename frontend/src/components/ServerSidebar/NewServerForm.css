@@ -16,6 +16,7 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10;
 }
 
 #form-content{
@@ -24,6 +25,7 @@
     width: 300px;
     height: 375px;
     border-radius: 10px;
+    z-index: 11;
 }
 
 .new-server-form{

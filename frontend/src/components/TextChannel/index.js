@@ -6,6 +6,7 @@ import "./TextChannel.css";
 
 const TextChannel = ({ channelId }) => {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user )
   const textChannel = useSelector((state) =>
     state.textChannels ? state.textChannels[channelId] : {}
   );
@@ -40,7 +41,7 @@ const TextChannel = ({ channelId }) => {
 
         <ul>
           {messages.map((message, i) => (
-              <Message key={i} message={message} />
+              <Message key={i} message={message} sessionUser={sessionUser}/>
               ))}   
         </ul>
         </div>

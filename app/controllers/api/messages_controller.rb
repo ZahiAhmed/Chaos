@@ -29,9 +29,6 @@ class Api::MessagesController < ApplicationController
         # render :show, locals: {message: @message}
             render :show
         end
-        if (params[:body] == '')
-            @message.destroy
-        end
     end
 
     def destroy
