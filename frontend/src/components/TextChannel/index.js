@@ -17,7 +17,7 @@ const TextChannel = ({ channelId }) => {
 
   useEffect(() => {
     dispatch(fetchMessages(channelId));
-  }, [messages.length]);
+  }, [messages.length, channelId]);
 
   const handleMessage = (e) => {
     e.preventDefault();
