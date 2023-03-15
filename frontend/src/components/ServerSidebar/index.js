@@ -14,7 +14,6 @@ const ServerSidebar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
-  console.log(location);
   useEffect(() => {
     dispatch(reload());
   }, [sessionUser.servers.length]);
