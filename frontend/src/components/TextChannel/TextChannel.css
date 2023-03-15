@@ -15,6 +15,15 @@
     
 }
 
+#empty-channel-filler {
+    color: white;
+    font-size: 50px;
+    width: 105%;
+    margin-top: 90%;
+    margin-bottom: 10px;
+}
+
+
 #messages {
     overflow-y: scroll;
     overflow-x: hidden;

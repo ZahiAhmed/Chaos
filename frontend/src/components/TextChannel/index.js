@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMessages, createMessage } from "../../store/messages";
 import Message from "./Message";
@@ -6,6 +6,7 @@ import "./TextChannel.css";
 
 const TextChannel = ({ channelId }) => {
   const dispatch = useDispatch();
+  const messageUlRef = useRef(null);
   const sessionUser = useSelector((state) => state.session.user )
   const textChannel = useSelector((state) =>
     state.textChannels ? state.textChannels[channelId] : {}
@@ -17,7 +18,14 @@ const TextChannel = ({ channelId }) => {
 
   useEffect(() => {
     dispatch(fetchMessages(channelId));
+    scrollToBottom()
   }, [messages.length, channelId]);
+
+  const scrollToBottom = () => {
+    setTimeout(()=> {
+      messageUlRef.current.scrollTo(0, messageUlRef.current.scrollHeight);
+    }, 10);
+  }
 
   const handleMessage = (e) => {
     e.preventDefault();
@@ -37,8 +45,8 @@ const TextChannel = ({ channelId }) => {
         <h1># {textChannel?.topic}</h1>
         <br />
         
-        <div id="messages">
-
+        <div id="messages" ref={messageUlRef}>
+          <h2 id="empty-channel-filler"># Welcome to {textChannel?.topic}</h2>
         <ul>
           {messages.map((message, i) => (
               <Message key={i} message={message} sessionUser={sessionUser}/>
