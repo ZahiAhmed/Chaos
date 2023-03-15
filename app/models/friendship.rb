@@ -7,6 +7,7 @@
 #  friend_id  :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  pending    :boolean          default(TRUE)
 #
 class Friendship < ApplicationRecord
     validates :user_id, :friend_id, presence: true

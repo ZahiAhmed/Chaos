@@ -29,7 +29,7 @@ export const fetchFriends = (search = '') => async dispatch => {
     const response = await fetch(`/api/friendships`)
     const friendships = await response.json()
     const filteredFriendships = Object.keys(friendships).reduce((filtered, key) => {
-        if (friendships[key].username.includes(search)) {
+        if (friendships[key].username.toLowerCase().includes(search.toLowerCase())) {
             filtered[key] = friendships[key]
         }
         return filtered

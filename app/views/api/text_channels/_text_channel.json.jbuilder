@@ -1,0 +1,1 @@
+json.extract! text_channel, :id, :topic, :server_id, :server_owner_id

@@ -15,12 +15,10 @@ class Api::TextChannelsController < ApplicationController
         end
     end
 
-
-    
     def create
         @text_channel = TextChannel.new(
             server_id: params[:server_id],
-            server_owner_id: params[:server_owner_id],
+            server_owner_id: current_user.id,
             topic: params[:topic])
         if (@text_channel.server_owner_id == current_user.id && @text_channel.save)
             render :show
@@ -32,8 +30,6 @@ class Api::TextChannelsController < ApplicationController
     def update 
         @text_channel = TextChannel.find_by(id: params[:id])
         if (@text_channel&.update(
-            server_id: params[:server_id],
-            server_owner_id: params[:server_owner_id],
             topic: params[:topic]
         )) && (@text_channel.server_owner_id == current_user.id)
             render :show
