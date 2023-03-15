@@ -74,4 +74,9 @@ class User < ApplicationRecord
       primary_key: :id,
       foreign_key: :server_owner_id,
       class_name: :TextChannel
+
+    has_many :messages,
+      primary_key: :id,
+      foreign_key: :sender_id,
+      class_name: :Message
 end

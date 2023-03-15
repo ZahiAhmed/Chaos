@@ -13,6 +13,7 @@ import * as usersActions from './store/users'
 import * as serverActions from './store/servers'
 import * as memberActions from './store/members'
 import * as textChannelActions from './store/textChannels'
+import * as messageActions from './store/messages'
 import { ModalProvider } from './context/Modal';
 
 function Root() {
@@ -37,6 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.serverActions = serverActions
   window.memberActions = memberActions
   window.textChannelActions = textChannelActions
+  window.messageActions = messageActions
 }
 
 const renderApplication = () => {

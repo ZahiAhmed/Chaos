@@ -6,6 +6,7 @@ import users from "./users";
 import servers from "./servers";
 import members from "./members";
 import textChannels from "./textChannels";
+import messages from "./messages"
 const rootReducer = combineReducers({
   session,
   friendships,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   servers,
   members,
   textChannels,
+  messages
 });
 
 let enhancer;

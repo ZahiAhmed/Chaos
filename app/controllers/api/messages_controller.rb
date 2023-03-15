@@ -2,7 +2,7 @@ class Api::MessagesController < ApplicationController
     before_action :require_logged_in
     
     def index
-        @messages = Message.where(channel_id: params[:text_channel_id])
+        @messages = Message.where(channel_id: params[:channel_id])
         render :index
     end
     
@@ -13,6 +13,7 @@ class Api::MessagesController < ApplicationController
             # TextChannelsChannel.broadcast_to @message.text_channel,
             # **from_template('api/messages/show', message: @message)
             # render :show, locals: {message: @message}
+            render :show
         else
             render json: @message.errors.full_messages, status: 418
         end
@@ -26,6 +27,7 @@ class Api::MessagesController < ApplicationController
         # TextChannelsChannel.broadcast_to @message.text_channel,
         # **from_template('api/messages/show', message: @message)
         # render :show, locals: {message: @message}
+            render :show
         end
         if (params[:body] == '')
             @message.destroy
