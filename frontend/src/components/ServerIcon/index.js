@@ -7,7 +7,7 @@ const ServerIcon = ({ server, id, location }) => {
     <Link to={`/servers/${server?.id}`}>
       <button
         style={
-          location.includes(`servers/${server?.id}`) ? { backgroundColor: "red" , borderRadius: "20px" , color: "white"} : null
+          location.includes(`servers/${server?.id}/`) ? { backgroundColor: "red" , borderRadius: "20px" , color: "white"} : null
         }
         id={id}
         className="server-icon"

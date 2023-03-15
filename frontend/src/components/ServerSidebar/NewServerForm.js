@@ -38,6 +38,7 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
         owner_id: sessionUser.id,
       })
     ).then(async () => {
+        await dispatch(reload())
         setShowModal(false);
         await history.push(`/servers/${allServers[allServers.length-1].id + 1}`) //have to fix this line
     });

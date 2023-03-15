@@ -14,9 +14,10 @@ const ServerSidebar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
+  
   useEffect(() => {
     dispatch(reload());
-  }, [sessionUser.servers.length]);
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
