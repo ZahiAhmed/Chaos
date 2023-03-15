@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { deleteServer } from "../../store/servers";
 import { deleteMember } from "../../store/members";
 import { Modal } from "../../context/Modal";
@@ -13,6 +13,7 @@ import "./SettingsModal.css";
 
 const ServerChannels = ({ server, isOwner, members, textChannels }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const history = useHistory();
   const [hidden, setHidden] = useState(true);
   const [editModal, setEditModal] = useState(false);
@@ -60,7 +61,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
           {show}
         <div id="server-channels">
           {textChannels.map((textChannel, i) => (
-            <TextChannelLabel key={i} textChannel={textChannel} isOwner={isOwner}/>
+            <TextChannelLabel key={i} textChannel={textChannel} isOwner={isOwner} location={location.pathname}/>
           ))}
         </div>
       </aside>

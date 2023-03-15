@@ -7,7 +7,7 @@ import { Redirect, useParams, useHistory } from "react-router-dom";
 
 import "./TextChannelLabel.css";
 
-const TextChannelLabel = ({ textChannel, isOwner }) => {
+const TextChannelLabel = ({ textChannel, isOwner, location }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { serverId } = useParams();
@@ -74,7 +74,11 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
   return (
     <>
     <Link to={`/servers/${textChannel.serverId}/${textChannel.id}`}>
-      <li>
+      <li
+      style={
+        location.includes(`/servers/${textChannel.serverId}/${textChannel.id}`) || editModal ? { backgroundColor: "rgb(71, 78, 85)", color: "white"} : null
+      }
+      > 
         {" "}
         <span className="channel-name"># {textChannel.topic}</span>
         {buttons}
@@ -93,6 +97,7 @@ const TextChannelLabel = ({ textChannel, isOwner }) => {
     <div className="edit-server-form">
       <h1 id="mainheader--editform"> Edit Channel </h1>
       <br />
+      <h1> {textChannel.topic} </h1>
       <form id="edit-submit-server" onSubmit={handleEdit}>
         <label>
           CHANNEL NAME

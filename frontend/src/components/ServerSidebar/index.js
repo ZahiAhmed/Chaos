@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import NewServerForm from "./NewServerForm";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { reload } from "../../store/session";
 import "./ServerSidebar.css";
 
@@ -12,8 +12,9 @@ const ServerSidebar = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
-
+  console.log(location);
   useEffect(() => {
     dispatch(reload());
   }, [sessionUser.servers.length]);
@@ -27,6 +28,11 @@ const ServerSidebar = () => {
     <>
       <aside className="servers">
         <button
+          style={
+            location.pathname.includes(sessionUser.username)
+              ? { backgroundColor: "red"  , borderRadius: "20px"}
+              : null
+          }
           id="home-button"
           className="server-icon"
           onClick={handleClick}
@@ -40,9 +46,11 @@ const ServerSidebar = () => {
         </a>
         <hr id="line"></hr>
         {sessionUser?.servers?.map((server, i) => (
-          <ServerIcon key={i} server={server} />
+          <ServerIcon key={i} server={server} location={location.pathname} />
         ))}
         <button
+          style={showModal ? {backgroundColor: 'green',
+        borderRadius: '20px'} : null}
           id="addserver"
           className="server-icon"
           onClick={() => setShowModal(true)}
@@ -50,7 +58,10 @@ const ServerSidebar = () => {
           +
         </button>
         <Link to="/explore">
-          <button id="redirect-explore" className="server-icon">
+          <button 
+          style={location.pathname.includes('explore') ? {backgroundColor: 'green',
+          borderRadius: '20px'} : null}
+          id="redirect-explore" className="server-icon">
             {" "}
           </button>
         </Link>
@@ -62,7 +73,10 @@ const ServerSidebar = () => {
           modalContent={"form-content"}
           onClose={() => setShowModal(false)}
         >
-          <NewServerForm sessionUser={sessionUser} setShowModal={setShowModal} />
+          <NewServerForm
+            sessionUser={sessionUser}
+            setShowModal={setShowModal}
+          />
         </Modal>
       )}
     </>

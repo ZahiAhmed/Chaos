@@ -4,7 +4,7 @@
 
 #server-channels a {
     text-decoration: none;
-    color: white;
+    color: rgba(245, 245, 245, 0.685);
 }
 
 #server-channels li:hover {

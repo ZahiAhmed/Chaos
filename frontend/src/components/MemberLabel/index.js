@@ -26,7 +26,8 @@ const MemberLabel = ({ member, isOwner }) => {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)} className="member-label">
+      <div onClick={() => setShowModal(true)} className="member-label"
+      >
         <UserIcon className={"member-icon"} /> {member.username}
         {kickButton}
       </div>
