@@ -23,7 +23,7 @@ const ServerCard = ({ sessionUser, server }) => {
     }
 
     dispatch(reload()).then(() => {
-      history.push(`/servers/${server.id}`);
+      history.push(`/servers/${server.id}/${server.textChannels[0].id}`);
     });
   };
   return (

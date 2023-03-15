@@ -22,9 +22,12 @@ export const fetchServers =
   async (dispatch) => {
     const response = await fetch("/api/servers");
     const servers = await response.json();
-    const filteredServers = servers.filter((server) =>
-      server.serverName.toLowerCase().includes(search.toLocaleLowerCase())
-    );
+    const filteredServers = Object.keys(servers).reduce((filtered, key) => {
+        if (servers[key].serverName.toLowerCase().includes(search.toLowerCase())) {
+            filtered[key] = servers[key]
+        }
+        return filtered
+    }, {})
     dispatch(receiveServers(filteredServers));
   };
 
@@ -35,7 +38,7 @@ export const fetchServer = (serverId) => async (dispatch) => {
 };
 
 export const createServer = (server) => async (dispatch) => {
-  const response = await fetch("api/servers", {
+  const response = await fetch("/api/servers", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -1,28 +1,48 @@
-import { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { createServer } from "../../store/servers";
+import { useState, useEffect } from "react";
+import { useHistory, useParams, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { createServer, fetchServers } from "../../store/servers";
+import { reload } from "../../store/session";
 import "./NewServerForm.css";
 
-const NewServerForm = ({ sessionUser }) => {
+const NewServerForm = ({ sessionUser, setShowModal }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const allServers = useSelector(state => state.servers ? Object.values(state.servers) : [])
   const [serverName, setServerName] = useState(
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
+  const [hidden, setHidden] = useState(true)
+
+  useEffect (() => {
+    if(!serverName || serverName.split(' ').length === serverName.length + 1){
+      setHidden(true)
+    }else{
+      setHidden(false)
+    }
+  },[serverName])
+
+  useEffect (()=>{
+    dispatch(fetchServers())
+  },[])
+
   const handleForm = async (e) => {
-    history.push('/')
+    e.preventDefault();
+    e.stopPropagation();
+    history.push("/");
     await dispatch(
       createServer({
         server_name: serverName,
         description: description,
-        owner_id: sessionUser.id
+        owner_id: sessionUser.id,
       })
-    ).then (async ()=>{
-      await history.push(`/servers/${sessionUser.servers[0].id + 1}`)
-    })
-  }
+    ).then(async () => {
+        await dispatch(reload())
+        setShowModal(false);
+        await history.push(`/servers/${allServers[allServers.length-1].id + 1}`) //have to fix this line
+    });
+  };
 
   return (
     <div className="new-server-form">
@@ -36,6 +56,7 @@ const NewServerForm = ({ sessionUser }) => {
       <form id="submit-server" onSubmit={handleForm}>
         <label>
           SERVER NAME
+          { hidden ? <span className="errors"> - Must have at least one character </span> : null}
           <br />
           <input
             type="text"
@@ -56,7 +77,9 @@ const NewServerForm = ({ sessionUser }) => {
         </label>
         <br />
         <br />
+        {hidden ? <button style={{opacity: "0.5"}} disabled >Create</button> : 
         <button type="submit">Create</button>
+        }
       </form>
     </div>
   );
