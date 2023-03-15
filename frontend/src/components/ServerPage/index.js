@@ -10,6 +10,7 @@ import UserInfo from "../UserInfo";
 import "./ServerPage.css";
 import ServerChannels from "../ServerChannels";
 import { reload } from "../../store/session";
+import TextChannel from "../TextChannel";
 
 const ServerPage = () => {
   const { serverId, channelId } = useParams();
@@ -33,7 +34,6 @@ const ServerPage = () => {
 
   if(!channelId && textChannels[0]?.id) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
   if(channelId && textChannels[0]?.id) {
-    // debugger
     let exists = false
     textChannels.filter(textChannel => {
       if(channelId === textChannel.id.toString()) exists = true;
@@ -52,6 +52,7 @@ const ServerPage = () => {
       <ServerChannels server={server} isOwner={isOwner} members={members} textChannels={textChannels} />
       <ServerSidebar servers={sessionUser.servers} />
       <MembersSidebar isOwner={isOwner} members={Object.values(members)} />
+      <TextChannel channelId={channelId?.toString()}/>
       <UserInfo />
     </div>
   );

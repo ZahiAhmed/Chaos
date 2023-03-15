@@ -2,7 +2,7 @@ class Api::MessagesController < ApplicationController
     before_action :require_logged_in
     
     def index
-        @messages = Message.where(channel_id: params[:channel_id])
+        @messages = Message.where(channel_id: params[:text_channel_id])
         render :index
     end
     
