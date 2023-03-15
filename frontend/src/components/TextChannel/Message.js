@@ -4,7 +4,6 @@ import "./Message.css";
 
 const Message = ({message}) => {
   const dispatch = useDispatch();
-  console.log(message)
   return (
     <li className="message">
       <p>

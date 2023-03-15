@@ -1,5 +1,5 @@
 #server-channels {
-    z-index: -1px;
+    /* z-index: -1px; */
 }
 
 #server-channels a {
@@ -17,6 +17,9 @@
     list-style-type: none;
     text-indent: 5%;
     margin-top: 10px;
+    border-radius: 5px;
+    width: 97%;
+    margin-left: 1%;
 }
 
 .channel-buttons{

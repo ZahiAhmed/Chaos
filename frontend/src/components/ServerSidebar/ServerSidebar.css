@@ -8,6 +8,7 @@
     width: 72px;
     background-color: rgb(30, 33, 37);
     align-items: center;
+    z-index: 3;
 }
 
 .servers::-webkit-scrollbar {

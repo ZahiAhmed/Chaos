@@ -27,34 +27,40 @@ const TextChannel = ({ channelId }) => {
         body,
       })
     );
+    setBody("");
   };
 
   return (
-    <section className="channel-box">
-      <h1># {textChannel?.topic}</h1>
-      <br/>
+    <>
+      <section className="channel-box">
+        <h1># {textChannel?.topic}</h1>
+        <br />
+        
+        <div id="messages">
 
-      <ul>
-        {messages.map((message, i) => 
-           <Message key={i} message={message}/>
-        )}
-      </ul>
-      
-      <br/>
+        <ul>
+          {messages.map((message, i) => (
+              <Message key={i} message={message} />
+              ))}   
+        </ul>
+        </div>
+
+        <br />
       <form onSubmit={handleMessage}>
-        <textarea
+        <textarea id="message-input"
           placeholder={`Message #${textChannel?.topic}`}
           rows={body.split("\n").length}
           value={body}
           onChange={(e) => setBody(e.target.value)}
           onKeyDown={(e) => {
-            if (e.code === "Enter" && !e.shiftKey) {
-              handleMessage(e);
-            }
-          }}
-          ></textarea>
+              if (e.code === "Enter" && !e.shiftKey) {
+                  handleMessage(e);
+                }
+            }}
+            ></textarea>
       </form>
-    </section>
+      </section>
+    </>
   );
 };
 

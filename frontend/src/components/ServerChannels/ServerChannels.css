@@ -1,12 +1,13 @@
 .server-channels {
     height: 100%;
-    left: 72px;
+    left: 72px; 
     top: 0;
     overflow: auto;
     position: fixed;
     width: 240px;
     background-color: rgb(48, 53, 58);
     color:rgba(245, 245, 245, 0.995);
+    z-index: 2;
 }
 
 .server-header {
