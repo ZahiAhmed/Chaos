@@ -33,7 +33,10 @@
 
 #github {
     background-image: url('./github-purple.png');
-    background-size: contain;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 5px solid purple;
 }
 
 #linkedin {
