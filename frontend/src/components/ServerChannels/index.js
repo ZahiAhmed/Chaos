@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { deleteServer } from "../../store/servers";
 import { deleteMember } from "../../store/members";
+import {reload} from "../../store/session"
 import { Modal } from "../../context/Modal";
 import EditServer from "../EditServer";
 import CreateChannel from "../CreateChannel"
@@ -26,6 +27,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
     e.preventDefault();
     if (isOwner) dispatch(deleteServer(server.id));
     if (!isOwner) dispatch(deleteMember(members[sessionUser.id]));
+    dispatch(reload())
     history.push(`/${sessionUser.username}`);
   };
   const dropDown = isOwner ? (
