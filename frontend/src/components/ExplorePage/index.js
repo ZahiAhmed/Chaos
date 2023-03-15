@@ -22,8 +22,8 @@ const ExplorePage = () => {
 
   return (
     <div className="explore-page">
-      <ExploreSidebar/>
       <ServerSidebar servers={sessionUser.servers} />
+      <ExploreSidebar/>
       <UserInfo />
       <div className="explore-content">
         <div className="wallpaper-div">

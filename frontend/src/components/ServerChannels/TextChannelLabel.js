@@ -14,7 +14,6 @@ const TextChannelLabel = ({ textChannel, isOwner, location }) => {
   const [channelTopic, setChannelTopic] = useState(textChannel.topic);
   const [editModal, setEditModal] = useState(false);
   const [hidden, setHidden] = useState(true)
-  const currentChannel = true;
 
   useEffect (() => {
     if(!channelTopic || channelTopic.split(' ').length === channelTopic.length + 1){
@@ -28,9 +27,7 @@ const TextChannelLabel = ({ textChannel, isOwner, location }) => {
     e.preventDefault();
     e.stopPropagation();
     await dispatch(deleteTextChannel(textChannel.id)).then(() => {
-      if (currentChannel) {
         history.push(`/servers/${serverId}`); 
-      }
     });
   };
 
@@ -76,7 +73,7 @@ const TextChannelLabel = ({ textChannel, isOwner, location }) => {
     <Link to={`/servers/${textChannel.serverId}/${textChannel.id}`}>
       <li
       style={
-        location.includes(`/servers/${textChannel.serverId}/${textChannel.id}`) || editModal ? { backgroundColor: "rgb(71, 78, 85)", color: "white"} : null
+        location === `/servers/${textChannel.serverId}/${textChannel.id}` || editModal ? { backgroundColor: "rgb(71, 78, 85)", color: "white"} : null
       }
       > 
         {" "}

@@ -1,6 +1,6 @@
 .server-channels {
     height: 100%;
-    left: 72px;
+    left: 72px; 
     top: 0;
     overflow: auto;
     position: fixed;
@@ -37,7 +37,6 @@
     width: 90%;
     margin-top: 10px;
     border-radius: 10px;
-    z-index: 1px;
 }
 
 .dropdown button {
