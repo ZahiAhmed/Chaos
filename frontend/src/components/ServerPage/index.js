@@ -31,8 +31,8 @@ const ServerPage = () => {
   }, [serverId, channelId]);
 
 
-  if(!channelId && textChannels[0]) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
-  if(channelId && textChannels[0]) {
+  if(!channelId && textChannels[0]?.id) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
+  if(channelId && textChannels[0]?.id) {
     // debugger
     let exists = false
     textChannels.filter(textChannel => {
