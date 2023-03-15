@@ -27,7 +27,7 @@ const ServerPage = () => {
     dispatch(fetchServer(serverId));
     dispatch(fetchMembers(serverId));
     dispatch(fetchTextChannels(serverId));
-    dispatch(reload());
+    // dispatch(reload());
   }, [serverId, channelId]);
 
 
