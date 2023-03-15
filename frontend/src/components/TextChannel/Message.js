@@ -1,9 +1,10 @@
-import { useDispatch } from "react";
+import { useDispatch } from "react-redux";
 import { updateMessage, deleteMessage } from "../../store/messages";
 import "./Message.css";
 
 const Message = ({message}) => {
   const dispatch = useDispatch();
+  console.log(message)
   return (
     <li className="message">
       <p>

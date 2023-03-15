@@ -28,16 +28,18 @@ const TextChannel = ({ channelId }) => {
       })
     );
   };
+
   return (
     <section className="channel-box">
       <h1># {textChannel?.topic}</h1>
       <br/>
+
       <ul>
-        {messages.map((message,i) => {
-            console.log(message);
-            <Message key={i} message={message}/>
-        })}
+        {messages.map((message, i) => 
+           <Message key={i} message={message}/>
+        )}
       </ul>
+      
       <br/>
       <form onSubmit={handleMessage}>
         <textarea
