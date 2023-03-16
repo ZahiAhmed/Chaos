@@ -58,7 +58,7 @@ const TextChannel = ({ channelId }) => {
       <form onSubmit={handleMessage}>
         <textarea id="message-input"
           placeholder={`Message #${textChannel?.topic}`}
-          rows={body.split("\n").length}
+          rows="1"
           value={body}
           onChange={(e) => setBody(e.target.value)}
           onKeyDown={(e) => {

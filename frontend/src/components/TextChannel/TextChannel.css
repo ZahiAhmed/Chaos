@@ -62,6 +62,7 @@
     background-color: rgb(71, 78, 85);
     color: white;
     max-height: 100%;
+    overflow: hidden;
 }
 
 #message-input:focus {
