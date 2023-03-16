@@ -125,6 +125,11 @@ const Message = ({ message, sessionUser }) => {
             type="text"
             value={body}
             onChange={(e) => setBody(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.code === "Enter" && !e.shiftKey) {
+                handleEdit(e);
+              }
+            }}
           ></textarea>
         <br />
         <br />
