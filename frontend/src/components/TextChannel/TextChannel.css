@@ -19,7 +19,7 @@
     color: white;
     font-size: 50px;
     width: 105%;
-    margin-top: 90%;
+    margin-top: 60%;
     margin-bottom: 10px;
 }
 
@@ -60,7 +60,8 @@
     resize: none;
     border-radius: 10px;
     background-color: rgb(71, 78, 85);
-    color: white
+    color: white;
+    max-height: 100%;
 }
 
 #message-input:focus {

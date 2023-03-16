@@ -3,4 +3,5 @@
     height: 100%;
     width: 100%;
     background-color: rgb(66, 71, 78);
+    background-repeat: repeat-y;
 }
