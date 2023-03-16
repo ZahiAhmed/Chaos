@@ -9,7 +9,6 @@ import MembersSidebar from "../MembersSidebar";
 import UserInfo from "../UserInfo";
 import "./ServerPage.css";
 import ServerChannels from "../ServerChannels";
-import { reload } from "../../store/session";
 import TextChannel from "../TextChannel";
 
 const ServerPage = () => {
@@ -30,8 +29,7 @@ const ServerPage = () => {
     dispatch(fetchServer(serverId));
     dispatch(fetchMembers(serverId));
     dispatch(fetchTextChannels(serverId));
-    // dispatch(reload());
-  }, [serverId, channelId]);
+  }, [serverId]);
 
 
   if(!channelId && textChannels[0]?.id) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
