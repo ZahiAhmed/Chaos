@@ -8,12 +8,12 @@ const storeCSRFToken = response => {
   if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 }
 
-const storeCurrentUser = user => {
+ const storeCurrentUser = user => {
   if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
   else sessionStorage.removeItem("currentUser");
 }
 
-const setCurrentUser = (user) => {
+export const setCurrentUser = (user) => {
   return {
     type: SET_CURRENT_USER,
     payload: user

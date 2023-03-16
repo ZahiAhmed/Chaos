@@ -53,6 +53,7 @@ const Message = ({ message, sessionUser }) => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              setBody(message.body)
               setEditModal(true);
             }}
           >
@@ -83,7 +84,6 @@ const Message = ({ message, sessionUser }) => {
           modalBackground={"settings-background"}
           modalContent={"edit-server-content"}
           onClose={() => {
-            setBody(message.body) 
             setEditModal(false)
         }}
           >
