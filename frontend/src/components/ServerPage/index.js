@@ -24,6 +24,8 @@ const ServerPage = () => {
     state.textChannels ? Object.values(state.textChannels) : []
   );
 
+  const sortedMembers = Object.values(members).sort((a, b) => new Date(a.joinedAt) - new Date(b.joinedAt));
+
   useEffect(() => {
     dispatch(fetchServer(serverId));
     dispatch(fetchMembers(serverId));
@@ -49,7 +51,7 @@ const ServerPage = () => {
 
   return (
     <div id="server-page">
-      <MembersSidebar isOwner={isOwner} members={Object.values(members)} />
+      <MembersSidebar isOwner={isOwner} members={sortedMembers} />
       <ServerSidebar servers={sessionUser.servers} />
       <ServerChannels server={server} isOwner={isOwner} members={members} textChannels={textChannels} />
       <UserInfo />

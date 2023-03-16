@@ -32,6 +32,33 @@ const Message = ({ message, sessionUser }) => {
     }
   },[body])
 
+  const formatTime = (dateString) => {
+    const date = new Date(dateString);
+  
+    const now = new Date();
+    const startOfDay = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    ).getTime();
+  
+    const startOfYesterday = startOfDay - (1000 * 60 * 60 * 24);
+  
+    let formattedTime = date.toLocaleTimeString([], {
+      timeStyle: 'short'
+    });
+  
+    if (date.getTime() < startOfYesterday) {
+      formattedTime = date.toDateString();
+    } else if (date.getTime() < startOfDay) {
+      formattedTime = `Yesterday at ${formattedTime}`;
+    }
+  
+    return formattedTime;
+  }
+
+  const time = formatTime(message.createdAt)
+
 
   const buttons =
     sessionUser.id === message.senderId ? (
@@ -67,7 +94,7 @@ const Message = ({ message, sessionUser }) => {
     <>
     <li className="message" style={ editModal ? {backgroundColor: "rgba(48, 53, 58, 0.198)"} : null } >
       <p id="message-sender">
-        {message.sender} <span id="message-timestamp">{message.createdAt}</span>
+        {message.sender} <span id="message-timestamp">{time}</span>
         <span id="message-buttons">{buttons}</span>
       </p>
       <p id="message-body">

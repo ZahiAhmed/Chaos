@@ -33,7 +33,6 @@ const TextChannel = ({ channelId }) => {
             case "RECEIVE_MESSAGE":
               dispatch(receiveMessage(message));
               console.log("frontend hit")
-              // dispatch(setCurrentUser(sessionUser));
               break;
             case "DESTROY_MESSAGE":
               dispatch(removeMessage(id));
@@ -45,7 +44,6 @@ const TextChannel = ({ channelId }) => {
         },
       }
     );
-    debugger
     return () => subscription?.unsubscribe();
   }, [messages.length, channelId]);
 
