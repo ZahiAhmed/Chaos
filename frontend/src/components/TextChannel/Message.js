@@ -5,7 +5,7 @@ import { Modal } from "../../context/Modal";
 
 import "./Message.css";
 
-const Message = ({ message, sessionUser, setMessageCounter, messageCounter }) => {
+const Message = ({ message, sessionUser }) => {
   const dispatch = useDispatch();
   const [hidden, setHidden] = useState(true);
   const [editModal, setEditModal] = useState(false);
@@ -14,9 +14,7 @@ const Message = ({ message, sessionUser, setMessageCounter, messageCounter }) =>
   const handleDelete = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    await dispatch(deleteMessage(message.id)).then(() =>
-      setMessageCounter(messageCounter+1)
-    )
+    await dispatch(deleteMessage(message.id))
   };
 
   const handleEdit = (e) => {

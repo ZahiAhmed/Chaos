@@ -9,12 +9,9 @@ class Api::MessagesController < ApplicationController
     def create
         @message = Message.new(channel_id: params[:channel_id], sender_id: current_user.id, body: params[:body])
         if @message.save
-            # TextChannelsChannel.broadcast_to (@message.text_channel, @message)
-            # TextChannelsChannel.broadcast_to @message.text_channel,
-            # **from_template('api/messages/show', message: @message)
             TextsChannel.broadcast_to @message.channel,
             type: 'RECEIVE_MESSAGE',
-            **from_template('api/messages/show', message: @message)
+            **from_template('/api/messages/show', message: @message)
             render :show, locals: {message: @message}
                 # render json: nil, status: :ok
         else

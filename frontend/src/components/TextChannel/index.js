@@ -14,7 +14,6 @@ const TextChannel = ({ channelId }) => {
   const dispatch = useDispatch();
   const messageUlRef = useRef(null);
   const sessionUser = useSelector((state) => state.session.user);
-  const [messageCounter, setMessageCounter] = useState(0);
   const textChannel = useSelector((state) =>
     state.textChannels ? state.textChannels[channelId] : {}
   );
@@ -25,18 +24,36 @@ const TextChannel = ({ channelId }) => {
 
   useEffect(() => {
     dispatch(fetchMessages(channelId));
-    scrollToBottom();
     const subscription = consumer.subscriptions.create(
       { channel: "TextsChannel", id: channelId },
       {
-        received: ({ type, message, id }) => {
+        received: ({
+          type,
+          id,
+          senderId,
+          channelId,
+          body,
+          createdAt,
+          updatedAt,
+          sender
+        }) => {
+          const message = {
+            id,
+            senderId,
+            channelId,
+            body,
+            createdAt,
+            updatedAt,
+            sender
+          };
           switch (type) {
             case "RECEIVE_MESSAGE":
               dispatch(receiveMessage(message));
-              console.log("frontend hit");
+              scrollToBottom();
               break;
             case "DESTROY_MESSAGE":
-              dispatch(removeMessage(id));
+              dispatch(removeMessage(message.id));
+              scrollToBottom();
               break;
             default:
               console.log("Unhandled broadcast: ", type);
@@ -46,7 +63,7 @@ const TextChannel = ({ channelId }) => {
       }
     );
     return () => subscription?.unsubscribe();
-  }, [messageCounter, channelId]);
+  }, [channelId]);
 
   const scrollToBottom = () => {
     setTimeout(() => {
@@ -62,8 +79,10 @@ const TextChannel = ({ channelId }) => {
         channelId,
         body,
       })
-    ).then(() => setMessageCounter(messageCounter + 1));
-    setBody("");
+    ).then(() => {
+      setBody("");
+      scrollToBottom();
+    });
   };
 
   return (
@@ -76,13 +95,7 @@ const TextChannel = ({ channelId }) => {
           <h2 id="empty-channel-filler"># Welcome to {textChannel?.topic}</h2>
           <ul>
             {messages.map((message, i) => (
-              <Message
-                key={i}
-                message={message}
-                sessionUser={sessionUser}
-                setMessageCounter={setMessageCounter}
-                messageCounter={messageCounter}
-              />
+              <Message key={i} message={message} sessionUser={sessionUser} />
             ))}
           </ul>
         </div>
