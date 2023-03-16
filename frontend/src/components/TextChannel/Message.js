@@ -34,7 +34,6 @@ const Message = ({ message, sessionUser }) => {
 
   const formatTime = (dateString) => {
     const date = new Date(dateString);
-  
     const now = new Date();
     const startOfDay = new Date(
       now.getFullYear(),
@@ -52,6 +51,8 @@ const Message = ({ message, sessionUser }) => {
       formattedTime = date.toDateString();
     } else if (date.getTime() < startOfDay) {
       formattedTime = `Yesterday at ${formattedTime}`;
+    } else {
+      formattedTime = `Today at ${formattedTime}`
     }
   
     return formattedTime;
@@ -94,7 +95,7 @@ const Message = ({ message, sessionUser }) => {
     <>
     <li className="message" style={ editModal ? {backgroundColor: "rgba(48, 53, 58, 0.198)"} : null } >
       <p id="message-sender">
-        {message.sender} <span id="message-timestamp">{time}</span>
+        {message.sender} <span id="message-timestamp">{time ? time : null}</span>
         <span id="message-buttons">{buttons}</span>
       </p>
       <p id="message-body">
