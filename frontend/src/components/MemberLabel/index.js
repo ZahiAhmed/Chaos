@@ -12,6 +12,7 @@ const MemberLabel = ({ member, isOwner }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const handleKick = (e) => {
+
     e.preventDefault();
     e.stopPropagation();
     dispatch(deleteMember(member));
@@ -28,7 +29,7 @@ const MemberLabel = ({ member, isOwner }) => {
     <>
       <div onClick={() => setShowModal(true)} className="member-label"
       >
-        <UserIcon className={"member-icon"} /> {member.username}
+        <UserIcon className={"member-icon"} /> {member.username} {member.owner ? "👑" : null}
         {kickButton}
       </div>
       {showModal && (
