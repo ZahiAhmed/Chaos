@@ -211,7 +211,7 @@ ApplicationRecord.transaction do
     Member.create!(
       member_id: 2,
       server_id: 2,
-      owner: false
+      owner: true
     )
 
     Member.create!(
@@ -229,7 +229,7 @@ ApplicationRecord.transaction do
     Member.create!(
       member_id: 3,
       server_id: 3,
-      owner: false
+      owner: true
     )
 
     Member.create!(
@@ -241,7 +241,7 @@ ApplicationRecord.transaction do
     Member.create!(
       member_id: 4,
       server_id: 4,
-      owner: false
+      owner: true
     )
 
     Member.create!(
@@ -253,7 +253,7 @@ ApplicationRecord.transaction do
     Member.create!(
       member_id: 5,
       server_id: 5,
-      owner: false
+      owner: true
     )
 
     Member.create!(
@@ -265,13 +265,13 @@ ApplicationRecord.transaction do
     Member.create!(
       member_id: 6,
       server_id: 6,
-      owner: false
+      owner: true
     )
 
     Member.create!(
       member_id: 7,
       server_id: 7,
-      owner: false
+      owner: true
     )
 
     Member.create!(
