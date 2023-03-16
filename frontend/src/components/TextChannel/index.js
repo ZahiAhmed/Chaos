@@ -14,6 +14,7 @@ const TextChannel = ({ channelId }) => {
   const dispatch = useDispatch();
   const messageUlRef = useRef(null);
   const sessionUser = useSelector((state) => state.session.user);
+  const [messageCounter, setMessageCounter] = useState(0);
   const textChannel = useSelector((state) =>
     state.textChannels ? state.textChannels[channelId] : {}
   );
@@ -32,7 +33,7 @@ const TextChannel = ({ channelId }) => {
           switch (type) {
             case "RECEIVE_MESSAGE":
               dispatch(receiveMessage(message));
-              console.log("frontend hit")
+              console.log("frontend hit");
               break;
             case "DESTROY_MESSAGE":
               dispatch(removeMessage(id));
@@ -45,7 +46,7 @@ const TextChannel = ({ channelId }) => {
       }
     );
     return () => subscription?.unsubscribe();
-  }, [messages.length, channelId]);
+  }, [messageCounter, channelId]);
 
   const scrollToBottom = () => {
     setTimeout(() => {
@@ -53,15 +54,15 @@ const TextChannel = ({ channelId }) => {
     }, 500);
   };
 
-  const handleMessage = (e) => {
+  const handleMessage = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(
+    await dispatch(
       createMessage({
         channelId,
         body,
       })
-    );
+    ).then(() => setMessageCounter(messageCounter + 1));
     setBody("");
   };
 
@@ -75,7 +76,13 @@ const TextChannel = ({ channelId }) => {
           <h2 id="empty-channel-filler"># Welcome to {textChannel?.topic}</h2>
           <ul>
             {messages.map((message, i) => (
-              <Message key={i} message={message} sessionUser={sessionUser} />
+              <Message
+                key={i}
+                message={message}
+                sessionUser={sessionUser}
+                setMessageCounter={setMessageCounter}
+                messageCounter={messageCounter}
+              />
             ))}
           </ul>
         </div>
