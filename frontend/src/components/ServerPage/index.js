@@ -9,7 +9,6 @@ import MembersSidebar from "../MembersSidebar";
 import UserInfo from "../UserInfo";
 import "./ServerPage.css";
 import ServerChannels from "../ServerChannels";
-import { reload } from "../../store/session";
 import TextChannel from "../TextChannel";
 
 const ServerPage = () => {
@@ -24,12 +23,13 @@ const ServerPage = () => {
     state.textChannels ? Object.values(state.textChannels) : []
   );
 
+  const sortedMembers = Object.values(members).sort((a, b) => new Date(a.joinedAt) - new Date(b.joinedAt));
+
   useEffect(() => {
     dispatch(fetchServer(serverId));
     dispatch(fetchMembers(serverId));
     dispatch(fetchTextChannels(serverId));
-    // dispatch(reload());
-  }, [serverId, channelId]);
+  }, [serverId]);
 
 
   if(!channelId && textChannels[0]?.id) return <Redirect to={`/servers/${serverId}/${textChannels[0].id}`} />
@@ -49,7 +49,7 @@ const ServerPage = () => {
 
   return (
     <div id="server-page">
-      <MembersSidebar isOwner={isOwner} members={Object.values(members)} />
+      <MembersSidebar isOwner={isOwner} members={sortedMembers} />
       <ServerSidebar servers={sessionUser.servers} />
       <ServerChannels server={server} isOwner={isOwner} members={members} textChannels={textChannels} />
       <UserInfo />

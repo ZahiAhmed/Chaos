@@ -31,8 +31,10 @@ export const createMessage = (message) => async dispatch => {
     },
     body: JSON.stringify(message)
   })
+  if(response.ok) {
   const messageContent = await response.json();
   dispatch(receiveMessage(messageContent))
+  }
 }
 
   export const updateMessage = (message) => async (dispatch) => {
@@ -43,8 +45,10 @@ export const createMessage = (message) => async dispatch => {
       },
       body: JSON.stringify(message),
     });
-    const messageContent = await response.json();
-    dispatch(receiveMessage(messageContent));
+    if(response.ok) {
+      const messageContent = await response.json();
+      dispatch(receiveMessage(messageContent));
+    }
   };
 
   export const deleteMessage = messageId => async dispatch => {

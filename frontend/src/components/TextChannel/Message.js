@@ -11,10 +11,10 @@ const Message = ({ message, sessionUser }) => {
   const [editModal, setEditModal] = useState(false);
   const [body, setBody] = useState(message.body);
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(deleteMessage(message.id));
+    await dispatch(deleteMessage(message.id))
   };
 
   const handleEdit = (e) => {
@@ -31,6 +31,34 @@ const Message = ({ message, sessionUser }) => {
         setHidden(false)
     }
   },[body])
+
+  const formatTime = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const startOfDay = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    ).getTime();
+  
+    const startOfYesterday = startOfDay - (1000 * 60 * 60 * 24);
+  
+    let formattedTime = date.toLocaleTimeString([], {
+      timeStyle: 'short'
+    });
+  
+    if (date.getTime() < startOfYesterday) {
+      formattedTime = date.toDateString();
+    } else if (date.getTime() < startOfDay) {
+      formattedTime = `Yesterday at ${formattedTime}`;
+    } else {
+      formattedTime = `Today at ${formattedTime}`
+    }
+  
+    return formattedTime;
+  }
+
+  const time = formatTime(message.createdAt)
 
 
   const buttons =
@@ -53,6 +81,7 @@ const Message = ({ message, sessionUser }) => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              setBody(message.body)
               setEditModal(true);
             }}
           >
@@ -66,7 +95,7 @@ const Message = ({ message, sessionUser }) => {
     <>
     <li className="message" style={ editModal ? {backgroundColor: "rgba(48, 53, 58, 0.198)"} : null } >
       <p id="message-sender">
-        {message.sender} <span id="message-timestamp">{message.createdAt}</span>
+        {message.sender} <span id="message-timestamp">{time ? time : null}</span>
         <span id="message-buttons">{buttons}</span>
       </p>
       <p id="message-body">
@@ -83,7 +112,6 @@ const Message = ({ message, sessionUser }) => {
           modalBackground={"settings-background"}
           modalContent={"edit-server-content"}
           onClose={() => {
-            setBody(message.body) 
             setEditModal(false)
         }}
           >

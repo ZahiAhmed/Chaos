@@ -9,11 +9,11 @@ class Api::MessagesController < ApplicationController
     def create
         @message = Message.new(channel_id: params[:channel_id], sender_id: current_user.id, body: params[:body])
         if @message.save
-            # TextChannelsChannel.broadcast_to (@message.text_channel, @message)
-            # TextChannelsChannel.broadcast_to @message.text_channel,
-            # **from_template('api/messages/show', message: @message)
-            # render :show, locals: {message: @message}
-            render :show
+            TextsChannel.broadcast_to @message.channel,
+            type: 'RECEIVE_MESSAGE',
+            **from_template('/api/messages/show', message: @message)
+            render :show, locals: {message: @message}
+                # render json: nil, status: :ok
         else
             render json: @message.errors.full_messages, status: 418
         end
@@ -24,19 +24,21 @@ class Api::MessagesController < ApplicationController
         if (@message&.update(
             body: params[:body]
         )) && (@message.sender_id == current_user.id)
-        # TextChannelsChannel.broadcast_to @message.text_channel,
-        # **from_template('api/messages/show', message: @message)
-        # render :show, locals: {message: @message}
-            render :show
+        TextsChannel.broadcast_to @message.channel,
+        type: 'RECEIVE_MESSAGE',
+        **from_template('api/messages/show', message: @message)
+        
+        render :show, locals: {message: @message}
+            # render json: nil, status: :ok
         end
     end
 
     def destroy
         @message = Message.find_by(id: params[:id])
         if current_user.id == @message.sender_id
-            # TextChannelsChannel.broadcast_to @message.room,
-            # type: 'DESTROY_MESSAGE',
-            # id: @message.id
+            TextsChannel.broadcast_to @message.channel,
+            type: 'DESTROY_MESSAGE',
+            id: @message.id
             @message.destroy
         end 
     end
