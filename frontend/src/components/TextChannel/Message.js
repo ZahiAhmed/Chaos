@@ -21,6 +21,7 @@ const Message = ({ message, sessionUser }) => {
     e.preventDefault();
     e.stopPropagation();
     dispatch(updateMessage({id: message.id, body}))
+    setEditModal(false)
   }
 
   useEffect(()=> {
