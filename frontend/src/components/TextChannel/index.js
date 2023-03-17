@@ -22,8 +22,15 @@ const TextChannel = ({ channelId }) => {
   );
   const [body, setBody] = useState("");
 
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      messageUlRef.current.scrollTo(0, messageUlRef.current.scrollHeight);
+    }, 500);
+  };
+
   useEffect(() => {
     dispatch(fetchMessages(channelId));
+    scrollToBottom();
     const subscription = consumer.subscriptions.create(
       { channel: "TextsChannel", id: channelId },
       {
@@ -48,12 +55,14 @@ const TextChannel = ({ channelId }) => {
           };
           switch (type) {
             case "RECEIVE_MESSAGE":
+              dispatch(receiveMessage(message))
+              scrollToBottom()
+              break;
+            case "UPDATE_MESSAGE":
               dispatch(receiveMessage(message));
-              scrollToBottom();
               break;
             case "DESTROY_MESSAGE":
               dispatch(removeMessage(message.id));
-              scrollToBottom();
               break;
             default:
               console.log("Unhandled broadcast: ", type);
@@ -63,13 +72,9 @@ const TextChannel = ({ channelId }) => {
       }
     );
     return () => subscription?.unsubscribe();
-  }, [channelId]);
+  }, []);
 
-  const scrollToBottom = () => {
-    setTimeout(() => {
-      messageUlRef.current.scrollTo(0, messageUlRef.current.scrollHeight);
-    }, 500);
-  };
+
 
   const handleMessage = async (e) => {
     e.preventDefault();

@@ -25,7 +25,7 @@ class Api::MessagesController < ApplicationController
             body: params[:body]
         )) && (@message.sender_id == current_user.id)
         TextsChannel.broadcast_to @message.channel,
-        type: 'RECEIVE_MESSAGE',
+        type: 'UPDATE_MESSAGE',
         **from_template('api/messages/show', message: @message)
         
         render :show, locals: {message: @message}
