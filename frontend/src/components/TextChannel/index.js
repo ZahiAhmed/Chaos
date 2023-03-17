@@ -23,14 +23,11 @@ const TextChannel = ({ channelId }) => {
   const [body, setBody] = useState("");
 
   const scrollToBottom = () => {
-    setTimeout(() => {
-      messageUlRef.current.scrollTo(0, messageUlRef.current.scrollHeight);
-    }, 500);
+    messageUlRef.current.scrollTo(0, messageUlRef.current.scrollHeight);
   };
 
   useEffect(() => {
-    dispatch(fetchMessages(channelId));
-    scrollToBottom();
+    dispatch(fetchMessages(channelId)).then(() => scrollToBottom());
     const subscription = consumer.subscriptions.create(
       { channel: "TextsChannel", id: channelId },
       {
@@ -42,7 +39,7 @@ const TextChannel = ({ channelId }) => {
           body,
           createdAt,
           updatedAt,
-          sender
+          sender,
         }) => {
           const message = {
             id,
@@ -51,12 +48,12 @@ const TextChannel = ({ channelId }) => {
             body,
             createdAt,
             updatedAt,
-            sender
+            sender,
           };
           switch (type) {
             case "RECEIVE_MESSAGE":
-              dispatch(receiveMessage(message))
-              scrollToBottom()
+              dispatch(receiveMessage(message));
+              scrollToBottom();
               break;
             case "UPDATE_MESSAGE":
               dispatch(receiveMessage(message));
@@ -65,16 +62,13 @@ const TextChannel = ({ channelId }) => {
               dispatch(removeMessage(message.id));
               break;
             default:
-              console.log("Unhandled broadcast: ", type);
               break;
           }
         },
       }
     );
     return () => subscription?.unsubscribe();
-  }, []);
-
-
+  }, [channelId]);
 
   const handleMessage = async (e) => {
     e.preventDefault();
@@ -98,6 +92,9 @@ const TextChannel = ({ channelId }) => {
 
         <div id="messages" ref={messageUlRef}>
           <h2 id="empty-channel-filler"># Welcome to {textChannel?.topic}</h2>
+          <p id="empty-channel-subheader">
+            This is the start of the {textChannel?.topic} channel
+          </p>
           <ul>
             {messages.map((message, i) => (
               <Message key={i} message={message} sessionUser={sessionUser} />

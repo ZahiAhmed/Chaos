@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { updateMessage, deleteMessage } from "../../store/messages";
 import { Modal } from "../../context/Modal";
-
 import "./Message.css";
 
 const Message = ({ message, sessionUser }) => {

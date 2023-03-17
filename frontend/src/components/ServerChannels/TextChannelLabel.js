@@ -42,7 +42,7 @@ const TextChannelLabel = ({ textChannel, isOwner, location }) => {
   }
 
   const buttons = isOwner ? (
-    <span className="channel-buttons">
+    <span id="channel-buttons">
       <span title="delete channel">
         <button
           className="channel-button"
@@ -71,7 +71,7 @@ const TextChannelLabel = ({ textChannel, isOwner, location }) => {
   return (
     <>
     <Link to={`/servers/${textChannel.serverId}/${textChannel.id}`}>
-      <li
+      <li id="channel-label"
       style={
         location === `/servers/${textChannel.serverId}/${textChannel.id}` || editModal ? { backgroundColor: "rgb(71, 78, 85)", color: "white"} : null
       }

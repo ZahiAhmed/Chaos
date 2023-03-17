@@ -1,13 +1,13 @@
 .channel-box{
     height: 100%;
-    width: 55%;
-    margin-left: 330px;
+    width: 53%;
+    margin-left: 320px;
 }
 
 .channel-box h1{
     width: 105%;
     color: white;
-    font-size: xx-large;
+    font-size: larger;
     font-weight: bolder;
     text-indent: 5%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.229);
@@ -15,11 +15,19 @@
     
 }
 
+#empty-channel-subheader{
+    text-align: left;
+    font-weight: lighter;
+    font-size: small;
+    text-indent: 5%;
+
+}
+
 #empty-channel-filler {
     color: white;
     font-size: 50px;
     width: 105%;
-    margin-top: 60%;
+    margin-top: 62%;
     margin-bottom: 10px;
 }
 
@@ -29,7 +37,7 @@
     overflow-x: hidden;
     padding: 1%;
     height: 83%;
-    width: 110%;
+    width: 105%;
 } 
 
 #messages::-webkit-scrollbar {

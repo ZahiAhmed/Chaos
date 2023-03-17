@@ -1,10 +1,14 @@
 .message{
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.229);
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 .message:hover {
     background-color: rgba(48, 53, 58, 0.198);
+
 }
 
 .message p {
@@ -13,6 +17,11 @@
 
 #message-buttons{
     float: right;
+    visibility: hidden;
+}
+
+.message:hover #message-buttons{
+    visibility: visible;
 }
 
 #message-sender {
@@ -21,9 +30,9 @@
 }
 
 #message-timestamp {
-    font-size: smaller;
+    font-size: x-small;
     color: rgba(255, 255, 255, 0.202);
-    font-weight: light;
+    font-weight: lighter;
 }
 
 #message-body {
