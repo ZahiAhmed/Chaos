@@ -23,7 +23,7 @@ const TextChannel = ({ channelId }) => {
   const [body, setBody] = useState("");
 
   const scrollToBottom = () => {
-    messageUlRef.current.scrollTo(0, messageUlRef.current.scrollHeight);
+    messageUlRef?.current?.scrollTo(0, messageUlRef.current.scrollHeight);
   };
 
   useEffect(() => {
