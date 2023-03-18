@@ -48,7 +48,6 @@ const membersReducer = (state={}, action) => {
     const newState = {...state}
     switch (action.type) {
         case RECEIVE_MEMBER:
-            newState[action.member.id] = action.member
             return newState
         case RECEIVE_MEMBERS:
             return {...action.members}
