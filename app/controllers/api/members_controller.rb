@@ -13,6 +13,7 @@ class Api::MembersController < ApplicationController
             owner: false
         )
         if @member.save
+            render json: nil, status: :ok
         else 
             render json: {errors: @member.errors.full_messages}, status: 418
         end

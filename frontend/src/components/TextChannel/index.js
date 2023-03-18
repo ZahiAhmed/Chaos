@@ -59,7 +59,7 @@ const TextChannel = ({ channelId }) => {
               dispatch(receiveMessage(message));
               break;
             case "DESTROY_MESSAGE":
-              dispatch(removeMessage(message.id));
+              dispatch(removeMessage(id));
               break;
             default:
               break;
