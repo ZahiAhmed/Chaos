@@ -14,6 +14,7 @@ const TextChannel = ({ channelId }) => {
   const dispatch = useDispatch();
   const messageUlRef = useRef(null);
   const sessionUser = useSelector((state) => state.session.user);
+  const [messageCounter, setMessageCounter] = useState(0);
   const textChannel = useSelector((state) =>
     state.textChannels ? state.textChannels[channelId] : {}
   );
@@ -68,7 +69,7 @@ const TextChannel = ({ channelId }) => {
       }
     );
     return () => subscription?.unsubscribe();
-  }, [channelId]);
+  }, [channelId, messageCounter]);
 
   const handleMessage = async (e) => {
     e.preventDefault();
@@ -79,6 +80,7 @@ const TextChannel = ({ channelId }) => {
         body,
       })
     ).then(() => {
+      setMessageCounter(messageCounter++)
       setBody("");
       scrollToBottom();
     });
@@ -97,7 +99,7 @@ const TextChannel = ({ channelId }) => {
           </p>
           <ul>
             {messages.map((message, i) => (
-              <Message key={i} message={message} sessionUser={sessionUser} />
+              <Message key={i} message={message} sessionUser={sessionUser} messageCounter={messageCounter} setMessageCounter={setMessageCounter}/>
             ))}
           </ul>
         </div>
