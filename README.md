@@ -1,4 +1,7 @@
-# [Chaos](https://chaos-2ce2.onrender.com/)
+# Chaos
+
+[Render](https://chaos-2ce2.onrender.com/)
+[Heroku](https://chaoslive.herokuapp.com/)
 
 Chaos is a full-stack web application clone of Discord. It connects users by being able to create servers or clubs and also has an integrated friendlist for each user. 
 
