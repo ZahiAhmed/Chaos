@@ -4,6 +4,6 @@ let wsUrl;
 if (process.env.NODE_ENV !== "production") 
   wsUrl = "ws://localhost:5000/cable";
 else
-  wsUrl = "wss://chaoslive.herokuapp.com/cable";
+  wsUrl = "/cable";
 
 export default createConsumer(wsUrl);
