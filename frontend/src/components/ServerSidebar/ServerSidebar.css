@@ -47,3 +47,10 @@
     border: 5px solid purple;
 }
 
+#redirect-explore{
+    background-image: url('./explore-icon.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
