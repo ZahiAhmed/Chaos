@@ -12,7 +12,7 @@ class Api::MessagesController < ApplicationController
             TextsChannel.broadcast_to @message.channel,
             type: 'RECEIVE_MESSAGE',
             **from_template('/api/messages/show', message: @message)
-                render json: nil, status: :ok
+            render :show, locals: {message: @message}
         else
             render json: @message.errors.full_messages, status: 418
         end
@@ -26,8 +26,7 @@ class Api::MessagesController < ApplicationController
         TextsChannel.broadcast_to @message.channel,
         type: 'UPDATE_MESSAGE',
         **from_template('api/messages/show', message: @message)
-        
-            render json: nil, status: :ok
+            render :show, locals: {message: @message}
         end
     end
 
