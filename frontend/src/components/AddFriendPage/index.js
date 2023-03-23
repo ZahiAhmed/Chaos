@@ -19,8 +19,7 @@ const AddFriendPage = (props) => {
 
   const handleRequest = (e) => {
     e.preventDefault();
-    setFriend("");
-    return dispatch(addFriend({ user_id: props.userId, friend_id: friend }));
+    dispatch(addFriend({ user_id: props.userId, friend_id: friend })).then(()=> setFriend(""))
   };
   return (
     <div className="addfriendpage">
@@ -40,10 +39,10 @@ const AddFriendPage = (props) => {
         </span>
       </form>
       <p>
-        {confirmation[confirmation?.length -1].errors?.map((error) => (
+        {confirmation[confirmation?.length -1]?.errors?.map((error) => (
           <span key={error} style={{color: 'crimson'}}> {error}</span>
         ))}
-        {confirmation[confirmation?.length -1].message?.map((msg) => (
+        {confirmation[confirmation?.length -1]?.message?.map((msg) => (
           <span key={msg} style={{color: 'green'}}>{msg}</span>
         ))}
       </p>

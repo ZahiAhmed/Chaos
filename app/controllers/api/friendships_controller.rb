@@ -12,12 +12,12 @@ class Api::FriendshipsController < ApplicationController
         friend_id = friend_params[1].to_i
         
         if (friend_params.length != 2)
-           return render json: {errors: ["Invalid user"]}
+           return render json: {errors: ["#{params[:friend_id]} is not a valid user"]}
         end
 
         if @friend = User.find_by(id: friend_id, username: friend_username)
             if (params[:user_id] === @friend.id) 
-                render json: {errors: ["Cannot friend self"]}
+                render json: {errors: ["Cannot friend yourself"]}
             else
                 @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: @friend.id)
                 if(@friendship && !@friendship.confirmed)
@@ -31,14 +31,14 @@ class Api::FriendshipsController < ApplicationController
                     @otherside = Friendship.new(user_id: @friendship.friend_id, friend_id: @friendship.user_id, confirmed: false, pending: false)
                 
                     if @friendship.save && @otherside.save
-                        render json: {message: ['Successfully Requested']}, status: 200
+                        render json: {message: ["Successfully Requested #{params[:friend_id]}."]}, status: 200
                     else
-                        render json: {errors: ["Already friended"]}
+                        render json: {errors: ["Already friended #{params[:friend_id]}."]}
                     end
                 end
             end
         else
-           render json: {errors: ["User doesn't exist"]}
+           render json: {errors: ["#{params[:friend_id]} is not an existing user."]}
         end
     end
 
