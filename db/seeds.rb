@@ -8,7 +8,7 @@
 
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
-    Messages.destroy_all
+    Message.destroy_all
     Member.destroy_all
     TextChannel.destroy_all
     Server.destroy_all
