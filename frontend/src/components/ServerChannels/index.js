@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { deleteServer } from "../../store/servers";
@@ -22,6 +22,11 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
   const serverName = server ? server.serverName : "";
   const buttonText = isOwner ? "Delete Server" : "Leave Server";
   const sessionUser = useSelector((state) => state.session.user);
+  const [numChannels, setNumChannels] = useState(server?.textChannels?.length)
+
+  useEffect(()=>{
+
+  },[numChannels])
 
   const handleLeave = (e) => {
     e.preventDefault();
@@ -63,7 +68,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
           {show}
         <div id="server-channels">
           {textChannels.map((textChannel, i) => (
-            <TextChannelLabel key={i} server={server} textChannel={textChannel} isOwner={isOwner} location={location.pathname}/>
+            <TextChannelLabel key={i} numChannels={numChannels} setNumChannels={setNumChannels} textChannel={textChannel} isOwner={isOwner} location={location.pathname}/>
           ))}
         </div>
       </aside>
@@ -84,7 +89,7 @@ const ServerChannels = ({ server, isOwner, members, textChannels }) => {
           modalContent={"edit-server-content"}
           onClose={() => setCreateModal(false)}
         >
-          <CreateChannel server={server} textChannel={textChannels} setCreateModal={setCreateModal}/>
+          <CreateChannel numChannels={numChannels} setNumChannels={setNumChannels} server={server} textChannel={textChannels} setCreateModal={setCreateModal}/>
         </Modal>
       )}
     </>

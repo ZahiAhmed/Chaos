@@ -7,7 +7,7 @@ import { Redirect, useParams, useHistory } from "react-router-dom";
 
 import "./TextChannelLabel.css";
 
-const TextChannelLabel = ({server, textChannel, isOwner, location }) => {
+const TextChannelLabel = ({numChannels, setNumChannels, textChannel, isOwner, location }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { serverId } = useParams();
@@ -29,6 +29,7 @@ const TextChannelLabel = ({server, textChannel, isOwner, location }) => {
     await dispatch(deleteTextChannel(textChannel.id)).then(() => {
         history.push(`/servers/${serverId}`); 
     });
+    setNumChannels(numChannels-1)
   };
 
   const handleEdit = (e) => {
@@ -48,7 +49,7 @@ const TextChannelLabel = ({server, textChannel, isOwner, location }) => {
           className="channel-button"
           id="delete-channel"
           onClick={handleDelete}
-          style={server.textChannels.length === 1 ? {visibility: "hidden"} : {visibility: "visible"}}
+          style={numChannels === 1 ? {visibility: "hidden"} : {visibility: "visible"}}
           >
           ❌
         </button>

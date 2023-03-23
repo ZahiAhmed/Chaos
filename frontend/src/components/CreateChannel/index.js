@@ -3,7 +3,7 @@ import { createTextChannel } from "../../store/textChannels";
 import { useState, useEffect } from "react";
 import "../EditServer/EditServer.css";
 
-const CreateChannel = ({ server, setCreateModal }) => {
+const CreateChannel = ({numChannels, setNumChannels, server, setCreateModal }) => {
   const dispatch = useDispatch();
   const [channelTopic, setChannelTopic] = useState('');
   const [hidden, setHidden] = useState(true);
@@ -29,6 +29,7 @@ const CreateChannel = ({ server, setCreateModal }) => {
       })
     );
     setCreateModal(false);
+    setNumChannels(numChannels+1)
   };
 
   return (
