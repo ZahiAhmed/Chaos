@@ -48,7 +48,7 @@ const TextChannelLabel = ({server, textChannel, isOwner, location }) => {
           className="channel-button"
           id="delete-channel"
           onClick={handleDelete}
-          style={server.textChannels.length === 1 ? {visibility: hidden} : null}
+          style={server.textChannels.length === 1 ? {visibility: "hidden"} : null}
           >
           ❌
         </button>
