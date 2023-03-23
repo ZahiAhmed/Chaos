@@ -24,7 +24,7 @@ class Api::FriendshipsController < ApplicationController
                     @otherside = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
                     @friendship.update(confirmed: true)
                     @otherside.update(pending: false)
-                    render json: {message: 'Successfully Added'}
+                    render :show
                 else
 
                     @friendship = Friendship.new(user_id: params[:user_id], friend_id: @friend.id, confirmed: true)

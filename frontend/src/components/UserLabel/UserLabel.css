@@ -71,3 +71,7 @@
     margin-right: 10%;
 }
 
+#decline {
+    background-color: red;
+    color: white;
+}
