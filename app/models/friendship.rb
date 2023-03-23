@@ -8,11 +8,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  pending    :boolean          default(TRUE)
+#  confirmed  :boolean          default(TRUE)
 #
 class Friendship < ApplicationRecord
     validates :user_id, :friend_id, presence: true
     validates :friend_id, uniqueness: { scope: :user_id }
-    validates :pending, inclusion: {in: [true,false]}
+    validates :pending, :confirmed, inclusion: {in: [true,false]}
 
     belongs_to :user,
         primary_key: :id,

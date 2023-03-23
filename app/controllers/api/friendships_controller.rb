@@ -12,30 +12,33 @@ class Api::FriendshipsController < ApplicationController
         friend_id = friend_params[1].to_i
         
         if (friend_params.length != 2)
-           return render json: {errors: ["Invalid user"]}, status: 418
+           return render json: {errors: ["Invalid user"]}
         end
 
-        if @user = User.find_by(id: friend_id, username: friend_username)
-            if (params[:user_id] === @user.id) 
-                render json: {errors: ["Cannot friend self"]}, status: 418
+        if @friend = User.find_by(id: friend_id, username: friend_username)
+            if (params[:user_id] === @friend.id) 
+                render json: {errors: ["Cannot friend self"]}
             else
-                @friendship = Friendship.new(user_id: params[:user_id], friend_id: @user.id)
-                @otherside = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
-                
-                if(@otherside)
-                    @friendship.pending = false
-                    @otherside.destroy
-                    Friendship.create(user_id: @friendship.friend_id, friend_id: @friendship.user_id, pending: false)
-                end
-            
-                if @friendship.save
-                    render json: {message: 'Successfully Added'}
+                @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: @friend.id)
+                if(@friendship && !@friendship.confirmed)
+                    @otherside = Friendship.find_by(user_id: @friendship.friend_id, friend_id: @friendship.user_id)
+                    @friendship.update(confirmed: true)
+                    @otherside.update(pending: false)
+                    render :show
                 else
-                    render json: {errors: ["Already friended"]}, status: 418
+
+                    @friendship = Friendship.new(user_id: params[:user_id], friend_id: @friend.id, confirmed: true)
+                    @otherside = Friendship.new(user_id: @friendship.friend_id, friend_id: @friendship.user_id, confirmed: false, pending: false)
+                
+                    if @friendship.save && @otherside.save
+                        render json: {message: ['Successfully Requested']}, status: 200
+                    else
+                        render json: {errors: ["Already friended"]}
+                    end
                 end
             end
         else
-           render json: {errors: ["User doesn't exist"]}, status: 418
+           render json: {errors: ["User doesn't exist"]}
         end
     end
 

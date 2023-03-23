@@ -8,6 +8,7 @@
 
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
+    Messages.destroy_all
     Member.destroy_all
     TextChannel.destroy_all
     Server.destroy_all
@@ -20,6 +21,7 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!('servers')
     ApplicationRecord.connection.reset_pk_sequence!('members')
     ApplicationRecord.connection.reset_pk_sequence!('text_channels')
+    ApplicationRecord.connection.reset_pk_sequence!('messages')
     puts "Creating users..."
 
     User.create!(
