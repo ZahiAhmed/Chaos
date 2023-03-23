@@ -53,7 +53,7 @@ const ServerPage = () => {
       <ServerSidebar servers={sessionUser.servers} />
       <ServerChannels server={server} isOwner={isOwner} members={members} textChannels={textChannels} />
       <UserInfo />
-      <TextChannel channelId={channelId?.toString()} />
+      {channelId ? <TextChannel channelId={channelId?.toString()} /> : null}
     </div>
   );
 };
