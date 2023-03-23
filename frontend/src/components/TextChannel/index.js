@@ -70,6 +70,8 @@ const TextChannel = ({ channelId }) => {
     return () => subscription?.unsubscribe();
   }, [channelId]);
 
+  if(!channelId) return <></>
+
   const handleMessage = async (e) => {
     e.preventDefault();
     e.stopPropagation();
