@@ -15,6 +15,8 @@ const UserLabel = ({ user }) => {
   useEffect(() => {
 
   },[user.confirmed])
+  
+  if(user.errors || user.messages) return <></>
 
   const handleConfirm = (e) => {
     e.preventDefault();
@@ -25,7 +27,6 @@ const UserLabel = ({ user }) => {
     dispatch(unfriend(user.friendshipId));
   };
 
-  if(user.errors || user.messages) return <></>
 
   const pending = user.pending ? <span id="pending"> Pending... </span> : null;
   const confirmButton = !user.confirmed ? (
