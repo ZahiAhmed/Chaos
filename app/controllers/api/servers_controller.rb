@@ -46,10 +46,6 @@ class Api::ServersController < ApplicationController
     def destroy
         @server = Server.find_by(id: params[:id])
         if (@server.owner_id == current_user.id)
-            @members = Member.where(server_id: @server.id)
-            @members.each do |member|
-                member.destroy
-            end
             @server.destroy
         end
     end
