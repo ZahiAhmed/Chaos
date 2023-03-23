@@ -7,7 +7,7 @@ import { Redirect, useParams, useHistory } from "react-router-dom";
 
 import "./TextChannelLabel.css";
 
-const TextChannelLabel = ({ textChannel, isOwner, location }) => {
+const TextChannelLabel = ({server, textChannel, isOwner, location }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { serverId } = useParams();
@@ -41,13 +41,14 @@ const TextChannelLabel = ({ textChannel, isOwner, location }) => {
         setEditModal(false)
   }
 
-  const buttons = isOwner ? (
-    <span id="channel-buttons">
+  const buttons = isOwner ? ( 
+      <span id="channel-buttons">
       <span title="delete channel">
         <button
           className="channel-button"
           id="delete-channel"
           onClick={handleDelete}
+          style={server.textChannels.length === 1 ? {visibility: hidden} : null}
           >
           ❌
         </button>
