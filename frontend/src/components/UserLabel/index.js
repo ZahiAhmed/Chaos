@@ -45,13 +45,13 @@ const UserLabel = ({ user }) => {
         {pending}
         {confirmButton}
         <span className="user-options">
-          {user.confirmed ?
+          {user.confirmed && !user.pending ?
           <button className="unfriend" onClick={handleUnfriend}>
             Unfriend
           </button>
           : 
           <button id="decline" className="unfriend" onClick={handleUnfriend}>
-          Decline
+          {user.pending ? `Cancel` : `Decline`}
         </button>
           }
           <button className="profile-button" onClick={() => setShowModal(true)}>
