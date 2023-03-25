@@ -8,40 +8,41 @@ import "./NewServerForm.css";
 const NewServerForm = ({ sessionUser, setShowModal }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const allServers = useSelector(state => state.servers ? Object.values(state.servers) : [])
+  const allServers = useSelector((state) =>
+    state.servers ? Object.values(state.servers) : []
+  );
   const [serverName, setServerName] = useState(
     `${sessionUser.username}'s server`
   );
   const [description, setDescription] = useState();
-  const [hidden, setHidden] = useState(true)
+  const [hidden, setHidden] = useState(true);
 
-  useEffect (() => {
-    if(!serverName || serverName.split(' ').length === serverName.length + 1){
-      setHidden(true)
-    }else{
-      setHidden(false)
+  useEffect(() => {
+    if (!serverName || serverName.split(" ").length === serverName.length + 1) {
+      setHidden(true);
+    } else {
+      setHidden(false);
     }
-  },[serverName])
+  }, [serverName]);
 
-  useEffect (()=>{
-    dispatch(fetchServers())
-  },[])
+  useEffect(() => {
+    dispatch(fetchServers());
+  }, []);
 
-  const handleForm = async (e) => {
+  const handleForm = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    history.push("/");
-    await dispatch(
+    dispatch(
       createServer({
         server_name: serverName,
         description: description,
         owner_id: sessionUser.id,
       })
-    ).then(async () => {
-        await dispatch(reload())
-        setShowModal(false);
-        await history.push(`/servers/${allServers[allServers.length-1].id + 1}`) //have to fix this line
+    ).then((newServer) => {
+      dispatch(reload())
+      history.push(`/servers/${newServer.id}`);
     });
+    setShowModal(false);
   };
 
   return (
@@ -56,7 +57,9 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
       <form id="submit-server" onSubmit={handleForm}>
         <label>
           SERVER NAME
-          { hidden ? <span className="errors"> - Must have at least one character </span> : null}
+          {hidden ? (
+            <span className="errors"> - Must have at least one character </span>
+          ) : null}
           <br />
           <input
             type="text"
@@ -77,9 +80,13 @@ const NewServerForm = ({ sessionUser, setShowModal }) => {
         </label>
         <br />
         <br />
-        {hidden ? <button style={{opacity: "0.5"}} disabled >Create</button> : 
-        <button type="submit">Create</button>
-        }
+        {hidden ? (
+          <button style={{ opacity: "0.5" }} disabled>
+            Create
+          </button>
+        ) : (
+          <button type="submit">Create</button>
+        )}
       </form>
     </div>
   );
